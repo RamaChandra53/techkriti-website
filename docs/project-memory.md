@@ -1,14 +1,14 @@
-# Techriti website: product and design memory
+# Techkriti website: product and design memory
 
 Last updated: 8 October 2026. This is a living brief assembled from the organizer's requests in this conversation and checked against the current repository. It records both intended behavior and what is currently implemented. Update it when the organizers make a new decision; do not silently turn an assumption into a fact.
 
 ## The north star
 
-Techriti should feel like **MGIT students' own festival**: a place to discover something worth joining, contribute to it, and feel proud that it happens on their campus. The website exists to answer practical questions quickly and tell the story of why this edition matters. It is an information and discovery hub, not the registration system. The organizer's newer 40-part UX direction is distilled in `docs/design-direction.md` and takes precedence for visual decisions.
+Techkriti should feel like **MGIT students' own festival**: a place to discover something worth joining, contribute to it, and feel proud that it happens on their campus. The website exists to answer practical questions quickly and tell the story of why this edition matters. It is an information and discovery hub, not the registration system. The organizer's newer 40-part UX direction is distilled in `docs/design-direction.md` and takes precedence for visual decisions.
 
 A first-time visitor should be able to answer these questions without hunting:
 
-1. What is Techriti, and what is different about the October 2026 edition?
+1. What is Techkriti, and what is different about the October 2026 edition?
 2. When and where is it?
 3. What technical and non-technical events can I join?
 4. When and where does my chosen event happen, who can enter, and what are its rules?
@@ -27,7 +27,7 @@ If confirmed event data is not available yet, state that plainly. An honest empt
 
 | Item | Current decision or status |
 | --- | --- |
-| Name | Techriti is the spelling repeatedly used in the latest organizer briefs and now used for current public text. Older logo and archive materials show Techkriti; obtain final mark/spelling approval before launch. |
+| Name | **Techkriti**, explicitly confirmed by the organizer after the pasted briefs used “Techriti.” Use Techkriti for all current public text and metadata. The existing symbolic mark may still need final visual approval. |
 | Organizer/location | Mahatma Gandhi Institute of Technology (MGIT), Hyderabad; Department of IT and CSBS context |
 | Upcoming edition | 16–17 October 2026, on the MGIT campus |
 | Creative theme | Halloween, across the whole upcoming edition |
@@ -40,13 +40,13 @@ The previous posters and screenshots were supplied to explain the earlier festiv
 
 ## The story the site should tell
 
-The story is not “a haunted template with event cards.” It is: **a campus community built the festival before; this October Techriti returns with a Halloween identity; there are different ways to take part; your participation shapes what the next edition becomes.**
+The story is not “a haunted template with event cards.” It is: **a campus community built the festival before; this October Techkriti returns with a Halloween identity; there are different ways to take part; your participation shapes what the next edition becomes.**
 
 The story should be concise and useful. Lead with identity, dates, MGIT, and the route into events. Use the February archive as proof of real people and energy, then make a clear transition to the new October edition. Show confirmed details as they arrive, not vague hype in place of facts. The desired feeling is curiosity, belonging, anticipation, and campus pride, without exaggerated claims or fabricated testimonials.
 
 ## Visual and interaction direction
 
-- The Halloween identity must be unmistakable, but mature and specific to Techriti. The current local redesign uses a near-black, ember-orange, and restrained plum system with readable cream text. Verify contrast in the actual UI.
+- The Halloween identity must be unmistakable, but mature and specific to Techkriti. The current local redesign uses a near-black, ember-orange, and restrained plum system with readable cream text. Verify contrast in the actual UI.
 - Favor an editorial composition with confident type, varied but disciplined layouts, real festival photography, generous spacing, and clear calls to action. A student should recognize a festival made by people at MGIT, not an anonymous AI-generated Halloween landing page.
 - Avoid generic haunted-house art, random bats/spiders, ornamental sparkles, fake statistics, repetitive gradients, overused gothic fonts, stock imagery presented as campus life, and empty motivational copy. Do not fill missing content with invented event names or rooms.
 - Keep the logo's full mark visible with a transparent background. The header logo and browser-tab icon should never show a white square. Use the existing transparent asset unless an approved, better official source is supplied.
@@ -64,7 +64,7 @@ The central path is:
 
 ```text
 Arrival (often mobile/social link)
-  -> understand Techriti + 16–17 October + MGIT
+  -> understand Techkriti + 16–17 October + MGIT
   -> open Events or a technical/non-technical track
   -> search/filter by keyword, track, category, and day
   -> read one event's rules, eligibility, team size, time, and room
@@ -91,7 +91,7 @@ The schedule, FAQs, sponsors, announcements, navigation, and site identity shoul
 2. **Event discovery:** visitors can find a relevant event quickly through clear navigation, search, filters, schedule, and shareable links.
 3. **Direct registration:** every live registration CTA goes to the correct event's official Google Form; absent forms do not produce dead buttons.
 4. **Accessible, fast mobile UX:** readable contrast and type, keyboard/focus support, screen-reader labels, reduced motion, optimized assets, and low-bandwidth performance.
-5. **Distinct Techriti identity and story:** a memorable Halloween atmosphere anchored in the existing symbolic mark, MGIT community, and correctly labeled archive.
+5. **Distinct Techkriti identity and story:** a memorable Halloween atmosphere anchored in the existing symbolic mark, MGIT community, and correctly labeled archive.
 6. **Maintainability and discoverability:** typed content, metadata, canonical URLs, Open Graph, sitemap, robots, and a safe Vercel preview-to-production workflow.
 
 Visual novelty is not a reason to move a practical task lower in that order.
@@ -118,4 +118,4 @@ Until these are answered, build the structure and honest states. Do not borrow s
 
 ## Maintenance rule for this memory
 
-When a new organizer message changes the brief, update the relevant section, mark the new fact as confirmed or pending, and align `lib/content.ts`, route copy, and `docs/architecture.md` when necessary. When a design choice is implemented, distinguish the locally built behavior from an approved or publicly shipped result. The current redesign is implemented locally but still needs organizer review, responsive/accessibility QA, real event content, final mark/spelling approval, photo permissions, and Vercel preview review before public launch.
+When a new organizer message changes the brief, update the relevant section, mark the new fact as confirmed or pending, and align `lib/content.ts`, route copy, and `docs/architecture.md` when necessary. When a design choice is implemented, distinguish the locally built behavior from an approved or publicly shipped result. The current redesign is implemented locally but still needs organizer review, responsive/accessibility QA, real event content, final mark approval, photo permissions, and Vercel preview review before public launch.

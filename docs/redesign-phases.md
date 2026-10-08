@@ -1,4 +1,4 @@
-# Techriti redesign phases
+# Techkriti redesign phases
 
 | Phase | Scope | Current state |
 | --- | --- | --- |

@@ -8,7 +8,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-## Techriti project guidance
+## Techkriti project guidance
 
 - Work in this existing Next.js repository. Vercel is the intended deployment target.
 - Do not use the Sites skills or move this website to Sites hosting.
@@ -17,4 +17,4 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Keep the February 2026 photo archive clearly separate from the upcoming 16–17 October 2026 Halloween edition. Do not invent event names, rooms, times, sponsors, or registration URLs.
 - The current architecture and visitor flows are documented in `docs/architecture.md`.
 - Read `docs/project-memory.md` before changing content, page structure, or visual design; it records the organizer's goals, confirmed facts, unknowns, and launch priorities.
-- Treat `docs/design-direction.md` as the current UX and visual source of truth and `docs/redesign-phases.md` as the phased implementation record. The public name in the latest organizer design brief is Techriti; older assets and photos may still show Techkriti and must not be silently altered.
+- Treat `docs/design-direction.md` as the current UX and visual source of truth and `docs/redesign-phases.md` as the phased implementation record. The organizer explicitly confirmed the public name is **Techkriti**, overriding the “Techriti” spelling in pasted briefs. Do not silently alter text embedded in older image assets.

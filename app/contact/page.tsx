@@ -4,7 +4,7 @@ import { Container } from "@/components/container";
 import { PageHero } from "@/components/page-hero";
 import { siteConfig } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Contact", description: "Find the Techriti festival team and MGIT campus information." };
+export const metadata: Metadata = { title: "Contact", description: "Find the Techkriti festival team and MGIT campus information." };
 
 export default function ContactPage() {
   const cards = [
@@ -13,7 +13,7 @@ export default function ContactPage() {
     ...(siteConfig.phone ? [{ icon: PhoneIcon, label: "Call the team", value: siteConfig.phone, href: `tel:${siteConfig.phone.replace(/\s/g, "")}` }] : [])
   ];
   return <>
-    <PageHero eyebrow="MGIT · HYDERABAD" title="Find your way in." copy="Techriti takes place at Mahatma Gandhi Institute of Technology on 16–17 October 2026. Exact event rooms and team contact details will be added when confirmed." />
+    <PageHero eyebrow="MGIT · HYDERABAD" title="Find your way in." copy="Techkriti takes place at Mahatma Gandhi Institute of Technology on 16–17 October 2026. Exact event rooms and team contact details will be added when confirmed." />
     <Container className="py-16 sm:py-24">
       <div className="grid gap-px border border-[#564254] bg-[#564254] md:grid-cols-3">
         {cards.map(({ icon: Icon, label, value, href }) => {

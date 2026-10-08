@@ -1,6 +1,6 @@
-# Techriti website architecture
+# Techkriti website architecture
 
-This is the current architecture of the local Next.js site, not a diagram of features that have not been built. Techriti 2026 is planned for 16–17 October at MGIT, Hyderabad. The event lineup, room assignments, sponsors, Instagram URL, and reveal video are not yet confirmed in the repository. The newer visual and UX brief is captured in `docs/design-direction.md`.
+This is the current architecture of the local Next.js site, not a diagram of features that have not been built. Techkriti 2026 is planned for 16–17 October at MGIT, Hyderabad. The event lineup, room assignments, sponsors, Instagram URL, and reveal video are not yet confirmed in the repository. The newer visual and UX brief is captured in `docs/design-direction.md`.
 
 ## Visitor flow
 

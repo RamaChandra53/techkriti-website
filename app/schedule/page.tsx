@@ -4,7 +4,7 @@ import { Container } from "@/components/container";
 import { PageHero } from "@/components/page-hero";
 import { schedule } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Schedule", description: "The Techriti 2026 schedule at MGIT, Hyderabad." };
+export const metadata: Metadata = { title: "Schedule", description: "The Techkriti 2026 schedule at MGIT, Hyderabad." };
 
 const days = [{ day: 1, date: "Friday, 16 October" }, { day: 2, date: "Saturday, 17 October" }] as const;
 

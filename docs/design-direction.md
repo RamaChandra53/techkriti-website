@@ -1,10 +1,10 @@
-# Techriti design direction
+# Techkriti design direction
 
-This is the organizer's current visual and UX source of truth, based on the 40-part design brief supplied on 8 October 2026. Use it with `docs/project-memory.md` for confirmed facts and content boundaries. If they conflict, do not invent facts; ask the organizer.
+This is the organizer's current visual and UX source of truth, based on the 40-part design brief supplied on 8 October 2026. The organizer later confirmed the official name is **Techkriti**, correcting the brief's “Techriti” spelling. Use this document with `docs/project-memory.md` for confirmed facts and content boundaries. If they conflict, do not invent facts; ask the organizer.
 
 ## Experience to create
 
-Techriti is a Halloween × technology student festival at MGIT on 16–17 October 2026. The site should feel like a premium technology event entering a Halloween world: cinematic, mysterious, energetic, and unmistakably student-made. It must not feel like a generic event template or a page decorated with unrelated pumpkins and bats.
+Techkriti is a Halloween × technology student festival at MGIT on 16–17 October 2026. The site should feel like a premium technology event entering a Halloween world: cinematic, mysterious, energetic, and unmistakably student-made. It must not feel like a generic event template or a page decorated with unrelated pumpkins and bats.
 
 The primary visitor journey is **arrive → understand the fest → discover technical or non-technical events → swipe or search → read details → open the event's official Google Form**. The homepage must expose the route into events in the first mobile screen. The secondary journey is reveal, story, and correctly labeled previous-edition photography. About 90–95% mobile usage is the organizer's planning assumption, not a measured analytics figure.
 
@@ -36,4 +36,4 @@ The primary visitor journey is **arrive → understand the fest → discover tec
 
 ## Launch boundary
 
-The design can be reviewed locally before event names, forms, rooms, and video exist. Public production launch still requires confirmed content, photo permissions, brand spelling/mark approval, and Vercel preview review. The selected archive photos are not automatic permission to publish them.
+The design can be reviewed locally before event names, forms, rooms, and video exist. Public production launch still requires confirmed content, photo permissions, final mark approval, and Vercel preview review. The selected archive photos are not automatic permission to publish them.

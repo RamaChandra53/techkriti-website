@@ -7,7 +7,7 @@ import { archivePhotos } from "@/lib/archive";
 
 export const metadata: Metadata = {
   title: "February 2026 photo gallery",
-  description: "A look back at the previous Techriti edition at MGIT. These photos are from February 2026, before the upcoming Halloween edition."
+  description: "A look back at the previous Techkriti edition at MGIT. These photos are from February 2026, before the upcoming Halloween edition."
 };
 
 export default function GalleryPage() {

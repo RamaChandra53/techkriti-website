@@ -4,14 +4,14 @@ const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERC
 const publicSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || (vercelHost ? `https://${vercelHost}` : "http://localhost:3000");
 
 export const siteConfig: SiteConfig = {
-  name: "Techriti",
-  shortName: "TECHRITI",
+  name: "Techkriti",
+  shortName: "TECHKRITI",
   institution: "Mahatma Gandhi Institute of Technology · Department of IT / CSBS",
   city: "Hyderabad",
   dates: "16–17 October 2026",
   year: "2026",
   tagline: "A Halloween-themed festival at MGIT.",
-  description: "Techriti brings technical and non-technical experiences together at MGIT on 16–17 October 2026. The event lineup is being prepared.",
+  description: "Techkriti brings technical and non-technical experiences together at MGIT on 16–17 October 2026. The event lineup is being prepared.",
   email: "",
   phone: "",
   url: publicSiteUrl,
@@ -29,7 +29,7 @@ export const schedule: ScheduleItem[] = [];
 export const sponsors: Sponsor[] = [];
 
 export const faqs: FAQ[] = [
-  { question: "When and where is Techriti?", answer: "Techriti is scheduled for 16–17 October 2026 at Mahatma Gandhi Institute of Technology (MGIT), Hyderabad." },
+  { question: "When and where is Techkriti?", answer: "Techkriti is scheduled for 16–17 October 2026 at Mahatma Gandhi Institute of Technology (MGIT), Hyderabad." },
   { question: "What events are happening?", answer: "Technical and non-technical event details are still being confirmed. The website will be updated when the organizers finalize the names and rules." },
   { question: "How do I register?", answer: "Each event will have a Register Now button that opens its official Google Form. Registration links will appear after the forms are ready." },
   { question: "Where inside MGIT will events take place?", answer: "The campus rooms and venues are still being assigned. Confirmed room details will be listed with each event." },

@@ -17,7 +17,7 @@ export default function HomeImmersive() {
       <Container className="relative flex min-h-[440px] flex-col justify-center py-11 sm:min-h-[540px] lg:min-h-[620px] lg:py-20">
         <div className="max-w-6xl">
           <p className="eyebrow">MGIT HYDERABAD · 16–17 OCTOBER 2026</p>
-          <h1 className="display-heading mt-5 max-w-6xl font-display text-[clamp(3.25rem,10vw,8.5rem)] uppercase"><span className="block">Techriti.</span><span className="block text-[#ff8b4f]">After dark.</span></h1>
+          <h1 className="display-heading mt-5 max-w-6xl font-display text-[clamp(3.25rem,10vw,8.5rem)] uppercase"><span className="block">Techkriti.</span><span className="block text-[#ff8b4f]">After dark.</span></h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-[#f1e2e8] sm:mt-7 sm:text-xl">A Halloween-themed student fest with technical and non-technical ways to take part. The next chapter happens here, at MGIT.</p>
           <div className="mt-7 flex flex-wrap gap-3 sm:mt-9"><Link href="#discover" className="button-flame inline-flex min-h-12 items-center gap-3 px-6 py-3 font-black">Explore events <ArrowRightIcon className="h-5 w-5" /></Link><Link href="#revelation" className="cta-outline inline-flex min-h-12 items-center gap-3 px-6 py-3 font-bold">The revelation <ArrowDownIcon className="h-4 w-4" /></Link></div>
         </div>
@@ -33,7 +33,7 @@ export default function HomeImmersive() {
       </Container>
     </section>
 
-    <section aria-labelledby="about-home-title" className="border-b border-[#453444] bg-[#120e18] py-20 sm:py-32"><Container className="grid gap-10 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:gap-20"><div><p className="eyebrow">Made here, together</p><h2 id="about-home-title" className="display-heading mt-5 max-w-5xl text-[clamp(2.8rem,5.8vw,6rem)]">What is <span className="text-[#ff8b4f]">Techriti?</span></h2><p className="mt-7 max-w-2xl text-xl leading-relaxed text-[#f0e2e9] sm:text-2xl">Two days for the curious, the competitive, and everyone who wants to be part of something on their campus.</p></div><div><p className="muted-copy max-w-xl text-lg">Technical and non-technical experiences come together at MGIT. Halloween sets the scene; the students who turn up give it its character.</p><Link href="/about" className="text-link mt-7 inline-flex min-h-11 items-center gap-2 font-bold text-[#ffb386]">The story behind the fest <ArrowRightIcon className="h-5 w-5" /></Link></div></Container></section>
+    <section aria-labelledby="about-home-title" className="border-b border-[#453444] bg-[#120e18] py-20 sm:py-32"><Container className="grid gap-10 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:gap-20"><div><p className="eyebrow">Made here, together</p><h2 id="about-home-title" className="display-heading mt-5 max-w-5xl text-[clamp(2.8rem,5.8vw,6rem)]">What is <span className="text-[#ff8b4f]">Techkriti?</span></h2><p className="mt-7 max-w-2xl text-xl leading-relaxed text-[#f0e2e9] sm:text-2xl">Two days for the curious, the competitive, and everyone who wants to be part of something on their campus.</p></div><div><p className="muted-copy max-w-xl text-lg">Technical and non-technical experiences come together at MGIT. Halloween sets the scene; the students who turn up give it its character.</p><Link href="/about" className="text-link mt-7 inline-flex min-h-11 items-center gap-2 font-bold text-[#ffb386]">The story behind the fest <ArrowRightIcon className="h-5 w-5" /></Link></div></Container></section>
 
     <div id="revelation" className="scroll-mt-16"><BannerReveal /></div>
 
