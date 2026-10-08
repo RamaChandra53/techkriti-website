@@ -1,5 +1,5 @@
 export type EventDivision = "Technical" | "Non-Technical";
-export type EventCategory = "Competition" | "Workshop" | "Talk" | "Showcase";
+export type EventCategory = "Event" | "Competition" | "Workshop" | "Talk" | "Showcase";
 export type FestDay = 1 | 2;
 
 export interface SiteConfig {
@@ -28,8 +28,8 @@ export interface Event {
   description: string;
   division: EventDivision;
   category: EventCategory;
-  day: FestDay;
-  time: string;
+  day?: FestDay;
+  time?: string;
   venue: string;
   eligibility: string;
   teamSize: string;
@@ -37,6 +37,8 @@ export interface Event {
   rules?: string[];
   prizes?: string;
   registrationUrl?: string;
+  /** Optimized, organizer-approved artwork under public/, e.g. /events/poster.webp. */
+  image?: { src: string; alt: string };
   featured?: boolean;
   accent: "electric" | "coral" | "sky" | "acid";
 }

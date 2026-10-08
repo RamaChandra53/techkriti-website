@@ -17,13 +17,27 @@ Open `http://localhost:3000`.
 
 ## Content
 
-Edit `lib/content.ts` to update the festival identity, event list, schedule, sponsors, FAQs, Instagram URL and reveal video. The event array starts empty so unconfirmed titles, venues, times and registration links are not shown as facts.
+Edit `lib/content.ts` to update the festival identity, event list, schedule, sponsors, FAQs, Instagram URL and reveal video. The current event array contains only names, tracks, dates and D-Block from the organizer poster; add times, rooms, rules, eligibility and registration links only when confirmed.
 
 Add a confirmed event to `events` with its stable slug, division (`Technical` or `Non-Technical`), category, day (1 = 16 October, 2 = 17 October), time, room, description, eligibility and team size. Set `registrationUrl` to that event’s Google Form URL (`forms.gle` or `docs.google.com/forms`). Its detail page will show a `Register Now` link that opens the form in a new tab. Set `rulesUrl` if a rules document is ready.
 
 Add matching sessions to `schedule` when their times and rooms are confirmed. Sponsor entries are also intentionally empty until partner names and tiers are approved.
 
-Put the reveal video in `public` (MP4 or WebM) and set `bannerVideoUrl` to its local path, such as `/banner-reveal.mp4`. The reveal panel uses native controls and a poster image. Add the actual Instagram profile URL to `siteConfig.social.instagram`; the Instagram links appear automatically in the header, footer and contact page.
+Optional event artwork uses `image: { src, alt }`; place optimized files under `public/events/`. Cards and event details will display it automatically. Inline `rules` and `prizes` are optional.
+
+The revelation section uses the supplied October film at `public/branding/revelation.mp4`, with native controls, inline playback, and `preload="metadata"`. It does not autoplay. Replace `siteConfig.bannerVideoUrl` only when organizers approve a newer film. Add the actual Instagram URL to `siteConfig.social.instagram`; the footer and contact page can then expose it.
+
+## Verification
+
+```bash
+npm run validate:content
+npm run lint
+npm run typecheck
+npm run build
+npm run test:ui
+```
+
+Browser checks use installed Google Chrome and start the production site on port 3100. Install Chrome if unavailable, or configure Playwright to use a downloaded Chromium browser. Tests cover phone/tablet/desktop layouts, list-first event discovery, native touch, keyboard navigation, shared query URLs, conditional forms, and automated accessibility. Synthetic event fixtures are isolated under `tests/` and are never public event content. Screenshots and failure traces are written to `test-results/`.
 
 The production content check rejects stale placeholders and any event registration URL that is not a direct Google Forms URL. Test the guard locally with:
 

@@ -1,20 +1,49 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeftIcon, ArrowUpRightIcon, CalendarDaysIcon, MapPinIcon, UserGroupIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon, ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import type { Event } from "@/lib/types";
 import { Container } from "./container";
 
+function RegistrationLink({ event, className = "" }: { event: Event; className?: string }) {
+  if (!event.registrationUrl) return null;
+  return <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className={`button-flame flex min-h-12 items-center justify-between gap-4 rounded-sm px-5 py-4 font-bold ${className}`}>Register now <ArrowUpRightIcon className="h-5 w-5" aria-hidden="true" /><span className="sr-only"> for {event.title} (Google Form opens in a new tab)</span></a>;
+}
+
 export function EventDetailView({ event }: { event: Event }) {
-  const dayLabel = event.day === 1 ? "Friday, 16 October" : "Saturday, 17 October";
+  const dayLabel = event.day ? (event.day === 1 ? "Friday, 16 October" : "Saturday, 17 October") : "16–17 October 2026";
+  const rules = event.rules?.length ? <ul className="list-disc space-y-3 pl-5 text-[var(--muted)]">{event.rules.map((rule) => <li key={rule}>{rule}</li>)}</ul> : null;
   return <>
-    <section className="section-glow relative overflow-hidden border-b border-[#564254] py-16 sm:py-24"><div className="section-grid pointer-events-none absolute inset-0 opacity-20" aria-hidden="true" /><Container className="relative"><Link href="/events" className="text-link inline-flex min-h-11 items-center gap-2 font-bold text-[#ffb386]"><ArrowLeftIcon className="h-5 w-5" /> All events</Link><p className="eyebrow mt-10">{event.division} · {event.category}</p><h1 className="display-heading mt-5 max-w-6xl text-[clamp(3.2rem,7vw,7rem)]">{event.title}</h1><p className="muted-copy mt-7 max-w-2xl text-xl">{event.summary}</p></Container></section>
-    <Container className={`grid gap-12 py-16 lg:grid-cols-[1fr_23rem] lg:gap-20 lg:py-24 ${event.registrationUrl ? "pb-32 lg:pb-24" : ""}`}>
-      <div>
-        <section aria-labelledby="about-event"><p className="eyebrow">The event</p><h2 id="about-event" className="mt-3 text-3xl font-black tracking-[-.05em] text-[#fff4e9] sm:text-4xl">What you&apos;re stepping into</h2><p className="muted-copy mt-6 max-w-3xl text-lg">{event.description}</p></section>
-        {(event.rules?.length || event.rulesUrl) && <section className="mt-14 border-t border-[#564254] pt-9" aria-labelledby="event-rules"><p className="eyebrow">Before you join</p><h2 id="event-rules" className="mt-3 text-3xl font-black tracking-[-.05em]">Rules and details</h2>{event.rules && <ul className="mt-6 list-disc space-y-3 pl-5 text-[#d8c9d5]">{event.rules.map((rule) => <li key={rule}>{rule}</li>)}</ul>}{event.rulesUrl && <a href={event.rulesUrl} target="_blank" rel="noopener noreferrer" className="text-link mt-7 inline-flex min-h-11 items-center gap-2 font-bold text-[#ffb386]">Open full rules <ArrowUpRightIcon className="h-5 w-5" /><span className="sr-only"> (opens in a new tab)</span></a>}</section>}
-        {event.prizes && <section className="mt-14 border-t border-[#564254] pt-9" aria-labelledby="event-prizes"><p className="eyebrow">What&apos;s at stake</p><h2 id="event-prizes" className="mt-3 text-3xl font-black tracking-[-.05em]">Prizes</h2><p className="muted-copy mt-6 text-lg">{event.prizes}</p></section>}
+    <section className="section-glow border-b border-[var(--line)] py-10 sm:py-16">
+      <Container>
+        <Link href="/events" className="text-link inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#ffb386]"><ArrowLeftIcon className="h-4 w-4" aria-hidden="true" /> All events</Link>
+        <p className="eyebrow mt-8">{event.division} · {event.category}</p>
+        <h1 className="display-heading mt-4 max-w-6xl break-words text-[clamp(2.8rem,7vw,7rem)]">{event.title}</h1>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">{event.summary}</p>
+      </Container>
+    </section>
+    <Container className="grid gap-10 py-10 sm:py-16 lg:grid-cols-[minmax(0,1fr)_23rem] lg:gap-16">
+      <aside className="order-first h-fit rounded-md border border-[#725467] bg-[var(--surface)] p-6 lg:order-last lg:sticky lg:top-24">
+        <h2 className="eyebrow">The essentials</h2>
+        <dl className="mt-5 grid gap-5">
+          <div><dt className="text-xs font-bold uppercase tracking-[.12em] text-[var(--muted)]">When</dt><dd className="mt-1 font-semibold">{dayLabel}<br />{event.time ?? "Schedule to be announced"}</dd></div>
+          <div><dt className="text-xs font-bold uppercase tracking-[.12em] text-[var(--muted)]">Where</dt><dd className="mt-1 font-semibold">MGIT · {event.venue}</dd></div>
+          <div><dt className="text-xs font-bold uppercase tracking-[.12em] text-[var(--muted)]">Team size</dt><dd className="mt-1 font-semibold">{event.teamSize}</dd></div>
+          <div><dt className="text-xs font-bold uppercase tracking-[.12em] text-[var(--muted)]">Eligibility</dt><dd className="mt-1 leading-relaxed">{event.eligibility}</dd></div>
+        </dl>
+        {event.registrationUrl ? <><RegistrationLink event={event} className="mt-6 hidden lg:flex" /><p className="mt-4 hidden text-xs text-[var(--muted)] lg:block">Registration opens in Google Forms.</p></> : <p className="mt-6 border-t border-[var(--line)] pt-4 text-sm text-[var(--muted)]">Registration link coming soon.</p>}
+      </aside>
+      <div className="min-w-0">
+        {event.image && <div className="relative mb-10 aspect-[16/10] overflow-hidden rounded-md"><Image src={event.image.src} alt={event.image.alt} fill sizes="(max-width: 1024px) 90vw, 60vw" className="object-cover" /></div>}
+        <section aria-labelledby="about-event"><h2 id="about-event" className="text-2xl font-extrabold tracking-[-.04em] sm:text-3xl">About the event</h2><p className="muted-copy mt-5 whitespace-pre-line text-base sm:text-lg">{event.description}</p></section>
+        {(rules || event.rulesUrl) && <section className="mt-10 border-t border-[var(--line)] pt-7" aria-labelledby="event-rules">
+          <h2 id="event-rules" className="text-2xl font-extrabold tracking-[-.04em]">Rules</h2>
+          {rules && (event.rules!.length > 4 ? <details className="mt-4 rounded-sm border border-[#725467] p-4"><summary className="min-h-11 cursor-pointer py-2 font-semibold text-[#ffb386]">Read all {event.rules!.length} rules</summary><div className="pb-2 pt-4">{rules}</div></details> : <div className="mt-5">{rules}</div>)}
+          {event.rulesUrl && <a href={event.rulesUrl} target="_blank" rel="noopener noreferrer" className="text-link mt-5 inline-flex min-h-11 items-center gap-2 font-semibold text-[#ffb386]">Open full rules <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>}
+        </section>}
+        {event.prizes && <section className="mt-10 border-t border-[var(--line)] pt-7" aria-labelledby="event-prizes"><h2 id="event-prizes" className="text-2xl font-extrabold tracking-[-.04em]">Prizes</h2><p className="muted-copy mt-5">{event.prizes}</p></section>}
       </div>
-      <aside className="h-fit border border-[#765165] bg-[#211827] p-6 sm:p-8"><p className="eyebrow">The essentials</p><h2 className="mt-3 text-2xl font-black tracking-[-.04em]">At a glance</h2><dl className="mt-7 grid gap-6 border-t border-[#60495d] pt-6"><div className="flex gap-4"><CalendarDaysIcon className="h-6 w-6 shrink-0 text-[#ff9a62]" /><div><dt className="text-xs font-black uppercase tracking-[.14em] text-[#ffb386]">When</dt><dd className="mt-1 font-semibold">{dayLabel} · {event.time}</dd></div></div><div className="flex gap-4"><MapPinIcon className="h-6 w-6 shrink-0 text-[#ff9a62]" /><div><dt className="text-xs font-black uppercase tracking-[.14em] text-[#ffb386]">Where</dt><dd className="mt-1 font-semibold">MGIT · {event.venue}</dd></div></div><div className="flex gap-4"><UserGroupIcon className="h-6 w-6 shrink-0 text-[#ff9a62]" /><div><dt className="text-xs font-black uppercase tracking-[.14em] text-[#ffb386]">Who can join</dt><dd className="mt-1 font-semibold">{event.eligibility}<br />{event.teamSize}</dd></div></div></dl>{event.registrationUrl ? <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className="button-flame mt-8 hidden min-h-12 items-center justify-between gap-3 px-5 py-4 font-black lg:flex">Register now <ArrowUpRightIcon className="h-5 w-5" /><span className="sr-only"> (Google Form opens in a new tab)</span></a> : <p className="mt-8 border-l-4 border-[#ff7938] bg-[#342436] p-4 text-sm font-semibold text-[#e1d0dc]">The official registration form is not available yet.</p>}</aside>
+
     </Container>
-    {event.registrationUrl && <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#765165] bg-[#0d0a12] p-3 pb-[calc(.75rem+env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(0,0,0,.4)] lg:hidden"><a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className="button-flame mx-auto flex min-h-12 max-w-lg items-center justify-center gap-3 px-5 py-3 font-black">Register now <ArrowUpRightIcon className="h-5 w-5" /><span className="sr-only"> (Google Form opens in a new tab)</span></a></div>}
+    {event.registrationUrl && <div className="event-registration-bar fixed inset-x-0 bottom-0 z-40 border-t border-[#765165] bg-[#0d0a12] p-3 pb-[calc(.75rem+env(safe-area-inset-bottom))] lg:hidden"><RegistrationLink event={event} className="mx-auto max-w-lg" /></div>}
   </>;
 }

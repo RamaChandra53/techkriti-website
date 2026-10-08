@@ -1,84 +1,82 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { divisions } from "@/lib/content";
 import type { Event, EventDivision } from "@/lib/types";
+import { EventCard } from "./event-card";
 
-const posterColors = {
-  electric: "bg-[#33223d] text-[#ffb27f]",
-  coral: "bg-[#422523] text-[#ffc09a]",
-  sky: "bg-[#2a2842] text-[#dec8f0]",
-  acid: "bg-[#343024] text-[#e8daa8]",
-} as const;
+function slides(list: HTMLDivElement) {
+  return Array.from(list.querySelectorAll<HTMLElement>("[data-event-slide]"));
+}
 
-function EventPoster({ event }: { event: Event }) {
-  return <article className="flex h-full flex-col overflow-hidden border border-[#684b63] bg-[#1b1420]">
-    <div className={`relative flex min-h-52 flex-col justify-between overflow-hidden p-6 ${posterColors[event.accent]}`}>
-      <div className="section-grid pointer-events-none absolute inset-0 opacity-20" aria-hidden="true" />
-      <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full border border-current opacity-20" aria-hidden="true" />
-      <p className="relative text-xs font-bold uppercase tracking-[.16em]">{event.category} · {event.division}</p>
-      <h3 className="relative mt-8 max-w-[18rem] text-balance text-4xl font-black leading-[.98] tracking-[-.065em] text-[#fff4e9]">{event.title}</h3>
-    </div>
-    <div className="flex flex-1 flex-col p-6">
-      <p className="line-clamp-3 min-h-[4.5rem] leading-relaxed text-[#ded0dc]">{event.summary}</p>
-      <dl className="mt-5 grid gap-2 border-t border-[#564254] pt-4 text-sm text-[#d7c6d2]">
-        <div className="flex gap-2"><dt className="w-14 shrink-0 font-bold">When</dt><dd>{event.day === 1 ? "16" : "17"} October · {event.time}</dd></div>
-        <div className="flex gap-2"><dt className="w-14 shrink-0 font-bold">Where</dt><dd>{event.venue}</dd></div>
-        <div className="flex gap-2"><dt className="w-14 shrink-0 font-bold">Team</dt><dd>{event.teamSize}</dd></div>
-      </dl>
-      <Link href={`/events/${event.slug}`} className="mt-6 inline-flex min-h-11 items-center justify-between gap-3 border-t border-[#564254] pt-4 font-extrabold text-[#ffb386] hover:text-[#fff4e9]">View event details <ArrowUpRightIcon className="h-5 w-5" /></Link>
-    </div>
-  </article>;
+function nearestIndex(list: HTMLDivElement) {
+  const items = slides(list);
+  const origin = items[0]?.offsetLeft ?? 0;
+  let nearest = 0;
+  items.forEach((item, index) => {
+    if (Math.abs(item.offsetLeft - origin - list.scrollLeft) < Math.abs(items[nearest].offsetLeft - origin - list.scrollLeft)) nearest = index;
+  });
+  return nearest;
 }
 
 export function EventCarousel({ events }: { events: Event[] }) {
   const [selectedTrack, setSelectedTrack] = useState<EventDivision>(events[0]?.division ?? "Technical");
-  const activeTrack = selectedTrack;
-  const visibleEvents = events.filter((event) => event.division === activeTrack);
   const [activeIndex, setActiveIndex] = useState(0);
+  const visibleEvents = events.filter((event) => event.division === selectedTrack);
   const listRef = useRef<HTMLDivElement>(null);
+  const regionId = useId();
+  const currentIndex = Math.min(activeIndex, Math.max(0, visibleEvents.length - 1));
 
-  const selectTrack = (track: EventDivision) => {
-    setSelectedTrack(track);
-    setActiveIndex(0);
-    listRef.current?.scrollTo({ left: 0, behavior: "auto" });
-  };
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list) return;
+    const observer = new ResizeObserver(() => setActiveIndex(nearestIndex(list)));
+    observer.observe(list);
+    return () => observer.disconnect();
+  }, [selectedTrack, visibleEvents.length]);
 
   const goTo = (index: number) => {
     const list = listRef.current;
     if (!list || index < 0 || index >= visibleEvents.length) return;
-    const first = list.children[0] as HTMLElement | undefined;
-    const target = list.children[index] as HTMLElement | undefined;
-    if (!first || !target) return;
+    const items = slides(list);
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    list.scrollTo({ left: target.offsetLeft - first.offsetLeft, behavior: reducedMotion ? "auto" : "smooth" });
-    setActiveIndex(index);
+    list.scrollTo({ left: items[index].offsetLeft - items[0].offsetLeft, behavior: reducedMotion ? "instant" : "smooth" });
   };
 
-  const syncIndex = () => {
-    const list = listRef.current;
-    if (!list || !visibleEvents.length) return;
-    const first = list.children[0] as HTMLElement | undefined;
-    if (!first) return;
-    const step = first.offsetWidth + 16;
-    setActiveIndex(Math.min(visibleEvents.length - 1, Math.max(0, Math.round(list.scrollLeft / step))));
-  };
-
-  return <div className="mt-6 sm:mt-9">
-    <div className="flex flex-wrap items-end justify-between gap-5">
-      <div role="group" aria-label="Choose an event track" className="inline-flex gap-2">
-        {divisions.map((track) => <button key={track} type="button" aria-pressed={activeTrack === track} onClick={() => selectTrack(track)} className={`min-h-11 border px-4 py-2 text-sm font-bold sm:px-6 ${activeTrack === track ? "border-[#ff7938] bg-[#ff7938] text-[#170d11]" : "border-[#765b73] bg-[#1d1722] text-[#fff4e9] hover:border-[#ff7938]"}`}>{track === "Non-Technical" ? "Non-technical" : track}</button>)}
+  return <div className="mt-7 sm:mt-10">
+    <div className="flex flex-wrap items-center justify-between gap-4">
+      <div role="group" aria-label="Choose an event track" className="inline-grid max-w-full grid-cols-2 gap-1 rounded-md border border-[#725467] bg-[#17111c] p-1">
+        {divisions.map((track) => <button key={track} type="button" aria-pressed={selectedTrack === track} aria-controls={regionId} onClick={() => { setSelectedTrack(track); setActiveIndex(0); }} className={`min-h-11 rounded-sm px-3 py-2 text-sm font-bold transition-colors sm:px-6 ${selectedTrack === track ? "bg-[var(--ember)] text-[#170d11]" : "text-[#dccbd8] hover:bg-[#332538]"}`}>{track === "Non-Technical" ? "Non-technical" : track}</button>)}
       </div>
-      <p className="text-xs font-semibold text-[#c9b4c5]">Swipe cards or use the arrows</p>
+      {visibleEvents.length > 1 && <p className="text-xs text-[var(--muted)]">Swipe to explore · or use the arrows</p>}
     </div>
-    {visibleEvents.length ? <div ref={listRef} role="region" aria-roledescription="carousel" aria-label={`${activeTrack} events`} tabIndex={0} onScroll={syncIndex} onKeyDown={(event) => { if (event.key === "ArrowRight") { event.preventDefault(); goTo(activeIndex + 1); } if (event.key === "ArrowLeft") { event.preventDefault(); goTo(activeIndex - 1); } }} className="relative mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-5 scroll-smooth focus-visible:outline-offset-[-3px] motion-reduce:scroll-auto">
-      {visibleEvents.map((event) => <div key={event.slug} className="w-[min(84vw,350px)] shrink-0 snap-start self-stretch sm:w-[350px]"><EventPoster event={event} /></div>)}
-    </div> : <p className="mt-5 border-l-4 border-[#ff7938] bg-[#211827] p-5 font-semibold text-[#dfd0dc]">No {activeTrack.toLowerCase()} events have been confirmed yet. Check the full events page for updates.</p>}
-    {visibleEvents.length > 0 && <div className="mt-2 flex items-center justify-between border-t border-[#564254] pt-4">
-      <p aria-live="polite" className="text-sm font-bold text-[#ddc8d5]">{String(activeIndex + 1).padStart(2, "0")} / {String(visibleEvents.length).padStart(2, "0")}</p>
-      <div className="flex gap-2"><button type="button" onClick={() => goTo(activeIndex - 1)} disabled={activeIndex === 0} aria-label="Previous event" className="grid h-11 w-11 place-items-center border border-[#765b73] text-[#fff4e9] hover:bg-[#342739] disabled:cursor-not-allowed disabled:opacity-40"><ChevronLeftIcon className="h-5 w-5" /></button><button type="button" onClick={() => goTo(activeIndex + 1)} disabled={activeIndex >= visibleEvents.length - 1} aria-label="Next event" className="grid h-11 w-11 place-items-center border border-[#765b73] text-[#fff4e9] hover:bg-[#342739] disabled:cursor-not-allowed disabled:opacity-40"><ChevronRightIcon className="h-5 w-5" /></button></div>
+
+    {visibleEvents.length > 0 ? <>
+      <div key={selectedTrack} id={regionId} ref={listRef} role="region" aria-roledescription="carousel" aria-label={`${selectedTrack} events`} tabIndex={0} onScroll={() => { if (listRef.current) setActiveIndex(nearestIndex(listRef.current)); }} onKeyDown={(event) => {
+        if (event.target !== event.currentTarget) return;
+        const targets: Record<string, number> = { ArrowRight: currentIndex + 1, ArrowLeft: currentIndex - 1, Home: 0, End: visibleEvents.length - 1 };
+        if (event.key in targets) { event.preventDefault(); goTo(targets[event.key]); }
+      }} className="event-rail relative mt-6 max-w-[960px] pb-4">
+        {visibleEvents.map((event, index) => <div key={event.slug} data-event-slide role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${visibleEvents.length}: ${event.title}`} className="event-slide"><EventCard event={event} discovery /></div>)}
+        <div className="event-rail-tail" aria-hidden="true" />
+      </div>
+      <div className="mt-2 flex max-w-[960px] items-center justify-between border-t border-[var(--line)] pt-4">
+        <p aria-live="polite" aria-atomic="true" className="text-sm font-bold tabular-nums text-[#ddc8d5]">{String(currentIndex + 1).padStart(2, "0")} <span className="mx-1 text-[#a18b9a]">/</span> {String(visibleEvents.length).padStart(2, "0")}<span className="sr-only"> · {visibleEvents[currentIndex]?.title}</span></p>
+        <div className="flex gap-2">
+          <button type="button" onClick={() => goTo(currentIndex - 1)} disabled={currentIndex === 0} aria-label="Previous event" aria-controls={regionId} className="grid h-12 w-12 place-items-center rounded-sm border border-[#765b73] hover:bg-[#342739] disabled:cursor-not-allowed disabled:opacity-40"><ChevronLeftIcon className="h-5 w-5" aria-hidden="true" /></button>
+          <button type="button" onClick={() => goTo(currentIndex + 1)} disabled={currentIndex >= visibleEvents.length - 1} aria-label="Next event" aria-controls={regionId} className="grid h-12 w-12 place-items-center rounded-sm border border-[#765b73] hover:bg-[#342739] disabled:cursor-not-allowed disabled:opacity-40"><ChevronRightIcon className="h-5 w-5" aria-hidden="true" /></button>
+        </div>
+      </div>
+    </> : <div id={regionId} role="status" className="relative mt-6 overflow-hidden rounded-md border border-[#63485d] bg-[var(--surface)] px-6 py-9 sm:px-9 sm:py-12">
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 border-l border-[#a889c6]/10 bg-[#a889c6]/[.03]" aria-hidden="true" />
+      <div className="relative">
+        <p className="eyebrow">{selectedTrack} · October 2026</p>
+        <h3 className="mt-4 max-w-2xl text-3xl font-extrabold leading-tight tracking-[-.045em] sm:text-4xl">The lineup is taking shape.</h3>
+        <p className="mt-3 max-w-lg text-sm leading-relaxed text-[var(--muted)] sm:text-base">Events and registration links will appear here once confirmed.</p>
+        <Link href={`/events?division=${encodeURIComponent(selectedTrack)}`} className="text-link mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#ffb386]">Explore this track <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" /></Link>
+      </div>
     </div>}
   </div>;
 }

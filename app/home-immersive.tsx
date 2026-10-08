@@ -1,48 +1,57 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDownIcon, ArrowRightIcon, ArrowUpRightIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { ArrowDownIcon, ArrowRightIcon, ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import { BannerReveal } from "@/components/banner-reveal";
 import { Container } from "@/components/container";
 import { EventCarousel } from "@/components/event-carousel";
-import { FAQList } from "@/components/faq-list";
-import { archivePhotos } from "@/lib/archive";
-import { events, faqs } from "@/lib/content";
+import { ArchiveStory } from "@/components/archive-story";
+import { events } from "@/lib/content";
 
 export default function HomeImmersive() {
   return <>
-    <section className="relative isolate overflow-hidden border-b border-[#57394a] bg-[#0b0812] text-[#fff4e9]">
-      <Image src="/hero-halloween.webp" alt="" fill sizes="100vw" fetchPriority="high" className="object-cover object-[70%_center] lg:object-center" />
+    <section aria-labelledby="festival-title" className="relative isolate overflow-hidden border-b border-[var(--line)] bg-[#0b0812]">
+      <Image src="/hero-halloween.webp" alt="" fill sizes="100vw" loading="eager" fetchPriority="high" className="object-cover object-[70%_center] lg:object-center" />
       <div className="festival-hero-veil absolute inset-0" aria-hidden="true" />
-      <div className="section-grid pointer-events-none absolute inset-y-0 left-0 w-1/2 opacity-20" aria-hidden="true" />
-      <Container className="relative flex min-h-[440px] flex-col justify-center py-11 sm:min-h-[540px] lg:min-h-[620px] lg:py-20">
-        <div className="max-w-6xl">
-          <p className="eyebrow">MGIT HYDERABAD · 16–17 OCTOBER 2026</p>
-          <h1 className="display-heading mt-5 max-w-6xl font-display text-[clamp(3.25rem,10vw,8.5rem)] uppercase"><span className="block">Techkriti.</span><span className="block text-[#ff8b4f]">After dark.</span></h1>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-[#f1e2e8] sm:mt-7 sm:text-xl">A Halloween-themed student fest with technical and non-technical ways to take part. The next chapter happens here, at MGIT.</p>
-          <div className="mt-7 flex flex-wrap gap-3 sm:mt-9"><Link href="#discover" className="button-flame inline-flex min-h-12 items-center gap-3 px-6 py-3 font-black">Explore events <ArrowRightIcon className="h-5 w-5" /></Link><Link href="#revelation" className="cta-outline inline-flex min-h-12 items-center gap-3 px-6 py-3 font-bold">The revelation <ArrowDownIcon className="h-4 w-4" /></Link></div>
+      <Container className="relative flex min-h-[430px] flex-col justify-center py-8 sm:min-h-[560px] sm:py-10 lg:min-h-[640px] lg:py-20">
+        <p className="eyebrow">16–17 October 2026 · MGIT, Hyderabad</p>
+        <h1 id="festival-title" className="mt-3 max-w-[680px] sm:mt-5">
+          <Image src="/branding/techkriti-splatter-white.png" alt="Techkriti" width={2048} height={1536} priority className="h-auto w-full" />
+          <span className="display-heading mt-[-.15rem] block text-[clamp(2.7rem,10vw,7rem)] text-[var(--ember)]">After dark.</span>
+        </h1>
+        <p className="mt-3 max-w-md text-base leading-relaxed text-[#f1e2e8] sm:mt-5 sm:text-xl">Technical + non-technical.<br />Two days. A whole new atmosphere.</p>
+        <div className="mt-5 grid max-w-[440px] grid-cols-1 gap-2 min-[380px]:grid-cols-2 sm:mt-7 sm:gap-3">
+          <Link href="#discover" className="button-flame inline-flex min-h-12 items-center justify-between gap-3 px-4 py-3 text-sm font-black">Explore events <ArrowRightIcon className="h-5 w-5 shrink-0" aria-hidden="true" /></Link>
+          <Link href="#revelation" className="cta-outline inline-flex min-h-12 items-center justify-between gap-3 px-4 py-3 text-sm font-bold">The revelation <ArrowDownIcon className="h-4 w-4 shrink-0" aria-hidden="true" /></Link>
         </div>
       </Container>
-      <div className="relative border-t border-[#806075]/50 bg-[#0b0812]/70 py-3 text-[#ead4d6]"><Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 text-xs font-bold uppercase tracking-[.13em]"><span>Two days on campus</span><span>Technical + Non-technical</span><span>Built by students</span></Container></div>
     </section>
 
-    <section id="discover" aria-labelledby="discover-title" className="section-glow scroll-mt-20 border-b border-[#453444] py-14 sm:py-24">
+    <BannerReveal />
+
+    <section id="discover" aria-labelledby="discover-title" className="festival-section scroll-mt-24 border-b border-[var(--line)]">
       <Container>
-        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="eyebrow">The reason you came</p><h2 id="discover-title" className="display-heading mt-3 max-w-5xl text-[clamp(2.8rem,6vw,6rem)]">Find your<br className="sm:hidden" /> event.</h2><p className="muted-copy mt-5 max-w-xl text-base sm:text-lg">Explore the two tracks. Once organizers confirm the lineup, you can swipe through events and open each one for the full details.</p></div><Link href="/events" className="text-link inline-flex min-h-11 shrink-0 items-center gap-2 self-start font-bold text-[#ffb386]">Open all events <ArrowUpRightIcon className="h-5 w-5" /></Link></div>
-        {events.length > 0 ? <><form action="/events" method="get" role="search" className="mt-8 flex flex-col gap-2 sm:flex-row"><label htmlFor="home-event-search" className="sr-only">Search events</label><div className="relative flex-1"><MagnifyingGlassIcon aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#bcaabd]" /><input id="home-event-search" name="q" type="search" placeholder="Search events or interests" className="min-h-12 w-full border border-[#806179] bg-[#1e1724] py-3 pl-11 pr-4 text-[#fff4e9] placeholder:text-[#bcaabd]" /></div><button type="submit" className="button-flame min-h-12 px-6 py-3 font-black">Search events</button></form><EventCarousel events={events} /></> : <div className="mt-8 grid gap-3 sm:grid-cols-2"><Link href="/events?division=Technical" className="group relative flex min-h-48 flex-col justify-between overflow-hidden border border-[#684656] bg-[#221823] p-6 transition-colors hover:border-[#ff8b4f] sm:min-h-64 sm:p-8"><span className="section-grid pointer-events-none absolute inset-0 opacity-25" aria-hidden="true" /><span className="relative text-xs font-black uppercase tracking-[.18em] text-[#ffaf7d]">Explore a track</span><span className="relative flex items-end justify-between gap-3 text-[clamp(2rem,5vw,4rem)] font-black leading-none tracking-[-.065em]">Technical <ArrowUpRightIcon className="h-7 w-7 shrink-0 text-[#ff8b4f]" /></span></Link><Link href="/events?division=Non-Technical" className="group relative flex min-h-48 flex-col justify-between overflow-hidden border border-[#674b73] bg-[#241c2d] p-6 transition-colors hover:border-[#bfa1d6] sm:min-h-64 sm:p-8"><span className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-[#7d5276]/25 blur-3xl" aria-hidden="true" /><span className="relative text-xs font-black uppercase tracking-[.18em] text-[#d4b8e5]">Explore a track</span><span className="relative flex items-end justify-between gap-3 text-[clamp(2rem,5vw,4rem)] font-black leading-none tracking-[-.065em]">Non-technical <ArrowUpRightIcon className="h-7 w-7 shrink-0 text-[#d4b8e5]" /></span></Link></div>}
-        {!events.length && <div className="mt-4 flex flex-col justify-between gap-3 border-l-4 border-[#ff7938] bg-[#1a141e] px-5 py-4 sm:flex-row sm:items-center"><div><h3 className="font-extrabold text-[#fff4e9]">The October lineup is being confirmed.</h3><p className="mt-1 text-sm leading-relaxed text-[#cbbac7]">Names, rooms, rules and Google Form links will appear only when they are official.</p></div><Link href="/events" className="inline-flex min-h-11 items-center gap-2 self-start font-bold text-[#ffb386]">Check updates <ArrowUpRightIcon className="h-4 w-4" /></Link></div>}
+        <div className="flex flex-wrap items-end justify-between gap-5">
+          <div><p className="eyebrow">The reason you came</p><h2 id="discover-title" className="display-heading mt-3 text-[clamp(2.8rem,6vw,6rem)]">Find your event.</h2></div>
+        </div>
+        <EventCarousel events={events} />
       </Container>
     </section>
 
-    <section aria-labelledby="about-home-title" className="border-b border-[#453444] bg-[#120e18] py-20 sm:py-32"><Container className="grid gap-10 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:gap-20"><div><p className="eyebrow">Made here, together</p><h2 id="about-home-title" className="display-heading mt-5 max-w-5xl text-[clamp(2.8rem,5.8vw,6rem)]">What is <span className="text-[#ff8b4f]">Techkriti?</span></h2><p className="mt-7 max-w-2xl text-xl leading-relaxed text-[#f0e2e9] sm:text-2xl">Two days for the curious, the competitive, and everyone who wants to be part of something on their campus.</p></div><div><p className="muted-copy max-w-xl text-lg">Technical and non-technical experiences come together at MGIT. Halloween sets the scene; the students who turn up give it its character.</p><Link href="/about" className="text-link mt-7 inline-flex min-h-11 items-center gap-2 font-bold text-[#ffb386]">The story behind the fest <ArrowRightIcon className="h-5 w-5" /></Link></div></Container></section>
+    <section aria-labelledby="archive-title" className="festival-section">
+      <Container>
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-6 sm:mb-12">
+          <div><p className="eyebrow">February 2026 · The previous edition</p><h2 id="archive-title" className="display-heading mt-4 text-[clamp(2.8rem,6vw,6rem)]">Last time at<br /><span className="text-[var(--ember)]">Techkriti.</span></h2></div>
+          <Link href="/gallery" className="text-link inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#ffb386]">More memories <ArrowUpRightIcon className="h-5 w-5" aria-hidden="true" /></Link>
+        </div>
+        <ArchiveStory />
+      </Container>
+    </section>
 
-    <div id="revelation" className="scroll-mt-16"><BannerReveal /></div>
-
-    <section aria-labelledby="expect-title" className="section-glow border-y border-[#453444] py-20 sm:py-32"><Container><div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div><p className="eyebrow">The shape of October</p><h2 id="expect-title" className="display-heading mt-4 max-w-5xl text-[clamp(2.8rem,5.5vw,5.7rem)]">Two days.<br />Your way in.</h2></div><Link href="/schedule" className="text-link inline-flex min-h-11 items-center gap-2 self-start font-bold text-[#ffb386]">Schedule updates <ArrowRightIcon className="h-5 w-5" /></Link></div><div className="mt-10 grid grid-flow-dense gap-px border border-[#493746] bg-[#493746] sm:grid-cols-2"><div className="flex min-h-40 flex-col justify-between bg-[#1b1420] p-6 sm:p-8"><span className="eyebrow">Friday</span><div><p className="text-5xl font-black leading-none tracking-[-.08em] text-[#ff8b4f]">16</p><p className="mt-2 font-bold">October 2026 · MGIT</p></div></div><div className="flex min-h-40 flex-col justify-between bg-[#211827] p-6 sm:p-8"><span className="eyebrow">Saturday</span><div><p className="text-5xl font-black leading-none tracking-[-.08em] text-[#ff8b4f]">17</p><p className="mt-2 font-bold">October 2026 · MGIT</p></div></div><div className="flex min-h-40 flex-col justify-between bg-[#211827] p-6 sm:p-8"><span className="eyebrow">Technical + non-technical</span><p className="max-w-sm text-xl font-black leading-tight">Different interests.<br />One festival.</p></div><div className="flex min-h-40 flex-col justify-between bg-[#1b1420] p-6 sm:p-8"><span className="eyebrow">On campus</span><p className="max-w-sm text-lg font-semibold leading-snug text-[#eadce5]">Individual event times and MGIT rooms will be published with the confirmed schedule.</p></div></div></Container></section>
-
-    <section aria-labelledby="archive-title" className="bg-[#1a1320] py-20 sm:py-32"><Container><div className="grid gap-6 lg:grid-cols-[1.2fr_.8fr] lg:items-end"><div><p className="eyebrow">From the February 2026 edition</p><h2 id="archive-title" className="display-heading mt-4 max-w-5xl text-[clamp(2.8rem,5.8vw,6rem)]">We&apos;ve made<br /><span className="text-[#ff8b4f]">memories before.</span></h2></div><div><p className="muted-copy max-w-lg text-lg">These are real moments from the previous edition, not photos of the upcoming Halloween fest. October is a new chapter for this campus.</p><Link href="/gallery" className="text-link mt-6 inline-flex min-h-11 items-center gap-2 font-bold text-[#ffb386]">Explore the February gallery <ArrowUpRightIcon className="h-5 w-5" /></Link></div></div><div className="mt-10 grid grid-flow-dense grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-4"><figure className="col-span-2 lg:col-span-2"><div className="archive-image relative aspect-[1.5] overflow-hidden bg-[#302232]"><Image src={archivePhotos[0].src} alt={archivePhotos[0].alt} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" /></div><figcaption className="mt-3 text-xs font-semibold uppercase tracking-[.1em] text-[#d3bac8]">February 2026 · {archivePhotos[0].caption}</figcaption></figure>{archivePhotos.slice(1, 3).map((photo) => <figure key={photo.src}><div className="archive-image relative aspect-[.72] overflow-hidden bg-[#302232]"><Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" /></div></figure>)}</div></Container></section>
-
-    <section aria-labelledby="questions-title" className="border-t border-[#453444] bg-[#110d17] py-20 sm:py-28"><Container className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-20"><div><p className="eyebrow">Before you arrive</p><h2 id="questions-title" className="display-heading mt-4 max-w-lg text-[clamp(2.8rem,5vw,5rem)]">Good questions.<br />Clear answers.</h2><Link href="/faq" className="text-link mt-7 inline-flex min-h-11 items-center gap-2 font-bold text-[#ffb386]">All FAQs <ArrowRightIcon className="h-5 w-5" /></Link></div><FAQList items={faqs.slice(0, 4)} /></Container></section>
-
-    <section className="bg-[#ff7938] py-16 text-[#170d11] sm:py-24"><Container className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end"><div><p className="text-xs font-black uppercase tracking-[.18em]">16–17 October 2026 · MGIT</p><h2 className="display-heading mt-5 max-w-5xl text-[clamp(2.9rem,6vw,6.3rem)]">The next chapter<br />is yours.</h2></div><Link href="/events" className="inline-flex min-h-12 shrink-0 items-center gap-3 self-start bg-[#170d11] px-7 py-4 font-black text-[#fff4e9] transition-colors hover:bg-[#332036]">Explore events <ArrowUpRightIcon className="h-5 w-5" /></Link></Container></section>
+    <section aria-labelledby="enter-title" className="festival-section-compact border-t border-[#79513f] bg-[var(--ember)] text-[#170d11]">
+      <Container className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
+        <div><p className="text-xs font-bold uppercase tracking-[.15em]">16–17 October · MGIT</p><h2 id="enter-title" className="display-heading mt-4 text-[clamp(2.8rem,6vw,6rem)]">Ready for<br />after dark?</h2></div>
+        <Link href="#discover" className="inline-flex min-h-12 shrink-0 items-center justify-between gap-6 self-start rounded-sm bg-[#170d11] px-6 py-4 font-bold text-[#fff4e9] transition-colors hover:bg-[#332036]">Explore Events / Register <ArrowUpRightIcon className="h-5 w-5" aria-hidden="true" /></Link>
+      </Container>
+    </section>
   </>;
 }

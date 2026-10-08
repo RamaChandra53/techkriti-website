@@ -2,28 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: dark; --night: #0d0a12; --surface: #17121d; --surface-raised: #211827; --line: #453444; --ember: #ff7938; --plum: #a889c6; --text: #fff4e9; --muted: #cbbac7; }
+:root {
+  color-scheme: dark;
+  --night: #0d0a12;
+  --surface: #17121d;
+  --surface-raised: #211827;
+  --line: #453444;
+  --line-strong: #63485d;
+  --ember: #ff7938;
+  --ember-hover: #ffa16a;
+  --plum: #a889c6;
+  --text: #fff4e9;
+  --muted: #cbbac7;
+  --focus-ring: #ffc08d;
+  --radius-control: 2px;
+  --radius-card: 4px;
+  --shadow-card: 0 18px 44px rgb(0 0 0 / 22%);
+  --glow-ember-soft: 0 0 24px rgb(255 121 56 / 10%);
+  --motion-fast: 160ms;
+  --motion-standard: 220ms;
+  --ease-standard: cubic-bezier(0.2, 0.65, 0.3, 1);
+  --section-space-mobile: 3.5rem;
+  --section-space-tablet: 6rem;
+  --section-space-desktop: 7rem;
+  --section-space-compact-mobile: 3.5rem;
+  --section-space-compact-tablet: 5rem;
+}
 html { scroll-behavior: smooth; }
 body { background: var(--night); color: var(--text); }
 ::selection { background: var(--ember); color: var(--night); }
 button, input, select { font: inherit; }
 a, button, input, select, summary { -webkit-tap-highlight-color: transparent; }
-:focus-visible { outline: 3px solid #ffc08d; outline-offset: 4px; }
+:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 4px; }
 .font-haunt { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-style: italic; letter-spacing: -.055em; }
 .eyebrow { color: #ffae7a; font-size: .7rem; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; }
 .eyebrow-dark { color: #ffae7a; }
 .display-heading { font-weight: 900; letter-spacing: -.075em; line-height: .94; text-wrap: balance; }
 .muted-copy { color: var(--muted); line-height: 1.7; }
-.festival-panel { border: 1px solid var(--line); background: var(--surface); }
+.festival-panel { border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); box-shadow: var(--shadow-card); }
+.festival-card { border: 1px solid var(--line-strong); border-radius: var(--radius-card); background: var(--surface); box-shadow: var(--shadow-card); }
+.festival-section { padding-block: var(--section-space-mobile); }
+.festival-section-compact { padding-block: var(--section-space-compact-mobile); }
 .festival-rule { border-color: var(--line); }
 .section-glow { background: radial-gradient(ellipse 46% 58% at 86% 20%, #4a253c5e, transparent 75%), var(--night); }
 .section-grid { background-image: linear-gradient(#ffffff09 1px, transparent 1px), linear-gradient(90deg, #ffffff09 1px, transparent 1px); background-size: 36px 36px; }
 .night-grain { background-image: radial-gradient(#ffb88a14 .7px, transparent .7px); background-size: 8px 8px; }
-.button-flame, .cta-primary { background: var(--ember); color: #170d11; transition: background-color .18s ease, transform .18s ease; }
-.button-flame:hover, .cta-primary:hover { background: #ffa16a; transform: translateY(-2px); }
-.button-dark { background: #fff0e0; color: #180f19; transition: background-color .18s ease, transform .18s ease; }
+.button-flame, .cta-primary { border-radius: var(--radius-control); background: var(--ember); color: #170d11; transition: background-color var(--motion-standard) var(--ease-standard), box-shadow var(--motion-standard) var(--ease-standard), transform var(--motion-fast) var(--ease-standard); }
+.button-flame:hover, .cta-primary:hover { background: var(--ember-hover); box-shadow: var(--glow-ember-soft); transform: translateY(-2px); }
+.button-dark { border-radius: var(--radius-control); background: #fff0e0; color: #180f19; transition: background-color var(--motion-standard) var(--ease-standard), transform var(--motion-fast) var(--ease-standard); }
 .button-dark:hover { background: #ffd9ba; transform: translateY(-2px); }
-.cta-outline { border: 1px solid #9b7388; background: #130e18a8; color: var(--text); transition: border-color .18s ease, background-color .18s ease; }
+.cta-outline { border: 1px solid #9b7388; border-radius: var(--radius-control); background: #130e18a8; color: var(--text); transition: border-color var(--motion-standard) var(--ease-standard), background-color var(--motion-standard) var(--ease-standard); }
 .cta-outline:hover { border-color: var(--ember); background: #2b1c28; }
 .text-link { text-decoration: underline; text-decoration-color: var(--ember); text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .text-link:hover { text-decoration-color: currentColor; }
@@ -32,11 +60,26 @@ a, button, input, select, summary { -webkit-tap-highlight-color: transparent; }
 .paper-grain { background-image: radial-gradient(#724f4a20 .7px, transparent .7px); background-size: 7px 7px; }
 .night-grain { background-image: radial-gradient(#ffb88a16 .7px, transparent .7px); background-size: 8px 8px; }
 .festival-hero-veil { background: linear-gradient(90deg, #0c0914f5 0%, #0c0914e0 36%, #0c091491 68%, #0c091438 100%); }
-.archive-image img { transition: transform .35s ease; }
+.archive-image img { transition: transform var(--motion-standard) var(--ease-standard); }
+.revelation-frame { background: radial-gradient(ellipse at 50% 110%, #893e294d, transparent 65%), linear-gradient(135deg, #21131e, #100c15 60%, #231522); }
+.event-rail { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #956779 #1b1420; }
+.event-slide { flex: 0 0 min(88%, 40rem); min-width: 0; scroll-snap-align: start; }
+.event-rail-tail { flex: 0 0 max(0px, calc(100% - min(88%, 40rem) - 1rem)); }
+.event-rail:focus-visible { outline-offset: -3px; }
+.event-poster-art { background: radial-gradient(ellipse at 100% 0%, #ac5f352e, transparent 65%), #241925; }
+.event-poster-art[data-track="Non-Technical"] { background: radial-gradient(ellipse at 100% 0%, #a889c630, transparent 65%), #201826; }
+body:has(.event-registration-bar) footer { padding-bottom: calc(7rem + env(safe-area-inset-bottom)); }
 .archive-image:hover img { transform: scale(1.025); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+@media (min-width: 640px) {
+  .festival-section { padding-block: var(--section-space-tablet); }
+  .festival-section-compact { padding-block: var(--section-space-compact-tablet); }
+}
+@media (min-width: 1024px) {
+  .festival-section { padding-block: var(--section-space-desktop); }
 }
 @media (max-width: 640px) {
   .festival-hero-veil { background: linear-gradient(90deg, #0b0814ec, #0b0814bd), linear-gradient(0deg, #0b0814d6, transparent 80%); }

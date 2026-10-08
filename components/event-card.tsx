@@ -1,19 +1,29 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Event } from "@/lib/types";
-import { ArrowUpRightIcon, CalendarDaysIcon, MapPinIcon } from "@heroicons/react/24/outline";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
-const colors = { electric: "bg-[#a889c6]", coral: "bg-[#ff7938]", sky: "bg-[#8d80c8]", acid: "bg-[#c7b67d]" };
-
-export function EventCard({ event }: { event: Event }) {
-  return <article className="flex h-full flex-col border border-[#5b4559] bg-[#1b1420]">
-    <div className={`h-1.5 ${colors[event.accent]}`} aria-hidden="true" />
-    <div className="flex flex-1 flex-col p-6">
-      <div className="flex flex-wrap gap-2"><span className="border border-[#986744] px-3 py-1 text-xs font-bold text-[#ffae7a]">{event.division}</span><span className="border border-[#6c5369] px-3 py-1 text-xs font-bold text-[#d9c8d6]">{event.category}</span></div>
-      <p className="mt-7 text-xs font-bold text-[#ffae7a]">{event.eyebrow}</p>
-      <h3 className="mt-2 text-3xl font-black leading-[1.05] tracking-[-.045em] text-[#fff4e9]">{event.title}</h3>
-      <p className="mt-4 flex-1 leading-relaxed text-[#d4c3d0]">{event.summary}</p>
-      <dl className="mt-6 grid gap-2 border-t border-[#564254] pt-4 text-sm text-[#e0d1dc]"><div className="flex items-start gap-2"><CalendarDaysIcon className="h-5 w-5 shrink-0 text-[#ffae7a]" /><dt className="sr-only">When</dt><dd>{event.day === 1 ? "16" : "17"} October · {event.time}</dd></div><div className="flex items-start gap-2"><MapPinIcon className="h-5 w-5 shrink-0 text-[#ffae7a]" /><dt className="sr-only">Where</dt><dd>{event.venue}</dd></div></dl>
-      <div className="mt-6 flex flex-wrap items-center gap-3"><Link href={`/events/${event.slug}`} className="inline-flex min-h-11 items-center gap-2 border border-[#8b6b86] px-4 py-2 text-sm font-bold text-[#fff4e9] hover:bg-[#332739]">Event details <ArrowUpRightIcon className="h-4 w-4" /></Link>{event.registrationUrl ? <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className="button-flame inline-flex min-h-11 items-center gap-2 px-4 py-2 text-sm font-black">Register now <ArrowUpRightIcon className="h-4 w-4" /><span className="sr-only"> (Google Form opens in a new tab)</span></a> : <span className="text-xs font-semibold text-[#c4b1c0]">Registration link coming soon</span>}</div>
+export function EventCard({ event, discovery = false }: { event: Event; discovery?: boolean }) {
+  return <article className="festival-card flex h-full min-w-0 flex-col overflow-hidden">
+    {event.image && <div className="relative aspect-[16/10] overflow-hidden bg-[#241925]">
+      <Image src={event.image.src} alt={event.image.alt} fill sizes={discovery ? "(max-width: 768px) 80vw, 640px" : "(max-width: 768px) 90vw, (max-width: 1280px) 45vw, 420px"} className="object-cover" />
+    </div>}
+    <div data-track={event.division} className={`event-poster-art relative flex flex-col justify-between p-5 sm:p-7 ${event.image ? "min-h-36" : "min-h-56 sm:min-h-64"}`}>
+      {!event.image && <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true"><span className="absolute -right-16 -top-24 h-80 w-80 rotate-[-25deg] rounded-[40%] border border-[#a889c6]/20" /><span className="absolute -right-8 -top-16 h-80 w-80 rotate-[-25deg] rounded-[40%] border border-[#ff7938]/15" /></div>}
+      <p className="relative text-[.65rem] font-bold uppercase tracking-[.13em] text-[#e9c4b5]">{event.division} / {event.category}</p>
+      <h3 className="relative mt-8 break-words text-[clamp(2rem,4vw,3.4rem)] font-black leading-[1] tracking-[-.055em] text-[var(--text)]">{event.title}</h3>
+    </div>
+    <div className="flex flex-1 flex-col p-5 sm:p-7">
+      <p className="line-clamp-2 text-sm leading-relaxed text-[var(--muted)] sm:text-base">{event.summary}</p>
+      <dl className="mt-5 grid gap-2 border-t border-[var(--line)] pt-4 text-sm">
+        <div className="flex gap-3"><dt className="w-12 shrink-0 text-[var(--muted)]">When</dt><dd>{event.day ? (event.day === 1 ? "16" : "17") : "16–17"} Oct · {event.time ?? "Schedule TBA"}</dd></div>
+        <div className="flex gap-3"><dt className="w-12 shrink-0 text-[var(--muted)]">Where</dt><dd className="min-w-0 break-words">{event.venue}</dd></div>
+        <div className="flex gap-3"><dt className="w-12 shrink-0 text-[var(--muted)]">Team</dt><dd>{event.teamSize}</dd></div>
+      </dl>
+      <div className="mt-auto pt-6">
+        <Link href={`/events/${event.slug}`} aria-label={`View event details: ${event.title}`} className="flex min-h-12 items-center justify-between gap-3 border-t border-[#725467] pt-4 font-bold text-[#ffb386] hover:text-white">View event <ArrowUpRightIcon className="h-5 w-5 shrink-0" aria-hidden="true" /></Link>
+        {!discovery && event.registrationUrl && <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className="button-flame mt-4 flex min-h-12 items-center justify-between gap-2 rounded-sm px-4 py-3 text-sm font-bold">Register now <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" /><span className="sr-only"> for {event.title} (Google Form opens in a new tab)</span></a>}
+      </div>
     </div>
   </article>;
 }

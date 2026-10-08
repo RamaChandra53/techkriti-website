@@ -1,39 +1,58 @@
 # Techkriti design direction
 
-This is the organizer's current visual and UX source of truth, based on the 40-part design brief supplied on 8 October 2026. The organizer later confirmed the official name is **Techkriti**, correcting the brief's “Techriti” spelling. Use this document with `docs/project-memory.md` for confirmed facts and content boundaries. If they conflict, do not invent facts; ask the organizer.
+Updated 8 October 2026 from the organizer's latest 49-part repository brief. This supersedes the earlier 40-part brief wherever the homepage structure differs. Use **Techkriti**, the organizer-confirmed spelling, and read `docs/project-memory.md` for facts and unknowns.
 
-## Experience to create
+## Experience
 
-Techkriti is a Halloween × technology student festival at MGIT on 16–17 October 2026. The site should feel like a premium technology event entering a Halloween world: cinematic, mysterious, energetic, and unmistakably student-made. It must not feel like a generic event template or a page decorated with unrelated pumpkins and bats.
+A cinematic Halloween × technology student festival at MGIT, 16–17 October 2026. Minimal text, strong identity, effortless event discovery, and real student memories. Most visitors are expected to use phones; that is a planning assumption, not measured analytics.
 
-The primary visitor journey is **arrive → understand the fest → discover technical or non-technical events → swipe or search → read details → open the event's official Google Form**. The homepage must expose the route into events in the first mobile screen. The secondary journey is reveal, story, and correctly labeled previous-edition photography. About 90–95% mobile usage is the organizer's planning assumption, not a measured analytics figure.
+## Homepage order
 
-## Decision order
+1. **Hero:** Techkriti. After dark. Dates, MGIT, and both tracks, with direct Explore events and The revelation links.
+2. **Revelation:** the supplied October 2026 banner film, presented in a prominent native player with controls.
+3. **Event discovery:** a short heading, clear Technical / Non-technical selectors, then confirmed-event posters or an honest pending state.
+4. **Last time at Techkriti:** bright February 2026 photography in a large–small–large editorial sequence.
+5. **Final CTA:** a short invitation and Explore Events / Register jump, followed by a compact footer.
 
-1. Usability and truthful information.
-2. Event discovery and direct registration.
-3. Intentional mobile behavior and accessibility.
-4. Performance on ordinary mobile networks.
-5. Memorable brand identity and visual atmosphere.
-6. Decorative effects only when they help the preceding goals.
+The sticky header and hero expose an Explore Events / Register jump to the on-page carousel. The hero's secondary Revelation link jumps to the video section. The revelation's narrative placement must not become a barrier. Remove homepage About, expectation cards, FAQ blocks, and explanatory paragraphs. Supporting routes remain available.
+
+## Priority
+
+Truthful content is a constant requirement. For design tradeoffs, follow the latest brief: mobile UX → event discovery → visual identity → performance → registration clarity → photography/storytelling → animation → decoration. Never sacrifice access or speed for effects.
 
 ## Visual system
 
-- Base: near-black `#0d0a12`; raised surfaces `#17121d` and `#211827`; dividers `#453444`.
-- Primary accent: ember `#ff7938`; secondary accent: restrained plum `#a889c6`; primary text `#fff4e9` and muted text `#cbbac7`.
-- Geist is used as a readable, highly weighted display and UI family; italic serif appears only as a rare accent. Avoid decorative body copy.
-- The existing optimized Halloween artwork is thematic hero art, not a picture of MGIT. Real photos must be labeled as February 2026 archive material.
-- Prefer dramatic typographic hierarchy, varied editorial composition, clear actions, and purposeful space. Avoid fake statistics, fabricated event posters, many competing colors, perpetual motion, and scroll pinning.
+- Near-black `#0d0a12`, raised surfaces `#17121d` / `#211827`, dividers `#453444` / `#63485d`.
+- Ember `#ff7938`, hover ember `#ffa16a`, one restrained plum accent `#a889c6`, cream `#fff4e9`, muted text `#cbbac7`.
+- Retain Geist: expressive display weight, readable UI/body text. Broad, short headings; minimal supporting copy.
+- Use compact `2px` control corners and `4px` card corners; avoid pill-shaped controls.
+- Share a warm visible focus ring (`#ffc08d`), a restrained card shadow, and a faint ember glow only on hovered primary actions.
+- Space main sections at `56px` on phones, `96px` from `640px`, and `112px` from `1024px`. Compact closing sections use `56px` and `80px`.
+- Keep interaction transitions near `160–220ms`, use `prefers-reduced-motion`, and do not add continuous or scroll-pinned animation.
+- Responsive composition is mobile-first; use the existing Tailwind breakpoints at `640px`, `768px`, `1024px`, and `1280px`.
+- The approved Halloween WebP remains the homepage hero artwork, not a depiction of MGIT.
+- Preserve real photos without dark Halloween filters. Their brightness contrasts with the surrounding interface.
+- Use a small, consistent radius, purposeful borders, restrained lighting, and generous spacing. Avoid repetitive card grids, badges, decorative clutter, fake statistics, and fabricated posters.
+- Apply `gpt-taste` for composition and hierarchy. User requirements override its GSAP, pinned-scroll, and constant-motion defaults. No added animation library.
 
-## Components and behavior
+## Event experience
 
-- The hero gives the name, dates, MGIT, two tracks, and an immediate Explore events action.
-- Confirmed events appear in a native horizontal swipe carousel with technical/non-technical selection, an event counter, and keyboard/arrow controls. The dedicated Events page keeps search and shareable track/category/day filters.
-- When no event has been confirmed, show two track routes and a plainly labeled pending-lineup state; never simulate event cards or active registration buttons.
-- Event detail pages show eligibility, time, venue, team size, rules/prizes only when supplied. A Google Form CTA is visible only with a real URL and remains accessible at the bottom of a phone screen.
-- The banner revelation is prominent, but absent video remains an honest state. A previous-edition film can be shown only as explicitly labeled archive media.
-- Use optimized images, reserved image dimensions, restrained native motion, visible focus, 44px-or-larger controls, reduced-motion support, and strong contrast. Do not make hover the only path to information.
+- Native scroll-snap, a dominant current card with part of the next visible, a counter, previous/next buttons, keyboard arrows/Home/End, reduced-motion support.
+- Switching track resets to its first card. A trailing spacer lets the final card align correctly at every viewport width.
+- Selectors remain interactive when no events are confirmed; show a track-specific pending state with a route into Events. Do not show a fake counter or inactive registration.
+- The homepage opens directly into the technical/non-technical swipe carousel. Keep the `/events` route list-first; query, track, category, and day parameters remain supported for shareable direct URLs without exposing a bulky control panel.
+- Shared poster cards display only name, track/category, short summary, date/time, room, team size, and details. Optional organizer artwork lives in structured event data.
+- Details put essentials first on phones, then description, rules, and supplied prizes. Long rules use a native disclosure.
+- A real per-event Google Form enables the registration button. The mobile action is fixed with safe-area spacing and footer clearance; absent forms display a short status.
 
-## Launch boundary
+## Photography and revelation
 
-The design can be reviewed locally before event names, forms, rooms, and video exist. Public production launch still requires confirmed content, photo permissions, final mark approval, and Vercel preview review. The selected archive photos are not automatic permission to publish them.
+`components/archive-story.tsx` supplies reusable photo figures. The homepage uses four selected photos; the archive groups all 19 into people, campus, and handmade details. Every archive experience is labeled February 2026. Large photo links open in a new tab with an accessible label.
+
+The supplied October 2026 film is stored at `public/branding/revelation.mp4` and rendered with native controls, inline mobile playback, and `preload="metadata"`. Do not autoplay or add a previous-edition fallback.
+
+## Verification and launch
+
+Check 320, 375, 390, 430, 768, 1024, and 1440px; event access above the fold; no overflow; keyboard and swipe; category resets; absent and supplied forms; readable contrast; reduced motion; zoom; and optimized images. Isolated synthetic browser-test fixtures must never enter public content.
+
+Local design completion is separate from organizer approval and Vercel deployment. Real event details, forms, video, social/contact details, and photo permissions remain organizer inputs. No deployment is part of this pass.

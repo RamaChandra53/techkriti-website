@@ -3,15 +3,19 @@ import { siteConfig } from "@/lib/content";
 import { Container } from "./container";
 import { Logo } from "./logo";
 
+const footerLinks = [["About", "/about"], ["Schedule", "/schedule"], ["Gallery", "/gallery"], ["FAQs", "/faq"], ["Contact", "/contact"], ["Sponsors", "/sponsors"]] as const;
+
 export function SiteFooter() {
-  return <footer className="border-t border-[#453444] bg-[#09070d] py-16 text-[#fff4e9] sm:py-20">
+  return <footer className="border-t border-[var(--line)] bg-[#09070d] py-9 text-[var(--text)] sm:py-12">
     <Container>
-      <div className="grid gap-12 md:grid-cols-[1.4fr_.8fr_.8fr]">
-        <div><Logo /><p className="mt-6 max-w-sm leading-relaxed text-[#cbbac7]">A student festival at MGIT. Technical and non-technical experiences, reimagined for Halloween.</p><p className="mt-8 font-haunt text-3xl text-[#ffae7a]">Made here. Made together.</p></div>
-        <div><h2 className="eyebrow">Explore</h2><div className="mt-5 grid gap-3 text-sm text-[#eee2e8] [&_a:hover]:text-[#ffae7a]"><Link href="/events">Events</Link><Link href="/schedule">Schedule</Link><Link href="/about">Our story</Link><Link href="/gallery">February 2026 gallery</Link><Link href="/sponsors">Sponsors</Link></div></div>
-        <div><h2 className="eyebrow">Need to know</h2><div className="mt-5 grid gap-3 text-sm text-[#eee2e8] [&_a:hover]:text-[#ffae7a]"><Link href="/faq">FAQs</Link><Link href="/contact">Contact</Link><span>MGIT, Hyderabad</span><span>16–17 October 2026</span>{siteConfig.social.instagram && <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer">Instagram <span className="sr-only">(opens in a new tab)</span>↗</a>}</div></div>
+      <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-center">
+        <Logo />
+        <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-[var(--muted)]">
+          {footerLinks.map(([label, href]) => <Link key={href} href={href} className="inline-flex min-h-11 items-center hover:text-[#ffb386]">{label}</Link>)}
+          {siteConfig.social.instagram && <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center hover:text-[#ffb386]">Instagram ↗<span className="sr-only"> (opens in a new tab)</span></a>}
+        </nav>
       </div>
-      <div className="mt-16 flex flex-wrap justify-between gap-4 border-t border-[#453444] pt-6 text-xs font-semibold text-[#bdaab9]"><span>© {siteConfig.year} {siteConfig.name} · MGIT</span><span>Registration opens in official Google Forms, never on this site.</span></div>
+      <div className="mt-7 flex flex-wrap justify-between gap-3 border-t border-[var(--line)] pt-5 text-xs text-[var(--muted)]"><span>© {siteConfig.year} {siteConfig.name} · MGIT</span><span>16–17 October 2026 · Hyderabad</span></div>
     </Container>
   </footer>;
 }

@@ -1,81 +1,93 @@
 # Techkriti website architecture
 
-This is the current architecture of the local Next.js site, not a diagram of features that have not been built. Techkriti 2026 is planned for 16–17 October at MGIT, Hyderabad. The event lineup, room assignments, sponsors, Instagram URL, and reveal video are not yet confirmed in the repository. The newer visual and UX brief is captured in `docs/design-direction.md`.
+The existing Next.js App Router, TypeScript, and Tailwind application targets Vercel. This document describes the local implementation of the latest 8 October 2026 brief. Confirmed festival dates are 16–17 October 2026 at MGIT. October event details and registration forms remain unconfirmed.
 
-## Visitor flow
+## Homepage and visitor flow
 
 ```mermaid
 flowchart TD
-    Visitor[Visitor on phone or desktop] --> Header[Shared header and mobile navigation]
-    Header --> Home[Home: festival story, dates, two tracks]
-    Header --> Events[Events /events]
-    Header --> Schedule[Schedule /schedule]
-    Header --> Gallery[February 2026 archive /gallery]
-    Header --> Info[About, sponsors, FAQs, contact]
-
-    Home --> Carousel[Confirmed-event carousel by track, or honest pending state]
-    Carousel --> Events
-    Home --> Schedule
-    Home --> Gallery
-    Home --> Reveal[Banner reveal section]
-    Schedule -->|Confirmed event entry| Detail[Event detail /events/slug]
-    Events --> Search[Search and filter by query, track, category, day]
-    Search -->|Shareable URL parameters| Detail
-    Detail -->|Only when registrationUrl exists| Form[Official Google Form in a new tab]
-    Detail -->|No registrationUrl yet| Waiting[Registration coming soon]
-    Search -->|No confirmed events or no matches| Empty[Clear, honest empty state]
-    Gallery --> Archive[Photos from February 2026, not October]
-    Reveal -->|October video URL supplied| Video[Native October video player]
-    Reveal -->|Only approved February video URL supplied| OldVideo[Native player labeled previous edition]
-    Reveal -->|No video URL| Teaser[Coming-soon state]
+    Visitor[Mobile visitor] --> Header[Persistent header: Explore Events / Register jump]
+    Header --> Hero[Hero: Techkriti / After dark / dates / MGIT]
+    Hero --> Reveal[Revelation: October 2026 native video]
+    Reveal --> Discovery[Technical / Non-technical selector]
+    Discovery -->|Confirmed content| Carousel[Native swipe posters + counter + buttons]
+    Discovery -->|No confirmed content| Pending[Track-specific pending state]
+    Discovery --> Events[Events: list-first lineup; shared query URLs remain supported]
+    Carousel --> Detail[Event details]
+    Events --> Detail
+    Detail -->|registrationUrl supplied| Form[Official Google Form in new tab]
+    Detail -->|URL absent| NoForm[Registration coming soon]
+    Discovery --> Photos[Last time at Techkriti: February 2026 photos]
+    Photos --> Gallery[Editorial photo archive]
+    Photos --> CTA[Final Explore Events / Register CTA]
+    CTA --> Events
 ```
 
-The site does not collect registrations, payments, or accounts. An event's `Register Now` link appears only when its own `registrationUrl` is supplied, and opens the external form with `noopener noreferrer`.
+The latest brief places the revelation before events in the scroll narrative. Events remain reachable immediately through the hero and header. No homepage About, expectation-card grid, FAQ block, or extra date section remains. Their useful supporting routes are preserved.
 
-## Content and rendering flow
+## Content and rendering
 
 ```mermaid
 flowchart LR
-    Types[lib/types.ts<br/>Typed content models] --> Content[lib/content.ts<br/>Identity, events, schedule, FAQs, sponsors, announcements]
-    ArchiveData[lib/archive.ts<br/>February photo captions] --> GalleryPage[Gallery and homepage archive preview]
-    Assets[public/<br/>Logo, archive photos, optional reveal video] --> Pages
-    Content --> Pages[Next.js App Router pages and shared components]
-    Content --> Filter[lib/events.ts<br/>Filter function]
-    Content --> CarouselUI[components/event-carousel.tsx<br/>Native scroll-snap track carousel when events exist]
-    Filter --> Explorer[components/event-explorer.tsx<br/>Client-side URL-synced filters]
-    Explorer --> Pages
-    Content --> Metadata[Metadata, Open Graph image, sitemap, robots]
-    Pages --> Build[Static production build]
-    Metadata --> Build
-    Validate[scripts/validate-content.mjs] --> Build
-    Build --> Vercel[Vercel preview or production deployment]
-    Vercel --> Browser[Visitor browser]
+    Types[lib/types.ts] --> Content[lib/content.ts: confirmed identity and festival data]
+    Content --> Home[Server-rendered homepage]
+    Content --> Carousel[EventCarousel: client track and scroll state]
+    Content --> Explorer[EventExplorer: shareable URL state]
+    Carousel --> Cards[Shared EventCard]
+    Explorer --> Carousel
+    Content --> Details[Event routes and metadata]
+    Archive[lib/archive.ts: selected February photos] --> Story[ArchiveStory / ArchiveFigure]
+    Story --> Home
+    Story --> Gallery[Gallery chapters]
+    Public[public: transparent logo, WebP photos, hero] --> Home
+    Public --> Cards
+    Content --> Validation[Content validation]
+    Validation --> Build[Next production build]
+    Build --> Preview[Vercel preview review]
+    Preview --> Production[Approved production release]
 ```
 
-`app/layout.tsx` supplies the shared header, footer, fonts, metadata base, and skip link. Most pages are statically rendered. The event explorer is a client component because its search and filters synchronize with URL parameters such as `/events?q=robotics&division=Technical&category=competition&day=2`. Event detail pages are generated from confirmed slugs in `events` and use `notFound()` for an unknown slug.
+`app/layout.tsx` supplies the font, shared header/footer, skip link, and metadata base. `app/page.tsx` imports `app/home-immersive.tsx`. Historical alternative homepage files are inactive and have not been deleted.
 
-## Route map
+## Routes
 
-| Route | Purpose | Main source |
-| --- | --- | --- |
-| `/` | Halloween hero, immediate event discovery, story, reveal, dates, archive preview, FAQs | `app/home-immersive.tsx`, `lib/content.ts`, `lib/archive.ts` |
-| `/events` | Searchable and filterable lineup | `components/event-explorer.tsx`, `lib/events.ts` |
-| `/events/[slug]` | Rules, eligibility, time, room, and external registration | `lib/content.ts` |
-| `/schedule` | Day 1 and day 2 schedule | `lib/content.ts` |
-| `/gallery` | Clearly labeled February 2026 photo archive | `lib/archive.ts`, `public/archive/` |
-| `/about`, `/sponsors`, `/faq`, `/contact` | Festival context and practical information | `lib/content.ts` and page content |
-| `/icon.png`, `/opengraph-image`, `/sitemap.xml`, `/robots.txt` | Browser icon and discoverability | App Router metadata files |
+| Route | Purpose |
+| --- | --- |
+| `/` | Hero → October reveal video → discovery → February photo story → final CTA |
+| `/events` | List-first confirmed lineup; optional shared query parameters can narrow a view |
+| `/events/[slug]` | Essentials, description, rules, supplied prizes and external form |
+| `/schedule` | Day-based confirmed schedule |
+| `/gallery` | All 19 selected February photos, arranged in three editorial chapters |
+| `/about`, `/sponsors`, `/faq`, `/contact` | Supporting context and practical information |
+| `/icon.png`, `/opengraph-image`, `/sitemap.xml`, `/robots.txt` | Browser icon and discovery metadata |
 
-## Updating the site
+Unknown event slugs return 404. Shared query URLs remain supported for organizer links, for example `/events?q=robotics&division=Technical&category=competition&day=2`; the public page intentionally keeps the visual surface list-first.
 
-1. Organizers confirm an event's name, description, track, day, time, MGIT room, rules, and Google Form.
-2. A developer adds a typed `Event` entry to `lib/content.ts`; the stable slug creates its detail route and the listing becomes searchable.
-3. A developer adds related `ScheduleItem` entries after times and rooms are confirmed. The schedule can then link back to the event page via `eventSlug`.
-4. A developer updates `siteConfig` for official contact, Instagram, and banner reveal video details when supplied. Sponsors and announcements also live in `lib/content.ts`.
-5. The Vercel build runs `npm run validate:content && npm run build` via `vercel.json`. Review the preview deployment before production promotion.
+## Component boundaries
 
-The current validation script rejects known bracketed placeholders and non-Google `registrationUrl` values in production. It does **not** require the event, schedule, or sponsor arrays to be non-empty, or verify every real-world detail. Those remain editorial launch checks.
+- **BannerReveal:** static server-rendered native MP4 player with controls, inline playback, and metadata preload. It does not autoplay and has no previous-edition fallback.
+- **EventCarousel:** a small client component. Track switching resets its keyed scroll region. Native scroll-snap handles touch; arrows, keyboard arrows/Home/End, a live counter, and a resize observer keep navigation usable. A trailing spacer permits final-card alignment on wide screens. Empty tracks show a status, never fake cards or controls.
+- **EventCard:** shared by the listing and carousel. Optional `image: { src, alt }` supports local approved artwork; otherwise the title receives a consistent poster treatment. The carousel variant offers details; listing registration appears only if supplied.
+- **EventDetailView:** essentials appear before longer content on mobile; the desktop sidebar remains sticky. More than four rules use a native disclosure. A supplied Google Form enables the mobile fixed CTA with safe-area/footer clearance.
+- **ArchiveStory / ArchiveFigure:** optimized, lazy-loaded images with reserved aspect ratios, descriptive alt text, captions, and accessible larger-image links. Photography retains its original color.
+- **SiteHeader:** Events stays visible on mobile. Escape closes the menu and restores button focus; the menu scrolls within small-height viewports.
+- **SiteFooter:** compact supporting links and festival identity.
 
-## Design constraints
+## Updating content
 
-The restarted 8 October redesign uses a near-black/ember/plum system with the existing transparent symbolic mark and Geist type. The active homepage is `app/home-immersive.tsx`: an editorial-split Halloween hero keeps the event route in the first mobile screen, followed immediately by the two tracks or a confirmed-event swipe carousel. Search and shareable track/category/day filtering remain on `/events`. The shared page hero, header, footer, event cards and filters, event detail, schedule, About, Gallery, FAQs, Contact, and Partners pages now follow the same dark system. Selected MGIT photos remain clearly labeled as February 2026 archive material; the Gallery shows a varied editorial grid with larger image links. The October banner film is never simulated; an older approved film must be labeled as an archive. A real per-event Google Form enables the safe external registration CTA, including the sticky mobile button. Motion remains restrained and respects reduced motion. This design is local, built successfully, and still needs browser/device accessibility review and organizer sign-off before launch.
+1. Add only confirmed `Event` entries to `lib/content.ts`. Slugs generate detail pages automatically.
+2. Put optimized event artwork in `public/events/` and supply `image.src` / `image.alt` if available. No UI rewrite is needed.
+3. Add real `registrationUrl` values from Google Forms; absent URLs keep registration hidden.
+4. Add related schedule items after times and rooms are confirmed.
+5. Update contact/social/sponsor data when approved. Replace `siteConfig.bannerVideoUrl` only when the organizers supply a newer approved film.
+6. Run content validation, lint, type checking, build, and browser tests. Review a Vercel preview before production.
+
+The existing content validator detects known placeholder tokens and invalid Google Form hosts in production. It does not certify real-world accuracy or require non-empty event/schedule arrays.
+
+## Verification architecture
+
+`npm run test:ui` uses Playwright with installed Chrome and a local production server on port 3100; run `npm run build` first. It covers specified viewport widths, first-screen event access, route/query behavior, native touch, keyboard controls, missing forms, and axe accessibility checks.
+
+Synthetic event data lives only in `tests/fixtures.ts`. A browser-intercepted test document bundles the real components with simple Next Link/Image adapters, allowing populated-state checks without adding fake events or a test route to the production app. The production pages themselves are tested separately. Screenshots and traces are ignored under `test-results/`.
+
+Local verification is separate from physical-device testing, organizer sign-off, and deployment. This pass does not publish to Vercel or push to GitHub.
