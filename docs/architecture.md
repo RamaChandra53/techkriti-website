@@ -91,3 +91,19 @@ The existing content validator detects known placeholder tokens and invalid Goog
 Synthetic event data lives only in `tests/fixtures.ts`. A browser-intercepted test document bundles the real components with simple Next Link/Image adapters, allowing populated-state checks without adding fake events or a test route to the production app. The production pages themselves are tested separately. Screenshots and traces are ignored under `test-results/`.
 
 Local verification is separate from physical-device testing, organizer sign-off, and deployment. This pass does not publish to Vercel or push to GitHub.
+
+## 9 October 2026 homepage update
+
+The current homepage uses a full first-screen hero, the October revelation, a rotating event fan with pumpkin controls, all 19 February archive photos, and the final invitation in one scroll. The mobile burger menu and both hero jumps were removed. The header's Register action jumps to `#discover`; per-event registration still appears only when an official form URL is present. The fan retains keyboard, touch, reduced-motion, and track switching support. Earlier homepage diagrams and component notes above describe the previous implementation where they conflict with this update.
+
+## Poster carousel and on-page details
+
+`EventCarousel` now displays every confirmed event in one fan. It uses `event.image` when present and a local title placeholder otherwise. Poster buttons open a native dialog with event details, preserving Escape, backdrop close, focus return, keyboard carousel navigation, and touch swiping. Direct `/events/[slug]` URLs remain available; their back link targets `/#discover`.
+
+## Background and archive stack
+
+The site-wide backdrop reuses the optimized `/hero-halloween.webp` asset through a fixed CSS layer with a contrast veil. `ArchiveStory` cycles through all 19 optimized February photographs in a draggable four-layer pile on phones and laptops. The pile follows each image's source ratio, while the active image has a description, caption, and counter. The carousel poster artwork has an open-details indicator, and its pumpkin controls draw distinct left and right SVG paths.
+
+## 10 October 2026 archive interaction
+
+`ArchiveStory` lets visitors drag, swipe, tap, or activate the focused front photo with a keyboard to cycle through all 19 images. One short instruction sits beneath the pile. There are no separate photo controls or arrow overlays.

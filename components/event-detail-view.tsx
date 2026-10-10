@@ -15,7 +15,7 @@ export function EventDetailView({ event }: { event: Event }) {
   return <>
     <section className="section-glow border-b border-[var(--line)] py-10 sm:py-16">
       <Container>
-        <Link href="/events" className="text-link inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#ffb386]"><ArrowLeftIcon className="h-4 w-4" aria-hidden="true" /> All events</Link>
+        <Link href="/#discover" className="text-link inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#ffb386]"><ArrowLeftIcon className="h-4 w-4" aria-hidden="true" /> Back to events</Link>
         <p className="eyebrow mt-8">{event.division} · {event.category}</p>
         <h1 className="display-heading mt-4 max-w-6xl break-words text-[clamp(2.8rem,7vw,7rem)]">{event.title}</h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">{event.summary}</p>

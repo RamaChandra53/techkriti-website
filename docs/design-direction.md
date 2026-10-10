@@ -56,3 +56,27 @@ The supplied October 2026 film is stored at `public/branding/revelation.mp4` and
 Check 320, 375, 390, 430, 768, 1024, and 1440px; event access above the fold; no overflow; keyboard and swipe; category resets; absent and supplied forms; readable contrast; reduced motion; zoom; and optimized images. Isolated synthetic browser-test fixtures must never enter public content.
 
 Local design completion is separate from organizer approval and Vercel deployment. Real event details, forms, video, social/contact details, and photo permissions remain organizer inputs. No deployment is part of this pass.
+
+## 9 October 2026 revision
+
+The hero fills the first mobile viewport below the header so the revelation begins below the fold. Remove both hero buttons and the mobile menu. The header has one Register jump; desktop section links point into the same page. The homepage contains the full labeled February archive without a More memories link. Event discovery uses the supplied rotating fan arrangement with pumpkin-face previous/next controls. The bat entrance plays once from the lower hero corners and honors reduced motion. These choices replace the conflicting earlier homepage, photo-preview, and carousel details in this document.
+
+## 9 October 2026 poster fan refinement
+
+The event section now uses one centered square poster with smaller angled posters on both sides, without the large details card or track tabs. A small track label accompanies each event. Poster clicks open a compact dialog; uploaded official poster images can replace the title placeholders through structured event data. The direct event page returns to the homepage event section.
+
+## 9 October 2026 stacked gallery and page background
+
+The moonlit `hero-halloween.webp` artwork now sits behind the site at phone and laptop sizes, with a dark readability veil. The hero still uses its own prominent artwork. All 19 February archive images form a CSS sticky stack on larger screens and a readable single-column sequence on phones. A copper edge, fine inner line, and shadow frame the photos without filtering them. The header shows the logo and Register action only. Poster cards have a small open-details arrow, and the pumpkin controls contain explicit cream directional arrows.
+
+## 10 October 2026 mobile stack
+
+The CSS sticky gallery stack now applies on phones as well as larger screens. The photos retain their Halloween frames, captions, and accessible links; the arrow overlays on photos are removed.
+
+## 10 October 2026 image-stack carousel
+
+The latest supplied reference replaces the sticky stack on both viewport sizes with a draggable pile. Visitors can drag, swipe, or tap the front image to reveal the next of 19 real February photos. A visible counter, caption, separate full-photo link, and external Next photo button support navigation without placing arrows over the image. Respect reduced-motion preferences.
+
+## 10 October 2026 image sizing and controls
+
+The pile follows the current photograph's landscape or portrait ratio, and images fit fully inside their frames. Remove the separate full-photo link and Next photo button. Keep the count and caption, and place a short swipe/drag/tap instruction immediately below the images.

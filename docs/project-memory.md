@@ -116,3 +116,27 @@ Until these are answered, build the structure and honest states. Do not borrow s
 ## Maintenance rule for this memory
 
 When a new organizer message changes the brief, update the relevant section, mark the new fact as confirmed or pending, and align `lib/content.ts`, route copy, and `docs/architecture.md` when necessary. When a design choice is implemented, distinguish the shipped behavior from a desired direction. The current site still needs the requested visual/UX redesign; this document is its decision record, not evidence that the redesign has shipped.
+
+## 9 October 2026 organizer update
+
+The organizer requested a full mobile first screen before the revelation, no hero Explore events or Revelation buttons, a single scrolling homepage without the burger menu, all 19 February archive photos under “Last time at Techkriti,” and no “More memories” link there. The header action is labeled only “Register,” styled in Halloween orange and bone white on interaction, and currently jumps to the event section because no official event form URLs have been supplied. The event browser adopts the supplied rotating fan concept with pumpkin-face navigation controls; real confirmed event names replace the stock images in the pasted sample. A brief bat entrance starts from the lower left and right edges of the hero and is disabled for reduced motion. These requirements supersede the older homepage button, four-photo preview, and native rail directions above.
+
+## 9 October 2026 carousel refinement
+
+The organizer replaced the two-track event selector and large detail panel with one unified poster fan matching the supplied centered-image reference. All confirmed events appear together; each poster carries only a small Technical or Non-Technical label. Clicking a poster opens a compact on-page details dialog. Official event posters have not been supplied, so the carousel uses styled title placeholders and reads future images from each event's existing `image` field. Direct event URLs remain valid, and their “Back to events” link returns to the homepage's `#discover` section.
+
+## 9 October 2026 gallery and controls update
+
+The organizer requested a clear open-details arrow at the top right of every event poster, visible left/right arrows within the pumpkin buttons, no “Tap the poster for details” copy, and no desktop Events/Gallery header links. The February photo gallery should use the supplied CSS sticky stacking pattern, with restrained Halloween borders and all 19 real archive images. The supplied moonlit Halloween scene should extend behind the full page on mobile and desktop. The implementation keeps native scrolling and the approved local photos rather than the reference component's unrelated stock imagery or a global smooth-scroll dependency.
+
+## 10 October 2026 mobile archive correction
+
+The organizer confirmed that the February photo stack must use sticky stacking on phones too. Remove the open-in-new-tab arrow overlays from archive photos. Keep the photo links and descriptive labels available.
+
+## 10 October 2026 gallery interaction update
+
+The organizer replaced the sticky scrolling gallery with the supplied draggable image-stack carousel for both phones and laptops. Keep all 19 real February 2026 photos in one cycling pile and show a short instruction explaining drag, swipe, and tap. The active photo has a counter and caption, with a separate full-photo link below the stack. No arrow overlay belongs on the photos.
+
+## 10 October 2026 gallery sizing correction
+
+The organizer removed the separate Next photo and View full photo controls. The photo stack must change shape to match each image rather than forcing square crops; show each full photo within its card. Place one short interaction instruction directly beneath the stack on phones and laptops. The photo itself remains tappable, draggable, swipeable, and keyboard operable.

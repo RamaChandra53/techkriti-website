@@ -1,82 +1,123 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
-import Link from "next/link";
-import { ArrowUpRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { divisions } from "@/lib/content";
-import type { Event, EventDivision } from "@/lib/types";
-import { EventCard } from "./event-card";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import type { Event } from "@/lib/types";
 
-function slides(list: HTMLDivElement) {
-  return Array.from(list.querySelectorAll<HTMLElement>("[data-event-slide]"));
+function PumpkinFace({ direction }: { direction: "left" | "right" }) {
+  return <span className="pumpkin-face" aria-hidden="true">
+    <svg viewBox="0 0 48 48" fill="none"><path d="M24 10V5m0 4c2-3 5-4 7-3" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"/><path d="M24 11c-9-5-18 1-18 13 0 11 8 19 18 19s18-8 18-19c0-12-9-18-18-13Z" fill="currentColor"/><path d="m14 21 6-4-1 6-5-2Zm20 0-6-4 1 6 5-2ZM15 35c6 2 12 2 18 0-2 5-6 7-9 7s-7-2-9-7Z" fill="#170d11"/><path className="pumpkin-direction" d={direction === "left" ? "M31 29H17m0 0 5-5m-5 5 5 5" : "M17 29h14m0 0-5-5m5 5-5 5"} stroke="#fff4e9" strokeWidth="3.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+  </span>;
 }
 
-function nearestIndex(list: HTMLDivElement) {
-  const items = slides(list);
-  const origin = items[0]?.offsetLeft ?? 0;
-  let nearest = 0;
-  items.forEach((item, index) => {
-    if (Math.abs(item.offsetLeft - origin - list.scrollLeft) < Math.abs(items[nearest].offsetLeft - origin - list.scrollLeft)) nearest = index;
-  });
-  return nearest;
+function EventPoster({ event }: { event: Event }) {
+  return <span className="event-poster-artwork">
+    {event.image ? <Image src={event.image.src} alt={event.image.alt} fill sizes="(max-width: 640px) 200px, 320px" className="object-cover" /> : <span className="event-poster-placeholder">
+      <span className="event-poster-halo" aria-hidden="true" />
+      <strong>{event.title}</strong>
+      <span className="event-poster-pending">Official poster coming soon</span>
+    </span>}
+    <span className="event-poster-division">{event.division}</span>
+    <span className="event-poster-open" aria-hidden="true"><ArrowUpRightIcon className="h-4 w-4" /></span>
+  </span>;
 }
 
 export function EventCarousel({ events }: { events: Event[] }) {
-  const [selectedTrack, setSelectedTrack] = useState<EventDivision>(events[0]?.division ?? "Technical");
   const [activeIndex, setActiveIndex] = useState(0);
-  const visibleEvents = events.filter((event) => event.division === selectedTrack);
-  const listRef = useRef<HTMLDivElement>(null);
+  const [selected, setSelected] = useState<Event | null>(null);
+  const [paused, setPaused] = useState(false);
+  const [stepSize, setStepSize] = useState(150);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const touchStart = useRef<number | null>(null);
   const regionId = useId();
-  const currentIndex = Math.min(activeIndex, Math.max(0, visibleEvents.length - 1));
+  const count = events.length;
+  const active = events[activeIndex];
 
   useEffect(() => {
-    const list = listRef.current;
-    if (!list) return;
-    const observer = new ResizeObserver(() => setActiveIndex(nearestIndex(list)));
-    observer.observe(list);
+    const stage = stageRef.current;
+    if (!stage) return;
+    const observer = new ResizeObserver(() => setStepSize(Math.min(270, Math.max(125, stage.clientWidth * .285))));
+    observer.observe(stage);
     return () => observer.disconnect();
-  }, [selectedTrack, visibleEvents.length]);
+  }, []);
 
-  const goTo = (index: number) => {
-    const list = listRef.current;
-    if (!list || index < 0 || index >= visibleEvents.length) return;
-    const items = slides(list);
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    list.scrollTo({ left: items[index].offsetLeft - items[0].offsetLeft, behavior: reducedMotion ? "instant" : "smooth" });
+  useEffect(() => {
+    if (paused || selected || count < 2) return;
+    const timer = window.setInterval(() => {
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) setActiveIndex((index) => (index + 1) % count);
+    }, 6000);
+    return () => window.clearInterval(timer);
+  }, [count, paused, selected]);
+
+  useEffect(() => {
+    if (selected && !dialogRef.current?.open) {
+      dialogRef.current?.showModal();
+      closeRef.current?.focus();
+    }
+  }, [selected]);
+
+  const move = (direction: number) => setActiveIndex((index) => (index + direction + count) % count);
+  const openDetails = (event: Event, trigger: HTMLButtonElement) => {
+    triggerRef.current = trigger;
+    setSelected(event);
   };
+  const closeDetails = () => dialogRef.current?.close();
 
-  return <div className="mt-7 sm:mt-10">
-    <div className="flex flex-wrap items-center justify-between gap-4">
-      <div role="group" aria-label="Choose an event track" className="inline-grid max-w-full grid-cols-2 gap-1 rounded-md border border-[#725467] bg-[#17111c] p-1">
-        {divisions.map((track) => <button key={track} type="button" aria-pressed={selectedTrack === track} aria-controls={regionId} onClick={() => { setSelectedTrack(track); setActiveIndex(0); }} className={`min-h-11 rounded-sm px-3 py-2 text-sm font-bold transition-colors sm:px-6 ${selectedTrack === track ? "bg-[var(--ember)] text-[#170d11]" : "text-[#dccbd8] hover:bg-[#332538]"}`}>{track === "Non-Technical" ? "Non-technical" : track}</button>)}
+  return <div className="event-carousel mt-7 sm:mt-10" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }}>
+    {active ? <div id={regionId} role="region" aria-roledescription="carousel" aria-label="All Techkriti events" tabIndex={0} onKeyDown={(event) => {
+      if (dialogRef.current?.open) return;
+      if (event.key === "ArrowRight") { event.preventDefault(); move(1); }
+      if (event.key === "ArrowLeft") { event.preventDefault(); move(-1); }
+      if (event.key === "Home") { event.preventDefault(); setActiveIndex(0); }
+      if (event.key === "End") { event.preventDefault(); setActiveIndex(count - 1); }
+    }} onTouchStart={(event) => { touchStart.current = event.touches[0]?.clientX ?? null; }} onTouchEnd={(event) => {
+      if (touchStart.current === null || dialogRef.current?.open) return;
+      const delta = event.changedTouches[0].clientX - touchStart.current;
+      if (Math.abs(delta) > 45) move(delta < 0 ? 1 : -1);
+      touchStart.current = null;
+    }}>
+      <div ref={stageRef} className="event-fan-stage">
+        {events.map((item, index) => {
+          const offset = (index - activeIndex + count) % count;
+          const signed = offset > count / 2 ? offset - count : offset;
+          const visible = Math.abs(signed) <= 2;
+          const distance = Math.abs(signed);
+          const scale = distance === 0 ? 1 : distance === 1 ? .68 : .48;
+          const tilt = signed * (distance === 2 ? -11 : -14);
+          return <button key={item.slug} type="button" tabIndex={visible ? 0 : -1} aria-hidden={!visible} aria-label={`Show details for ${item.title}, ${item.division}`} onClick={(event) => openDetails(item, event.currentTarget)} className="event-poster" style={{ transform: `translate(-50%, -50%) translateX(${signed * stepSize}px) rotate(${tilt}deg) scale(${scale})`, opacity: visible ? 1 : 0, zIndex: 5 - distance, pointerEvents: visible ? "auto" : "none" }}>
+            <EventPoster event={item} />
+          </button>;
+        })}
       </div>
-      {visibleEvents.length > 1 && <p className="text-xs text-[var(--muted)]">Swipe to explore · or use the arrows</p>}
-    </div>
+      <div className="event-fan-caption">
+        <span className="event-fan-name">{active.title}</span>
+      </div>
+      <div className="mt-5 flex items-center justify-center gap-5">
+        <button type="button" onClick={() => move(-1)} aria-label="Previous event" aria-controls={regionId} className="pumpkin-control"><PumpkinFace direction="left" /></button>
+        <p aria-live="polite" aria-atomic="true" className="min-w-16 text-center text-sm font-bold tabular-nums text-[#ddc8d5]">{String(activeIndex + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}<span className="sr-only"> · {active.title}</span></p>
+        <button type="button" onClick={() => move(1)} aria-label="Next event" aria-controls={regionId} className="pumpkin-control"><PumpkinFace direction="right" /></button>
+      </div>
+    </div> : <div id={regionId} role="status" className="border border-[#63485d] bg-[var(--surface)] px-6 py-9"><h3 className="text-3xl font-extrabold">The lineup is taking shape.</h3><p className="mt-3 text-[var(--muted)]">Events and registration links will appear here once confirmed.</p></div>}
 
-    {visibleEvents.length > 0 ? <>
-      <div key={selectedTrack} id={regionId} ref={listRef} role="region" aria-roledescription="carousel" aria-label={`${selectedTrack} events`} tabIndex={0} onScroll={() => { if (listRef.current) setActiveIndex(nearestIndex(listRef.current)); }} onKeyDown={(event) => {
-        if (event.target !== event.currentTarget) return;
-        const targets: Record<string, number> = { ArrowRight: currentIndex + 1, ArrowLeft: currentIndex - 1, Home: 0, End: visibleEvents.length - 1 };
-        if (event.key in targets) { event.preventDefault(); goTo(targets[event.key]); }
-      }} className="event-rail relative mt-6 max-w-[960px] pb-4">
-        {visibleEvents.map((event, index) => <div key={event.slug} data-event-slide role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${visibleEvents.length}: ${event.title}`} className="event-slide"><EventCard event={event} discovery /></div>)}
-        <div className="event-rail-tail" aria-hidden="true" />
-      </div>
-      <div className="mt-2 flex max-w-[960px] items-center justify-between border-t border-[var(--line)] pt-4">
-        <p aria-live="polite" aria-atomic="true" className="text-sm font-bold tabular-nums text-[#ddc8d5]">{String(currentIndex + 1).padStart(2, "0")} <span className="mx-1 text-[#a18b9a]">/</span> {String(visibleEvents.length).padStart(2, "0")}<span className="sr-only"> · {visibleEvents[currentIndex]?.title}</span></p>
-        <div className="flex gap-2">
-          <button type="button" onClick={() => goTo(currentIndex - 1)} disabled={currentIndex === 0} aria-label="Previous event" aria-controls={regionId} className="grid h-12 w-12 place-items-center rounded-sm border border-[#765b73] hover:bg-[#342739] disabled:cursor-not-allowed disabled:opacity-40"><ChevronLeftIcon className="h-5 w-5" aria-hidden="true" /></button>
-          <button type="button" onClick={() => goTo(currentIndex + 1)} disabled={currentIndex >= visibleEvents.length - 1} aria-label="Next event" aria-controls={regionId} className="grid h-12 w-12 place-items-center rounded-sm border border-[#765b73] hover:bg-[#342739] disabled:cursor-not-allowed disabled:opacity-40"><ChevronRightIcon className="h-5 w-5" aria-hidden="true" /></button>
-        </div>
-      </div>
-    </> : <div id={regionId} role="status" className="relative mt-6 overflow-hidden rounded-md border border-[#63485d] bg-[var(--surface)] px-6 py-9 sm:px-9 sm:py-12">
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 border-l border-[#a889c6]/10 bg-[#a889c6]/[.03]" aria-hidden="true" />
-      <div className="relative">
-        <p className="eyebrow">{selectedTrack} · October 2026</p>
-        <h3 className="mt-4 max-w-2xl text-3xl font-extrabold leading-tight tracking-[-.045em] sm:text-4xl">The lineup is taking shape.</h3>
-        <p className="mt-3 max-w-lg text-sm leading-relaxed text-[var(--muted)] sm:text-base">Events and registration links will appear here once confirmed.</p>
-        <Link href={`/events?division=${encodeURIComponent(selectedTrack)}`} className="text-link mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#ffb386]">Explore this track <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" /></Link>
-      </div>
-    </div>}
+    <dialog ref={dialogRef} aria-labelledby="event-dialog-title" className="event-detail-dialog" onClose={() => { setSelected(null); triggerRef.current?.focus(); }} onClick={(event) => { if (event.target === event.currentTarget) closeDetails(); }}>
+      {selected && <div className="event-dialog-content">
+        <div className="flex items-start justify-between gap-3"><span className="event-track-label">{selected.division}</span><button ref={closeRef} type="button" onClick={closeDetails} aria-label="Close event details" className="event-dialog-close">×</button></div>
+        <h3 id="event-dialog-title" className="mt-4 text-3xl font-black leading-tight tracking-[-.055em] sm:text-4xl">{selected.title}</h3>
+        <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">{selected.summary}</p>
+        <dl className="event-dialog-facts mt-5">
+          <div><dt>When</dt><dd>{selected.day ? (selected.day === 1 ? "16" : "17") : "16–17"} October · {selected.time ?? "Time to be announced"}</dd></div>
+          <div><dt>Where</dt><dd>{selected.venue}</dd></div>
+          <div><dt>Team</dt><dd>{selected.teamSize}</dd></div>
+          <div><dt>Eligibility</dt><dd>{selected.eligibility}</dd></div>
+        </dl>
+        <p className="mt-5 text-sm leading-relaxed text-[var(--muted)]">{selected.description}</p>
+        {selected.rules?.length ? <details className="mt-5 border-t border-[var(--line)] pt-4"><summary className="cursor-pointer font-semibold text-[#ffb386]">Event rules</summary><ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-[var(--muted)]">{selected.rules.map((rule) => <li key={rule}>{rule}</li>)}</ul></details> : null}
+        {selected.registrationUrl ? <a href={selected.registrationUrl} target="_blank" rel="noopener noreferrer" className="register-button mt-6 inline-flex min-h-11 items-center px-5 font-bold">Register now<span className="sr-only"> (Google Form opens in a new tab)</span></a> : <p className="mt-5 border-t border-[var(--line)] pt-4 text-sm text-[var(--muted)]">Registration link coming soon.</p>}
+      </div>}
+    </dialog>
   </div>;
 }

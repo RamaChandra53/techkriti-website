@@ -3,7 +3,7 @@ import { Container } from "./container";
 
 export function BannerReveal() {
   const videoUrl = siteConfig.bannerVideoUrl;
-  return <section id="revelation" aria-labelledby="reveal-title" className="scroll-mt-24 border-b border-[var(--line)] bg-[#110c16] pb-12 pt-6 sm:py-20">
+  return <section id="revelation" aria-labelledby="reveal-title" className="scroll-mt-24 border-b border-[var(--line)] bg-[#110c16]/70 pb-12 pt-6 sm:py-20">
     <Container>
       <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <h2 id="reveal-title" className="text-2xl font-extrabold tracking-[-.055em] sm:text-4xl">The revelation.</h2>

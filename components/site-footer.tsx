@@ -6,7 +6,7 @@ import { Logo } from "./logo";
 const footerLinks = [["About", "/about"], ["Schedule", "/schedule"], ["Gallery", "/gallery"], ["FAQs", "/faq"], ["Contact", "/contact"], ["Sponsors", "/sponsors"]] as const;
 
 export function SiteFooter() {
-  return <footer className="border-t border-[var(--line)] bg-[#09070d] py-9 text-[var(--text)] sm:py-12">
+  return <footer className="border-t border-[var(--line)] bg-[#09070d]/85 py-9 text-[var(--text)] sm:py-12">
     <Container>
       <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-center">
         <Logo />
