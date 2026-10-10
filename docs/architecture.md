@@ -23,7 +23,7 @@ flowchart TD
     CTA --> Events
 ```
 
-The latest brief places the revelation before events in the scroll narrative. Events remain reachable immediately through the hero and header. No homepage About, expectation-card grid, FAQ block, or extra date section remains. Their useful supporting routes are preserved.
+The latest brief places the revelation before events in the scroll narrative. Events remain reachable immediately through the hero and header. The homepage ends with the practical FAQ and contact guidance; About and the other supporting routes remain separate.
 
 ## Content and rendering
 
@@ -58,7 +58,7 @@ flowchart LR
 | `/events/[slug]` | Essentials, description, rules, supplied prizes and external form |
 | `/schedule` | Day-based confirmed schedule |
 | `/gallery` | All 19 selected February photos, arranged in three editorial chapters |
-| `/about`, `/sponsors`, `/faq`, `/contact` | Supporting context and practical information |
+| `/about`, `/sponsors`, `/contact` | Supporting context and practical information; FAQs appear at the end of `/` |
 | `/icon.png`, `/opengraph-image`, `/sitemap.xml`, `/robots.txt` | Browser icon and discovery metadata |
 
 Unknown event slugs return 404. Shared query URLs remain supported for organizer links, for example `/events?q=robotics&division=Technical&category=competition&day=2`; the public page intentionally keeps the visual surface list-first.
@@ -71,7 +71,7 @@ Unknown event slugs return 404. Shared query URLs remain supported for organizer
 - **EventDetailView:** essentials appear before longer content on mobile; the desktop sidebar remains sticky. More than four rules use a native disclosure. A supplied Google Form enables the mobile fixed CTA with safe-area/footer clearance.
 - **ArchiveStory / ArchiveFigure:** optimized, lazy-loaded images with reserved aspect ratios, descriptive alt text, captions, and accessible larger-image links. Photography retains its original color.
 - **SiteHeader:** Events stays visible on mobile. Escape closes the menu and restores button focus; the menu scrolls within small-height viewports.
-- **SiteFooter:** compact supporting links and festival identity.
+- **SiteFooter:** currently not rendered; the organizer removed the global footer pending a replacement direction.
 
 ## Updating content
 

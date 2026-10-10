@@ -11,6 +11,18 @@ export interface ArchivePhoto {
 // archive separate from the upcoming October 2026 Halloween edition.
 export const archivePhotos: ArchivePhoto[] = [
   {
+    src: "/archive/selected/dsc09839.webp",
+    alt: "Colorful handmade letters spelling Techkriti with paper decorations",
+    caption: "A festival sign made by hand",
+    height: 1201
+  },
+  {
+    src: "/archive/selected/dsc09846.webp",
+    alt: "A welcome message made from blue paper squares on a campus wall",
+    caption: "Details made for the previous edition",
+    height: 1201
+  },
+  {
     src: "/archive/selected/dsc09861.webp",
     alt: "Techkriti students gathered along both sides of the painted CSBS walkway at MGIT",
     caption: "The team around the painted campus walkway",
@@ -110,18 +122,6 @@ export const archivePhotos: ArchivePhoto[] = [
     src: "/archive/selected/dsc00077.webp",
     alt: "Six attendees posing in front of the handmade Techkriti display",
     caption: "A group in front of the display",
-    height: 1201
-  },
-  {
-    src: "/archive/selected/dsc09839.webp",
-    alt: "Colorful handmade letters spelling Techkriti with paper decorations",
-    caption: "A festival sign made by hand",
-    height: 1201
-  },
-  {
-    src: "/archive/selected/dsc09846.webp",
-    alt: "A welcome message made from blue paper squares on a campus wall",
-    caption: "Details made for the previous edition",
     height: 1201
   }
 ];

@@ -3,9 +3,9 @@ import { Container } from "./container";
 
 export function BannerReveal() {
   const videoUrl = siteConfig.bannerVideoUrl;
-  return <section id="revelation" aria-labelledby="reveal-title" className="scroll-mt-24 border-b border-[var(--line)] bg-[#110c16]/70 pb-12 pt-6 sm:py-20">
+  return <section id="revelation" aria-labelledby="reveal-title" className="scroll-mt-24 bg-[#110c16]/58 py-8 sm:py-11">
     <Container>
-      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+      <div className="mb-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <h2 id="reveal-title" className="text-2xl font-extrabold tracking-[-.055em] sm:text-4xl">The revelation.</h2>
         <p className="eyebrow">October 2026</p>
       </div>
@@ -17,7 +17,6 @@ export function BannerReveal() {
           <div><p className="text-[clamp(1.9rem,5vw,5rem)] font-black uppercase leading-none tracking-[-.06em] text-[#f8e4d5]">Still under wraps.</p><p className="mt-4 text-xs font-semibold uppercase tracking-[.16em] text-[#e8bca4] sm:text-sm">The banner film is coming.</p></div>
         </div>}
       </div>
-      <p className="mt-3 text-xs text-[var(--muted)]">Techkriti · October 2026 banner revelation</p>
     </Container>
   </section>;
 }

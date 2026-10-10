@@ -80,3 +80,15 @@ The latest supplied reference replaces the sticky stack on both viewport sizes w
 ## 10 October 2026 image sizing and controls
 
 The pile follows the current photograph's landscape or portrait ratio, and images fit fully inside their frames. Remove the separate full-photo link and Next photo button. Keep the count and caption, and place a short swipe/drag/tap instruction immediately below the images.
+
+## 10 October 2026 background, fan, and density refinement
+
+The Halloween artwork is one fixed page wallpaper, including behind the hero; do not layer a separate duplicate hero copy over it. Tighten section padding and vertical gaps without removing or rewriting internal content. Bring the event fan cards closer together, strengthen their Halloween gradient with ember orange, dark red, plum, and near-black, label the small corner action as Details, and use clean directional arrows inside the pumpkin controls.
+
+## 10 October 2026 temporary ending state
+
+The orange final CTA and global footer are removed pending a replacement direction from the organizer. Do not reintroduce or redesign either block without that direction.
+
+## 10 October 2026 FAQ placement
+
+Place the complete FAQ and its contact guidance at the end of the homepage, after the February archive. The header FAQ link scrolls to this section. Do not maintain a separate `/faq` page.

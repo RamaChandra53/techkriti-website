@@ -140,3 +140,47 @@ The organizer replaced the sticky scrolling gallery with the supplied draggable 
 ## 10 October 2026 gallery sizing correction
 
 The organizer removed the separate Next photo and View full photo controls. The photo stack must change shape to match each image rather than forcing square crops; show each full photo within its card. Place one short interaction instruction directly beneath the stack on phones and laptops. The photo itself remains tappable, draggable, swipeable, and keyboard operable.
+
+## 10 October 2026 compact homepage refinement
+
+Use one fixed Halloween wallpaper behind the homepage instead of rendering a second copy in the hero; it should remain in place as the visitor scrolls. Keep the existing information and interactions while reducing oversized vertical gaps throughout the page. Event posters should sit closer together in the fan, use a stronger orange, ember, plum, and near-black Halloween surface, and expose an explicit compact Details affordance so the cards read as clickable. Carousel controls retain the pumpkin form but use simple, legible directional arrows rather than face-like arrow artwork.
+
+## 10 October 2026 closing blocks removed
+
+Remove the orange “Ready for after dark?” closing CTA and the global footer/navigation block. Do not replace them until the organizer supplies the next implementation direction.
+
+## 10 October 2026 FAQ and contact guidance
+
+Place the FAQ as the final section of the homepage rather than on a separate page. It covers confirmed dates and location, registration, eligibility, multiple-event participation, team size and fees, rooms, schedule timing, what to bring, updates, and contact routing. General questions should be directed to the Techkriti organizing team from MGIT's Department of IT / CSBS. Do not publish a guessed email, phone number, Instagram URL, or coordinator name; clearly mark those contact details as pending until supplied.
+
+## 10 October 2026 homepage copy and archive cue
+
+Rename the event heading to “Pick your poison.” Rename the February archive heading to “Last edition’s ghosts” while retaining the explicit February 2026 previous-edition label. Remove the visible per-photo caption and the permanent swipe/drag/tap instruction beneath the stack. On the initial front photo only, show a small shaded “Touch or drag” cue and a brief motion hint that suggests the card can move backward; disable that motion for reduced-motion users.
+
+## 10 October 2026 display typography
+
+Use the organizer-supplied `HALLOWEEN.ttf` as the local display face for major headings. Keep Geist for body copy, navigation, controls, and event information. Preserve the font file inside the repository and load it through `next/font/local`; do not apply the former extreme negative tracking to this decorative face.
+
+## 10 October 2026 hamburger navigation
+
+Replace the standalone FAQ header link with a hamburger menu while keeping the Register action visible. The menu links to the banner revelation, event lineup, February 2026 previous-edition archive, homepage photo stack, and homepage FAQs. Keep the menu keyboard accessible, close it with Escape or an outside click, and do not invent unconfirmed promoter or sponsor content.
+
+## 11 October 2026 carousel motion and frame refinement
+
+The February photo stack auto-advances approximately every two seconds until the visitor first touches, clicks, drags, or keyboard-activates it, then remains manual. Each turn uses a clear card-exit and stack-settle transition. Use a thin compact dark-copper frame with small custom pumpkin and ghost ornaments rather than the previous thick border. Align the event poster division and Details controls to the same top edge with matching compact capsule geometry.
+
+## 11 October 2026 gallery stability and section cleanup
+
+Slow the February photo stack auto-advance interval to five seconds and keep the stage at one stable size while differently oriented photos use containment inside it. Remove the small banner-revelation caption below the video. Remove decorative divider rules between homepage sections while retaining the curved desktop hero outline and functional dividers inside components such as the FAQ list.
+
+## 11 October 2026 archive ornament simplification
+
+Remove the pumpkin ornament from the February photo stack. Keep only the small white ghost silhouette, without a circular badge, border, or colored background around it.
+
+## 11 October 2026 upright event rail and shorter FAQ
+
+Replace the overlapping tilted event fan and pumpkin navigation controls with one native horizontally scrollable rail. Every event poster stays upright, equal-sized, and vertically aligned, with scroll snapping and direct access to its existing details dialog. Reduce the homepage FAQ from eleven entries to six essential questions by combining related eligibility, team-size, fee, schedule, and venue topics and removing duplicated contact/update guidance.
+
+## 11 October 2026 event-list revert and contact correction
+
+Revert the upright horizontal event rail to the previously approved overlapping event fan with pumpkin previous/next controls; retain the shortened six-question FAQ. Correct the event name and route slug to “Period Cramps Simulator.” Show contact information directly in the homepage block as simple Name and Phone number rows, without a separate Contact button. The organizer name and phone number remain unconfirmed, so identify the Techkriti organizing team and mark the phone number as awaiting confirmation rather than inventing it.

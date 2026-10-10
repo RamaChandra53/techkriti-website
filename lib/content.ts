@@ -40,7 +40,7 @@ export const events: Event[] = [
   { ...pendingEventDetails, slug: "risk-poly", title: "Risk Poly", eyebrow: "Technical event", summary: "Poster-confirmed event from the October 2026 lineup. Details coming soon.", division: "Technical", category: "Event", accent: "electric" },
   { ...pendingEventDetails, slug: "mummy-wrap", title: "Mummy Wrap", eyebrow: "Non-technical event", summary: "Poster-confirmed event from the October 2026 lineup. Details coming soon.", division: "Non-Technical", category: "Event", accent: "coral" },
   { ...pendingEventDetails, slug: "ipl-auction", title: "IPL Auction", eyebrow: "Non-technical event", summary: "Poster-confirmed event from the October 2026 lineup. Details coming soon.", division: "Non-Technical", category: "Event", accent: "sky" },
-  { ...pendingEventDetails, slug: "periods-cramp", title: "Periods Cramp", eyebrow: "Non-technical event", summary: "Poster-confirmed event from the October 2026 lineup. Details coming soon.", division: "Non-Technical", category: "Event", accent: "acid" },
+  { ...pendingEventDetails, slug: "period-cramps-simulator", title: "Period Cramps Simulator", eyebrow: "Non-technical event", summary: "Poster-confirmed event from the October 2026 lineup. Details coming soon.", division: "Non-Technical", category: "Event", accent: "acid" },
   { ...pendingEventDetails, slug: "valo-and-codm", title: "VALO and CODM", eyebrow: "Non-technical event", summary: "Poster-confirmed event from the October 2026 lineup. Details coming soon.", division: "Non-Technical", category: "Event", accent: "electric" },
   { ...pendingEventDetails, slug: "vr-gaming", title: "VR Gaming", eyebrow: "Non-technical event", summary: "Poster-confirmed event from the October 2026 lineup. Details coming soon.", division: "Non-Technical", category: "Event", accent: "coral" },
   { ...pendingEventDetails, slug: "deadlift", title: "Deadlift", eyebrow: "Non-technical event", summary: "Poster-confirmed event from the October 2026 lineup. Details coming soon.", division: "Non-Technical", category: "Event", accent: "sky" },
@@ -52,10 +52,11 @@ export const sponsors: Sponsor[] = [];
 
 export const faqs: FAQ[] = [
   { question: "When and where is Techkriti?", answer: "Techkriti is scheduled for 16–17 October 2026 at Mahatma Gandhi Institute of Technology (MGIT), Hyderabad." },
-  { question: "What events are happening?", answer: "The poster-confirmed lineup includes five technical events and six non-technical events. Individual times, rooms, rules and registration links will be added as organizers release them." },
-  { question: "How do I register?", answer: "Each event will have a Register Now button that opens its official Google Form. Registration links will appear after the forms are ready." },
-  { question: "Where inside MGIT will events take place?", answer: "The campus rooms and venues are still being assigned. Confirmed room details will be listed with each event." },
-  { question: "Where can I follow updates?", answer: "The Instagram link will be added here once the official page URL is confirmed." }
+  { question: "What events are happening?", answer: "The confirmed lineup currently includes five technical events and six non-technical events. Open an event card for its latest published information." },
+  { question: "How do I register for an event?", answer: "Each event will link directly to its official Google Form when registration opens. If an event does not show a registration button yet, its form has not been published on this website." },
+  { question: "Can I participate in more than one event?", answer: "Participation limits and schedule conflicts have not yet been confirmed. Check the final timings and the rules on each event page before registering for multiple events." },
+  { question: "Who can enter, and are there team or fee requirements?", answer: "Eligibility, team sizes, and any entry fees may differ by event. Confirmed requirements will appear with each event before its registration link is published." },
+  { question: "When and where will each event take place?", answer: "The festival dates and MGIT campus are confirmed. Individual times and exact rooms are still pending and will appear with each event once approved." }
 ];
 
 export const announcements: Announcement[] = [];
