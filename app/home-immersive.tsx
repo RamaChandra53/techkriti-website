@@ -6,20 +6,21 @@ import { EventCarousel } from "@/components/event-carousel";
 import { ArchiveStory } from "@/components/archive-story";
 import { FAQList } from "@/components/faq-list";
 import { events, faqs } from "@/lib/content";
-import { EntranceBats } from "@/components/entrance-bats";
+import { StormBackground } from "@/components/storm-background";
+import { FestivalCountdown } from "@/components/festival-countdown";
 
 export default function HomeImmersive() {
   return <>
-    <section aria-labelledby="festival-title" className="relative isolate overflow-hidden lg:mx-5 lg:mt-5 lg:rounded-[2rem] lg:border lg:border-[#754936] lg:shadow-[0_28px_80px_#05030899] 2xl:mx-auto 2xl:max-w-[1500px]">
-      <div className="festival-hero-veil absolute inset-0" aria-hidden="true" />
-      <EntranceBats />
-      <Container className="relative flex min-h-[calc(100svh-60px)] flex-col justify-center py-12 sm:min-h-[calc(100svh-68px)] sm:py-10 lg:min-h-[calc(100svh-108px)] lg:py-16">
+    <StormBackground />
+    <section id="home" aria-labelledby="festival-title" className="relative isolate scroll-mt-[120px] overflow-hidden xl:scroll-mt-[104px]">
+      <Container className="relative flex min-h-[calc(100svh-120px)] flex-col justify-center py-8 xl:min-h-[calc(100svh-104px)]">
         <p className="eyebrow">16–17 October 2026 · MGIT, Hyderabad</p>
-        <h1 id="festival-title" className="mt-3 max-w-[680px] sm:mt-5">
+        <h1 id="festival-title" className="mt-3 max-w-[480px] sm:mt-4 lg:max-w-[min(480px,54svh)]">
           <Image src="/branding/techkriti-splatter-white.png" alt="Techkriti" width={2048} height={1536} priority className="h-auto w-full" />
-          <span className="display-heading mt-[-.15rem] block text-[clamp(2.7rem,10vw,7rem)] text-[var(--ember)]">After dark.</span>
+          <span className="display-heading mt-[-.15rem] block whitespace-nowrap text-[clamp(2.7rem,7vw,4rem)] text-[var(--ember)]">After dark.</span>
         </h1>
         <p className="mt-3 max-w-md text-base leading-relaxed text-[#f1e2e8] sm:mt-5 sm:text-xl">Technical + non-technical.<br />Two days. A whole new atmosphere.</p>
+        <FestivalCountdown />
       </Container>
     </section>
 

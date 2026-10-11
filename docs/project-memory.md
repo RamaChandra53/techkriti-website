@@ -184,3 +184,11 @@ Replace the overlapping tilted event fan and pumpkin navigation controls with on
 ## 11 October 2026 event-list revert and contact correction
 
 Revert the upright horizontal event rail to the previously approved overlapping event fan with pumpkin previous/next controls; retain the shortened six-question FAQ. Correct the event name and route slug to “Period Cramps Simulator.” Show contact information directly in the homepage block as simple Name and Phone number rows, without a separate Contact button. The organizer name and phone number remain unconfirmed, so identify the Techkriti organizing team and mark the phone number as awaiting confirmation rather than inventing it.
+
+## 11 October 2026 header and hero reference
+
+Remove the desktop hero's curved orange outline and inset card treatment so the artwork and copy sit in a full-width section. Use the supplied pill-navigation and rubber-segment references for the header, translated into the site's near-black, ember, cream, and plum palette: an orange active segment, clear links to Home, Events, Schedule, Venue, Sponsors, and FAQ, and a separate plum Register action. Remove the hamburger. On phones the segment row scrolls horizontally and remains directly usable; on laptops the active segment can also be dragged to another destination. The Venue link points to the existing campus and contact information page; Register continues to lead to event discovery until official forms are supplied.
+
+## 11 October 2026 atmospheric background and countdown
+
+The organizer explicitly requests continuous realistic rain, intermittent lightning revealing spectral ghosts, and flying bats on the existing castle wallpaper, preserving the current Techkriti wordmark. This supersedes earlier guidance against ambient animation for this background. Use textured transparent sprites, a pause control, reduced-motion support, and a lighter mobile particle budget. Add the reference-style days/hours/minutes/seconds countdown to the confirmed 16 October date; the reference's 09:30 opening time is not confirmed and must not be presented as fact. Fix the navigation with visible rubber stretching and settling on taps/clicks as well as pointer dragging. Asset prompts and behavior are recorded in `docs/atmosphere-assets.md`.
