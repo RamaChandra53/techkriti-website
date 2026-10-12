@@ -116,16 +116,6 @@ body:has(.event-registration-bar) footer { padding-bottom: calc(7rem + env(safe-
 .event-register-disabled { border: 1px solid #624c5c; border-radius: 3px; background: #27202a; color: #bdaeb8; cursor: not-allowed; }
 
 /* Event details follow the supplied mobile card composition. */
-.event-site-header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid #302a32; background: #151318; color: #f8f2ea; }
-.event-header-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(8rem, 1.35fr) 2.75rem; align-items: center; gap: 1rem; min-height: 5.25rem; }
-.event-header-primary { display: grid; min-height: 3rem; place-items: center; border-radius: 999px; background: #ed683b; color: #170d11; font-size: .9rem; font-weight: 800; text-align: center; }
-.event-header-menu { position: relative; }
-.event-header-menu summary { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; cursor: pointer; list-style: none; }
-.event-header-menu summary::-webkit-details-marker { display: none; }
-.event-header-menu summary svg { width: 1.45rem; height: 1.45rem; }
-.event-header-menu nav { position: absolute; top: calc(100% + 1rem); right: 0; display: grid; width: 12rem; padding: .5rem; border: 1px solid #40343e; border-radius: .75rem; background: #211c24; box-shadow: 0 1rem 2rem #0008; }
-.event-header-menu nav a { padding: .7rem; border-radius: .4rem; font-size: .9rem; }
-.event-header-menu nav a:hover, .event-header-menu nav a:focus-visible { background: #493039; }
 .event-detail-page { min-height: 100dvh; padding-bottom: 8rem; background: #100e13; color: #f8f2ea; }
 .event-detail-container { width: min(100%, 48rem); padding-top: 1.25rem; padding-bottom: 3rem; }
 .event-detail-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }

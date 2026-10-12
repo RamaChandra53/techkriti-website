@@ -5,7 +5,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Logo } from "./logo";
 import { Container } from "./container";
-import { Bars3Icon } from "@heroicons/react/24/outline";
 
 const menuItems = [
   { label: "Home", href: "/#home" },
@@ -15,6 +14,7 @@ const menuItems = [
 ] as const;
 
 function selectedItem(pathname: string, hash: string) {
+  if (pathname.startsWith("/events")) return 1;
   if (pathname === "/" && hash === "#discover") return 1;
   const index = menuItems.findIndex((item) => item.href === pathname);
   return index < 0 ? 0 : index;
@@ -119,14 +119,6 @@ export function SiteHeader() {
     if (target) setThumb({ left: target.getBoundingClientRect().left - trackBounds.left + track.scrollLeft, width: target.getBoundingClientRect().width });
     router.push(menuItems[nearest].href);
   };
-
-  if (pathname.startsWith("/events/")) return <header className="event-site-header">
-    <Container className="event-header-inner">
-      <Logo />
-      <Link href="/#discover" className="event-header-primary">Explore events</Link>
-      <details className="event-header-menu"><summary aria-label="Open navigation"><Bars3Icon aria-hidden="true" /></summary><nav aria-label="Event page navigation"><Link href="/">Home</Link><Link href="/#discover">Events</Link><Link href="/gallery">Past edition</Link><Link href="/sponsors">Sponsors</Link></nav></details>
-    </Container>
-  </header>;
 
   return <header className="site-header-plum sticky top-0 z-50 text-[#fff4e9]">
     <Container className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 py-2 xl:min-h-[104px] xl:flex-nowrap">

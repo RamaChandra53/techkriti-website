@@ -200,3 +200,7 @@ The organizer removed the hero countdown. Keep the small Explore events button a
 ## 12 October 2026 header surface
 
 Use a lighter shade within the dark plum palette behind the logo and pill navigation on the standard site header. Keep the dark navigation pill, light logo text, and orange active segment legible against it.
+
+## 12 October 2026 unified segmented header
+
+Use the same segmented Home, Events, Past, and Sponsors header on event detail pages as on the homepage. The Events segment is active on event routes; the separate Explore events and hamburger header is removed.
