@@ -204,3 +204,7 @@ Use a lighter shade within the dark plum palette behind the logo and pill naviga
 ## 12 October 2026 unified segmented header
 
 Use the same segmented Home, Events, Past, and Sponsors header on event detail pages as on the homepage. The Events segment is active on event routes; the separate Explore events and hamburger header is removed.
+
+## 12 October 2026 transparent header
+
+The shared segmented header has a transparent outer surface so the page background shows through. Keep the black navigation pill and orange active segment.
