@@ -59,8 +59,8 @@ for (const width of [320, 375, 390, 430, 768, 1024, 1440]) {
     await expect(page.locator("#archive .archive-carousel-card")).toHaveCount(4);
     await expect(page.locator("#archive .archive-carousel-count")).toHaveText("01 / 19");
     await expect(page.getByRole("link", { name: /register now/i })).toHaveCount(0);
-    await expect(page.locator("#discover .event-poster")).toHaveCount(11);
-    await expect(page.locator("#discover .event-poster-open")).toHaveCount(11);
+    await expect(page.locator("#discover .event-poster")).toHaveCount(9);
+    await expect(page.locator("#discover .event-poster-open")).toHaveCount(9);
     await expect(page.getByText("Tap the poster for details")).toHaveCount(0);
     await expect(page.getByRole("button", { name: "Technical", exact: true })).toHaveCount(0);
     if (width === 390) await page.locator("#discover").screenshot({ path: info.outputPath("event-fan-390.png") });
@@ -78,10 +78,18 @@ test("navigation, shareable filters, invalid slugs and archive", async ({ page }
   await page.getByRole("link", { name: "Register", exact: true }).click();
   await expect(page).toHaveURL(/#discover$/);
   await page.goto("/events");
-  await expect(page.getByRole("button", { name: /Show details for Poster Presentation/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /View Poster Presentation event page/ })).toBeVisible();
   await page.goto("/events/poster-presentation");
+  await expect(page.getByRole("heading", { name: "Poster Presentation", level: 1 })).toBeVisible();
+  await expect(page.getByAltText("Official Poster Presentation event poster")).toBeVisible();
+  await expect(page.getByText("Single", { exact: true })).toBeVisible();
+  await expect(page.getByText("₹49", { exact: true }).first()).toBeVisible();
   await page.getByRole("link", { name: "Back to events" }).click();
   await expect(page).toHaveURL(/\/#discover$/);
+  await page.goto("/events/image-prompting");
+  await expect(page).toHaveURL(/\/events\/brand-o-ween$/);
+  expect((await page.goto("/events/code-debug"))?.status()).toBe(404);
+  expect((await page.goto("/events/deadlift"))?.status()).toBe(404);
   const missing = await page.goto("/events/not-a-real-event");
   expect(missing?.status()).toBe(404);
   await page.goto("/gallery");
@@ -140,26 +148,20 @@ test("touch swiping advances the event counter", async ({ page }) => {
   await expect(page.locator('[aria-live="polite"]')).toContainText("02");
 });
 
-test("homepage poster opens compact details without navigating away", async ({ page }) => {
+test("homepage poster navigates directly to its event page", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
-  const poster = page.getByRole("button", { name: /Show details for Poster Presentation/ });
+  const poster = page.getByRole("link", { name: /View Poster Presentation event page/ });
   await poster.click();
-  const dialog = page.getByRole("dialog");
-  await expect(dialog).toBeVisible();
-  await expect(dialog.getByRole("heading", { name: "Poster Presentation" })).toBeVisible();
-  expect((await dialog.boundingBox())!.height).toBeLessThan(700);
-  await expect(page).toHaveURL(/\/$/);
-  await page.keyboard.press("Escape");
-  await expect(dialog).not.toBeVisible();
-  await expect(poster).toBeFocused();
+  await expect(page).toHaveURL(/\/events\/poster-presentation$/);
+  await expect(page.getByRole("heading", { name: "Poster Presentation", level: 1 })).toBeVisible();
 });
 
 test("gallery cycles all 19 photos on mobile and desktop, with no photo arrows", async ({ page }, info) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
   const gallery = page.locator("#archive .archive-carousel");
-  await expect(gallery.getByText("Swipe, drag, or tap the top photo to explore all 19 memories.")).toBeVisible();
+  await expect(gallery.getByText("Touch or drag", { exact: false })).toHaveCount(0);
   await expect(gallery.locator(".archive-carousel-card")).toHaveCount(4);
   await expect(gallery.locator(".archive-carousel-count")).toHaveText("01 / 19");
   await expect(gallery.getByRole("button", { name: "Next photo", exact: true })).toHaveCount(0);
@@ -233,12 +235,7 @@ for (const width of [320, 390, 1440]) {
     await expect(page.locator('[aria-live="polite"]')).toContainText("01");
     await page.keyboard.press("End");
     await expect(page.locator('[aria-live="polite"]')).toContainText("04");
-    await page.getByRole("button", { name: /Show details for Test fixture 4/ }).click();
-    await expect(page.getByRole("dialog")).toBeVisible();
-    await expect(page.getByRole("dialog").getByRole("heading", { name: "Test fixture 4" })).toBeVisible();
-    await page.getByRole("button", { name: "Close event details" }).click();
-    await expect(page.getByRole("dialog")).not.toBeVisible();
-    await expect(page).toHaveURL(/__component-test/);
+    await expect(page.getByRole("link", { name: /View Test fixture 4 event page/ })).toHaveAttribute("href", "/events/test-only-4");
     expect(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth)).toBe(false);
   });
 }
@@ -250,14 +247,14 @@ test("event details show essentials first and only supplied registration", async
   await expect(form).toHaveAttribute("href", fixtureEvents[0].registrationUrl!);
   await expect(form).toHaveAttribute("target", "_blank");
   await expect(form).toHaveAttribute("rel", "noopener noreferrer");
-  const essentials = await page.getByRole("complementary").boundingBox();
+  const essentials = await page.getByText("Date", { exact: true }).boundingBox();
   const about = await page.getByRole("heading", { name: "About the event" }).boundingBox();
   expect(essentials!.y).toBeLessThan(about!.y);
   await page.getByText("Read all 5 rules", { exact: true }).click();
   await expect(page.getByText("Test rule five", { exact: true })).toBeVisible();
   await openFixture(page, "missing-form");
   await expect(page.getByRole("link", { name: /Register now/ })).toHaveCount(0);
-  await expect(page.getByText("Registration link coming soon.")).toBeVisible();
+  await expect(page.getByText("Registration link coming soon")).toBeVisible();
 });
 
 test("key pages and populated controls have no automated accessibility violations", async ({ page }) => {

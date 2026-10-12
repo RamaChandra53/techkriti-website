@@ -34,7 +34,7 @@ If confirmed event data is not available yet, state that plainly. An honest empt
 | Event tracks | Technical and non-technical |
 | Registration | Each confirmed event will link directly to its official Google Form; the site will not store registrations |
 | Previous edition | February 2026, with a Telugu-movie-themed identity; its photos and past event references are archive material only |
-| Current content status | October event names, exact timings, MGIT rooms, rules, forms, sponsors, contact details, Instagram URL, and banner reveal video are not yet confirmed in `lib/content.ts` |
+| Current content status | October event names are poster-confirmed; exact timings, MGIT rooms, rules, forms, sponsors, contact details, Instagram URL, and October banner reveal video are not yet confirmed in `lib/content.ts`. The supplied reveal film is from February 2026. |
 
 The previous posters and screenshots were supplied to explain the earlier festival, not to authorize reusing their event lists or movie theme for October. The photos under `D:\Techkriti\photos feb 2026` and the optimized `public/archive/` images document the February edition. Always caption or label them as previous-edition material. Never present those images as scenes from the upcoming Halloween edition.
 
@@ -71,7 +71,7 @@ Arrival (often mobile/social link)
 
 Search/filter state should live in shareable URL parameters so an organizer or friend can send a filtered view. Combined filters, empty results, and reset must make sense. The schedule should be day-based and link confirmed entries to their event details. With an unconfirmed lineup, explain what is pending and give visitors a clear place to check later, rather than pretending the search has results.
 
-The banner reveal deserves a distinct place in the story. The organizer has a previous reveal video and expects a new banner reveal/revolution moment; confirm which video is approved for this edition and the exact public wording. Until a 2026 video is supplied, do not show a fake playable video or imply the prior reveal is new. When supplied, use a lightweight native player with controls, captions/transcript if speech matters, and a meaningful poster.
+The banner reveal deserves a distinct place in the story. The supplied `public/branding/revelation.mp4` is from the February 2026 previous edition and must be labeled as such. A new October reveal film is not yet confirmed. Use a lightweight native player with controls, captions/transcript if speech matters, and a meaningful poster when available.
 
 The Instagram page should be linked once its official URL is supplied. Do not guess the handle. The public site can share announcements, but authoritative registration remains in the event's Google Form.
 
@@ -155,7 +155,7 @@ Place the FAQ as the final section of the homepage rather than on a separate pag
 
 ## 10 October 2026 homepage copy and archive cue
 
-Rename the event heading to “Pick your poison.” Rename the February archive heading to “Last edition’s ghosts” while retaining the explicit February 2026 previous-edition label. Remove the visible per-photo caption and the permanent swipe/drag/tap instruction beneath the stack. On the initial front photo only, show a small shaded “Touch or drag” cue and a brief motion hint that suggests the card can move backward; disable that motion for reduced-motion users.
+Rename the event heading to “Pick your poison.” Rename the February archive heading to “Last edition’s ghosts” while retaining the explicit February 2026 previous-edition label. Remove the visible per-photo caption and all swipe/drag/tap instruction cues from the stack.
 
 ## 10 October 2026 display typography
 
@@ -192,3 +192,7 @@ Remove the desktop hero's curved orange outline and inset card treatment so the 
 ## 11 October 2026 atmospheric background and countdown
 
 The organizer explicitly requests continuous realistic rain, intermittent lightning revealing spectral ghosts, and flying bats on the existing castle wallpaper, preserving the current Techkriti wordmark. This supersedes earlier guidance against ambient animation for this background. Use textured transparent sprites, a pause control, reduced-motion support, and a lighter mobile particle budget. Add the reference-style days/hours/minutes/seconds countdown to the confirmed 16 October date; the reference's 09:30 opening time is not confirmed and must not be presented as fact. Fix the navigation with visible rubber stretching and settling on taps/clicks as well as pointer dragging. Asset prompts and behavior are recorded in `docs/atmosphere-assets.md`.
+
+## 12 October 2026 homepage copy update
+
+The organizer removed the hero countdown. Keep the small Explore events button above the former countdown position, linking to the on-page event section. The homepage FAQ heading is “Frightfully asked.” The FAQ entries remain until replacement questions are supplied.

@@ -37,8 +37,11 @@ export interface Event {
   rules?: string[];
   prizes?: string;
   registrationUrl?: string;
+  fees: { label: string; amount: number }[];
+  highlights: string[];
+  coordinators: { name: string; phone: string }[];
   /** Optimized, organizer-approved artwork under public/, e.g. /events/poster.webp. */
-  image?: { src: string; alt: string };
+  image?: { src: string; alt: string; width?: number; height?: number };
   featured?: boolean;
   accent: "electric" | "coral" | "sky" | "acid";
 }

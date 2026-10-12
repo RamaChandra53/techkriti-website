@@ -1,24 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Logo } from "./logo";
 import { Container } from "./container";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 
 const menuItems = [
   { label: "Home", href: "/#home" },
   { label: "Events", href: "/#discover" },
-  { label: "Schedule", href: "/schedule" },
-  { label: "Venue", href: "/contact" },
+  { label: "Past", href: "/gallery" },
   { label: "Sponsors", href: "/sponsors" },
-  { label: "FAQ", href: "/#faq" },
 ] as const;
 
 function selectedItem(pathname: string, hash: string) {
   if (pathname === "/" && hash === "#discover") return 1;
-  if (pathname === "/" && hash === "#faq") return 5;
   const index = menuItems.findIndex((item) => item.href === pathname);
   return index < 0 ? 0 : index;
 }
@@ -123,6 +120,14 @@ export function SiteHeader() {
     router.push(menuItems[nearest].href);
   };
 
+  if (pathname.startsWith("/events/")) return <header className="event-site-header">
+    <Container className="event-header-inner">
+      <Logo />
+      <Link href="/#discover" className="event-header-primary">Explore events</Link>
+      <details className="event-header-menu"><summary aria-label="Open navigation"><Bars3Icon aria-hidden="true" /></summary><nav aria-label="Event page navigation"><Link href="/">Home</Link><Link href="/#discover">Events</Link><Link href="/gallery">Past edition</Link><Link href="/sponsors">Sponsors</Link></nav></details>
+    </Container>
+  </header>;
+
   return <header className="sticky top-0 z-50 text-[#fff4e9]">
     <Container className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 py-2 xl:min-h-[104px] xl:flex-nowrap">
       <Logo />
@@ -134,7 +139,7 @@ export function SiteHeader() {
         onPointerUp={onPointerEnd}
         onPointerCancel={() => { dragRef.current = null; setDragging(false); const link = linkRefs.current[active]; if (link && trackRef.current) setThumb({ left: link.offsetLeft, width: link.offsetWidth }); }}
         onDragStart={(event) => event.preventDefault()}
-        className="header-segments order-3 flex w-full items-center overflow-x-auto rounded-full bg-[#0d0a12] p-1.5 xl:order-none xl:w-auto xl:overflow-visible"
+        className="header-segments order-3 grid w-full grid-cols-4 items-center overflow-x-auto rounded-full bg-black p-1.5 xl:order-none xl:w-auto xl:overflow-visible"
       >
         <span ref={thumbRef} className={`header-segments-thumb ${dragging ? "header-segments-thumb-dragging" : ""}`} style={{ left: thumb.left, width: thumb.width }} aria-hidden="true" />
         {menuItems.map((item, index) => <Link
@@ -143,10 +148,9 @@ export function SiteHeader() {
           href={item.href}
           aria-current={active === index ? "page" : undefined}
           onClick={(event) => { if (suppressClick.current) { event.preventDefault(); suppressClick.current = false; return; } setActive(index); }}
-          className={`header-segment relative z-10 inline-flex min-h-10 shrink-0 items-center justify-center rounded-full px-4 text-sm font-bold xl:min-h-12 2xl:px-6 2xl:text-base ${active === index ? "text-[#170d11]" : "text-[#fff4e9] hover:text-[#ffae7a]"}`}
+          className={`header-segment relative z-10 inline-flex min-h-10 w-full items-center justify-center rounded-full px-3 text-sm font-bold xl:min-h-12 2xl:px-4 2xl:text-base ${active === index ? "text-[#170d11]" : "text-[#fff4e9] hover:text-[#ffae7a]"}`}
         >{item.label}</Link>)}
       </nav>
-      <Link href="/#discover" className="header-register inline-flex min-h-11 items-center justify-center gap-1 rounded-full px-4 text-sm font-black sm:px-6 sm:text-base">Register <ArrowUpRightIcon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" /></Link>
     </Container>
   </header>;
 }

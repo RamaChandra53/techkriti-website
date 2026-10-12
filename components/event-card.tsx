@@ -5,8 +5,8 @@ import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
 export function EventCard({ event, discovery = false }: { event: Event; discovery?: boolean }) {
   return <article className="festival-card flex h-full min-w-0 flex-col overflow-hidden">
-    {event.image && <div className="relative aspect-[16/10] overflow-hidden bg-[#241925]">
-      <Image src={event.image.src} alt={event.image.alt} fill sizes={discovery ? "(max-width: 768px) 80vw, 640px" : "(max-width: 768px) 90vw, (max-width: 1280px) 45vw, 420px"} className="object-cover" />
+    {event.image && <div className="relative overflow-hidden bg-[#0b080d]" style={{ aspectRatio: `${event.image.width ?? 16} / ${event.image.height ?? 10}` }}>
+      <Image src={event.image.src} alt={event.image.alt} fill sizes={discovery ? "(max-width: 768px) 80vw, 640px" : "(max-width: 768px) 90vw, (max-width: 1280px) 45vw, 420px"} className="object-contain" />
     </div>}
     <div data-track={event.division} className={`event-poster-art relative flex flex-col justify-between p-5 sm:p-7 ${event.image ? "min-h-36" : "min-h-56 sm:min-h-64"}`}>
       {!event.image && <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true"><span className="absolute -right-16 -top-24 h-80 w-80 rotate-[-25deg] rounded-[40%] border border-[#a889c6]/20" /><span className="absolute -right-8 -top-16 h-80 w-80 rotate-[-25deg] rounded-[40%] border border-[#ff7938]/15" /></div>}

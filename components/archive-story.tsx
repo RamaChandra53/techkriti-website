@@ -14,7 +14,7 @@ export function ArchiveFigure({ photo, wide = false, className = "" }: { photo: 
   </figure>;
 }
 
-function StackCard({ photo, depth, number, advance, onInteract, showCue }: { photo: ArchivePhoto; depth: number; number: number; advance: () => void; onInteract: () => void; showCue: boolean }) {
+function StackCard({ photo, depth, number, advance, onInteract }: { photo: ArchivePhoto; depth: number; number: number; advance: () => void; onInteract: () => void }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const suppressClick = useRef(false);
@@ -30,7 +30,7 @@ function StackCard({ photo, depth, number, advance, onInteract, showCue }: { pho
 
   return <motion.button
     type="button"
-    className={`archive-carousel-card ${showCue ? "archive-carousel-card-invite" : ""}`}
+    className="archive-carousel-card"
     style={{ zIndex: 5 - depth, x: isFront ? x : 0, y: isFront ? y : 0, pointerEvents: isPresent && isFront ? "auto" : "none" }}
     initial={{ opacity: 0, scale: .94 }}
     animate={{ opacity: 1, top: -depth * 9, left: depth === 0 ? 0 : depth % 2 ? -depth * 18 : depth * 16, rotateZ: depth * (depth % 2 ? -6 : 6), scale: 1 - depth * .035 }}
@@ -48,8 +48,7 @@ function StackCard({ photo, depth, number, advance, onInteract, showCue }: { pho
     aria-hidden={!isPresent || !isFront}
     aria-label={isPresent && isFront ? `Photo ${number} of ${archivePhotos.length}: ${photo.alt}. Show next photo` : undefined}
   >
-    <span className="archive-carousel-photo"><Image src={photo.src} alt="" fill sizes="(max-width: 640px) 86vw, 620px" className="pointer-events-none object-contain" draggable={false} priority={isFront && number === 1} /></span>
-    {showCue && <span className="archive-carousel-cue" aria-hidden="true">Touch or drag <span>→</span></span>}
+    <span className="archive-carousel-photo"><Image src={photo.src} alt="" fill sizes="(max-width: 640px) 86vw, 620px" className="pointer-events-none object-contain" draggable={false} loading="eager" /></span>
     <span className="archive-ornament-ghost" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M5 24V13C5 6 9 3 14 3s9 3 9 10v11l-3-2-3 2-3-2-3 2-3-2-3 2Z"/><circle cx="11" cy="12" r="1.4"/><circle cx="17" cy="12" r="1.4"/></svg></span>
   </motion.button>;
 }
@@ -71,7 +70,7 @@ export function ArchiveStory() {
   return <div className="archive-carousel" aria-label="February 2026 Techkriti photo archive">
     <div className="archive-carousel-stage">
       <AnimatePresence initial={false}>
-        {visible.map((photoIndex, depth) => <StackCard key={archivePhotos[photoIndex].src} photo={archivePhotos[photoIndex]} depth={depth} number={photoIndex + 1} advance={advance} onInteract={stopAutoTurn} showCue={depth === 0 && !interacted} />)}
+        {visible.map((photoIndex, depth) => <StackCard key={archivePhotos[photoIndex].src} photo={archivePhotos[photoIndex]} depth={depth} number={photoIndex + 1} advance={advance} onInteract={stopAutoTurn} />)}
       </AnimatePresence>
     </div>
     <div className="archive-carousel-meta" aria-live="polite" aria-atomic="true">

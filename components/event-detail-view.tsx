@@ -1,49 +1,62 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeftIcon, ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon, ArrowUpRightIcon, CalendarDaysIcon, ClockIcon, MapPinIcon, TicketIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import type { Event } from "@/lib/types";
 import { Container } from "./container";
+import { EventShareButton } from "./event-share-button";
 
-function RegistrationLink({ event, className = "" }: { event: Event; className?: string }) {
-  if (!event.registrationUrl) return null;
-  return <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className={`button-flame flex min-h-12 items-center justify-between gap-4 rounded-sm px-5 py-4 font-bold ${className}`}>Register now <ArrowUpRightIcon className="h-5 w-5" aria-hidden="true" /><span className="sr-only"> for {event.title} (Google Form opens in a new tab)</span></a>;
+function RegistrationAction({ event }: { event: Event }) {
+  if (!event.registrationUrl) return <span aria-disabled="true" className="event-register-disabled">Registration soon</span>;
+  return <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className="event-register-action"><TicketIcon className="h-5 w-5" aria-hidden="true" /> Register <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" /><span className="sr-only"> for {event.title}, opens in a new tab</span></a>;
+}
+
+function Fact({ icon, label, children }: { icon: React.ReactNode; label: string; children: React.ReactNode }) {
+  return <div className="event-fact"><dt>{icon}<span>{label}</span></dt><dd>{children}</dd></div>;
 }
 
 export function EventDetailView({ event }: { event: Event }) {
-  const dayLabel = event.day ? (event.day === 1 ? "Friday, 16 October" : "Saturday, 17 October") : "16–17 October 2026";
-  const rules = event.rules?.length ? <ul className="list-disc space-y-3 pl-5 text-[var(--muted)]">{event.rules.map((rule) => <li key={rule}>{rule}</li>)}</ul> : null;
-  return <>
-    <section className="section-glow border-b border-[var(--line)] py-10 sm:py-16">
-      <Container>
-        <Link href="/#discover" className="text-link inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#ffb386]"><ArrowLeftIcon className="h-4 w-4" aria-hidden="true" /> Back to events</Link>
-        <p className="eyebrow mt-8">{event.division} · {event.category}</p>
-        <h1 className="display-heading mt-4 max-w-6xl break-words text-[clamp(2.8rem,7vw,7rem)]">{event.title}</h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">{event.summary}</p>
-      </Container>
-    </section>
-    <Container className="grid gap-10 py-10 sm:py-16 lg:grid-cols-[minmax(0,1fr)_23rem] lg:gap-16">
-      <aside className="order-first h-fit rounded-md border border-[#725467] bg-[var(--surface)] p-6 lg:order-last lg:sticky lg:top-24">
-        <h2 className="eyebrow">The essentials</h2>
-        <dl className="mt-5 grid gap-5">
-          <div><dt className="text-xs font-bold uppercase tracking-[.12em] text-[var(--muted)]">When</dt><dd className="mt-1 font-semibold">{dayLabel}<br />{event.time ?? "Schedule to be announced"}</dd></div>
-          <div><dt className="text-xs font-bold uppercase tracking-[.12em] text-[var(--muted)]">Where</dt><dd className="mt-1 font-semibold">MGIT · {event.venue}</dd></div>
-          <div><dt className="text-xs font-bold uppercase tracking-[.12em] text-[var(--muted)]">Team size</dt><dd className="mt-1 font-semibold">{event.teamSize}</dd></div>
-          <div><dt className="text-xs font-bold uppercase tracking-[.12em] text-[var(--muted)]">Eligibility</dt><dd className="mt-1 leading-relaxed">{event.eligibility}</dd></div>
-        </dl>
-        {event.registrationUrl ? <><RegistrationLink event={event} className="mt-6 hidden lg:flex" /><p className="mt-4 hidden text-xs text-[var(--muted)] lg:block">Registration opens in Google Forms.</p></> : <p className="mt-6 border-t border-[var(--line)] pt-4 text-sm text-[var(--muted)]">Registration link coming soon.</p>}
-      </aside>
-      <div className="min-w-0">
-        {event.image && <div className="relative mb-10 aspect-[16/10] overflow-hidden rounded-md"><Image src={event.image.src} alt={event.image.alt} fill sizes="(max-width: 1024px) 90vw, 60vw" className="object-cover" /></div>}
-        <section aria-labelledby="about-event"><h2 id="about-event" className="text-2xl font-extrabold tracking-[-.04em] sm:text-3xl">About the event</h2><p className="muted-copy mt-5 whitespace-pre-line text-base sm:text-lg">{event.description}</p></section>
-        {(rules || event.rulesUrl) && <section className="mt-10 border-t border-[var(--line)] pt-7" aria-labelledby="event-rules">
-          <h2 id="event-rules" className="text-2xl font-extrabold tracking-[-.04em]">Rules</h2>
-          {rules && (event.rules!.length > 4 ? <details className="mt-4 rounded-sm border border-[#725467] p-4"><summary className="min-h-11 cursor-pointer py-2 font-semibold text-[#ffb386]">Read all {event.rules!.length} rules</summary><div className="pb-2 pt-4">{rules}</div></details> : <div className="mt-5">{rules}</div>)}
-          {event.rulesUrl && <a href={event.rulesUrl} target="_blank" rel="noopener noreferrer" className="text-link mt-5 inline-flex min-h-11 items-center gap-2 font-semibold text-[#ffb386]">Open full rules <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>}
-        </section>}
-        {event.prizes && <section className="mt-10 border-t border-[var(--line)] pt-7" aria-labelledby="event-prizes"><h2 id="event-prizes" className="text-2xl font-extrabold tracking-[-.04em]">Prizes</h2><p className="muted-copy mt-5">{event.prizes}</p></section>}
+  const lowestFee = Math.min(...event.fees.map((fee) => fee.amount));
+  const date = event.day === 1 ? "16 Oct 2026" : event.day === 2 ? "17 Oct 2026" : "16–17 Oct 2026";
+
+  return <div className="event-detail-page">
+    <Container className="event-detail-container">
+      <div className="event-detail-actions">
+        <Link href="/#discover" className="event-back"><ArrowLeftIcon className="h-5 w-5" aria-hidden="true" />Back to events</Link>
+        <EventShareButton title={event.title} />
       </div>
 
+      {event.image && <figure className="event-poster-frame"><Image src={event.image.src} alt={event.image.alt} width={event.image.width ?? 1200} height={event.image.height ?? 1200} priority sizes="(max-width: 720px) calc(100vw - 3rem), 760px" /></figure>}
+
+      <section className="event-detail-panel event-info-panel" aria-labelledby="event-title">
+        <h1 id="event-title">{event.title}</h1>
+        <p className="event-organizer">Techkriti <span>· MGIT</span></p>
+        <p className="event-category">{event.division} · {event.category}</p>
+        <dl className="event-facts">
+          <Fact icon={<CalendarDaysIcon aria-hidden="true" />} label="Date">{date}</Fact>
+          <Fact icon={<ClockIcon aria-hidden="true" />} label="Time">{event.time ?? "To be announced"}</Fact>
+          <Fact icon={<UserGroupIcon aria-hidden="true" />} label="Format">{event.teamSize}</Fact>
+          <Fact icon={<MapPinIcon aria-hidden="true" />} label="Location">{event.venue}</Fact>
+        </dl>
+      </section>
+
+      <section className="event-detail-panel event-about-panel" aria-labelledby="about-event">
+        <h2 id="about-event">About this event</h2>
+        <p className="event-about-summary">{event.summary}</p>
+        <ul>{event.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul>
+        <p className="event-about-note">Exact event time and eligibility will be published when confirmed.</p>
+      </section>
+
+      <section className="event-detail-panel event-tickets-panel" aria-labelledby="event-tickets">
+        <h2 id="event-tickets"><TicketIcon aria-hidden="true" /> Tickets</h2>
+        <div className="event-ticket-list">{event.fees.map((fee) => <article key={fee.label} className="event-fee-card"><h3>{fee.label}</h3><p className="event-ticket-type">Event pass</p><p className="event-price-label">Price</p><p className="event-ticket-price">₹{fee.amount}</p></article>)}</div>
+      </section>
+
+      <section className="event-detail-panel event-venue-panel" aria-labelledby="event-venue">
+        <h2 id="event-venue">Venue</h2>
+        <div className="event-venue-content"><span className="event-venue-icon"><MapPinIcon aria-hidden="true" /></span><div><p className="event-venue-name">{event.venue}</p><p>Mahatma Gandhi Institute of Technology, Hyderabad</p></div></div>
+      </section>
     </Container>
-    {event.registrationUrl && <div className="event-registration-bar fixed inset-x-0 bottom-0 z-40 border-t border-[#765165] bg-[#0d0a12] p-3 pb-[calc(.75rem+env(safe-area-inset-bottom))] lg:hidden"><RegistrationLink event={event} className="mx-auto max-w-lg" /></div>}
-  </>;
+
+    <div className="event-registration-bar"><div className="event-registration-inner"><div><p className="event-starts-label">Starts from</p><p className="event-starts-price">₹{lowestFee}</p></div><RegistrationAction event={event} /></div></div>
+  </div>;
 }

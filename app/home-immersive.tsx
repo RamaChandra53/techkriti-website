@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { UserGroupIcon } from "@heroicons/react/24/outline";
 import { BannerReveal } from "@/components/banner-reveal";
 import { Container } from "@/components/container";
@@ -7,20 +8,19 @@ import { ArchiveStory } from "@/components/archive-story";
 import { FAQList } from "@/components/faq-list";
 import { events, faqs } from "@/lib/content";
 import { StormBackground } from "@/components/storm-background";
-import { FestivalCountdown } from "@/components/festival-countdown";
 
 export default function HomeImmersive() {
   return <>
     <StormBackground />
     <section id="home" aria-labelledby="festival-title" className="relative isolate scroll-mt-[120px] overflow-hidden xl:scroll-mt-[104px]">
-      <Container className="relative flex min-h-[calc(100svh-120px)] flex-col justify-center py-8 xl:min-h-[calc(100svh-104px)]">
+      <Container className="relative flex flex-col pb-3 pt-5 sm:pb-5 sm:pt-8">
         <p className="eyebrow">16–17 October 2026 · MGIT, Hyderabad</p>
         <h1 id="festival-title" className="mt-3 max-w-[480px] sm:mt-4 lg:max-w-[min(480px,54svh)]">
           <Image src="/branding/techkriti-splatter-white.png" alt="Techkriti" width={2048} height={1536} priority className="h-auto w-full" />
           <span className="display-heading mt-[-.15rem] block whitespace-nowrap text-[clamp(2.7rem,7vw,4rem)] text-[var(--ember)]">After dark.</span>
         </h1>
-        <p className="mt-3 max-w-md text-base leading-relaxed text-[#f1e2e8] sm:mt-5 sm:text-xl">Technical + non-technical.<br />Two days. A whole new atmosphere.</p>
-        <FestivalCountdown />
+        <p className="mt-3 max-w-3xl self-center text-center text-[clamp(1.25rem,3vw,1.8rem)] font-semibold leading-snug tracking-[-.025em] text-[#fff4e9] sm:mt-5">Two nights. Eleven events. Enter if you dare.</p>
+        <Link href="#discover" className="header-register mt-4 inline-flex min-h-10 items-center self-center justify-center rounded-full px-5 py-2 text-xs font-bold uppercase tracking-[.12em]">Explore events</Link>
       </Container>
     </section>
 
@@ -48,7 +48,7 @@ export default function HomeImmersive() {
       <Container className="max-w-5xl">
         <div className="mb-6 sm:mb-8">
           <p className="eyebrow">Before you arrive</p>
-          <h2 id="faq-title" className="display-heading mt-3 text-[clamp(2.8rem,6vw,5.5rem)]">Questions, answered.</h2>
+          <h2 id="faq-title" className="display-heading mt-3 text-[clamp(2.8rem,6vw,5.5rem)]">Frightfully asked.</h2>
         </div>
         <FAQList items={faqs} />
         <div className="mt-8 grid gap-4 border border-[#704832] bg-[#160e17]/90 p-5 sm:grid-cols-[auto_1fr] sm:items-start sm:p-6">

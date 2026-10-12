@@ -9,6 +9,7 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:3100",
     browserName: "chromium",
+    channel: "chrome",
     reducedMotion: "reduce",
     trace: "retain-on-failure",
   },

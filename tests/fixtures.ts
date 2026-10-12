@@ -16,5 +16,8 @@ export const fixtureEvents: Event[] = Array.from({ length: 4 }, (_, index) => ({
   teamSize: "Test team",
   rules: ["Test rule one", "Test rule two", "Test rule three", "Test rule four", "Test rule five"],
   registrationUrl: index === 0 ? "https://forms.gle/test-only-do-not-register" : undefined,
+  fees: [{ label: "Test entry", amount: 49 + index * 10 }],
+  highlights: ["Test highlight one", "Test highlight two"],
+  coordinators: [{ name: "Test coordinator", phone: "+91 90000 00000" }],
   accent: "coral",
 }));
