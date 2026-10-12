@@ -172,8 +172,7 @@ body:has(.event-registration-bar) footer { padding-bottom: calc(7rem + env(safe-
 @media (max-width: 380px) { .event-register-action, .event-register-disabled { min-width: 9rem; font-size: .85rem; } }
 .header-register { border: 2px solid #0d0a12; background: #ff7938; color: #170d11; box-shadow: 0 4px 0 #0d0a12; transition: background-color 220ms ease, transform 220ms ease; }
 .header-register:hover { background: #ffa16a; transform: translateY(-1px); }
-.site-header-light { border-bottom: 1px solid #d3c2b6; background: #eee2d7; }
-.site-header-light a[aria-label^="Techkriti"] { color: #241820; }
+.site-header-plum { border-bottom: 1px solid #4b3b4b; background: #29212c; }
 .header-segments { position: relative; scrollbar-width: none; touch-action: pan-x; }
 .header-segments::-webkit-scrollbar { display: none; }
 .header-segments-thumb { position: absolute; top: .375rem; bottom: .375rem; border-radius: 999px; background: var(--ember); pointer-events: none; }

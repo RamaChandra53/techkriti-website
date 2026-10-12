@@ -199,4 +199,4 @@ The organizer removed the hero countdown. Keep the small Explore events button a
 
 ## 12 October 2026 header surface
 
-Use a light warm shade behind the logo and pill navigation on the standard site header. Keep the dark navigation pill and orange active segment legible against it.
+Use a lighter shade within the dark plum palette behind the logo and pill navigation on the standard site header. Keep the dark navigation pill, light logo text, and orange active segment legible against it.
