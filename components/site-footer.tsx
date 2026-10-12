@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/content";
 import { Container } from "./container";
 import { Logo } from "./logo";
 
-const footerLinks = [["About", "/about"], ["Schedule", "/schedule"], ["Gallery", "/gallery"], ["FAQs", "/faq"], ["Contact", "/contact"], ["Sponsors", "/sponsors"]] as const;
+const footerLinks = [["About", "/about"], ["Schedule", "/schedule"], ["Memories", "/#archive"], ["FAQs", "/faq"], ["Contact", "/contact"], ["Sponsors", "/#sponsors"]] as const;
 
 export function SiteFooter() {
   return <footer className="border-t border-[var(--line)] bg-[#09070d]/85 py-9 text-[var(--text)] sm:py-12">

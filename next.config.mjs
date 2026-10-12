@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  images: { unoptimized: true },
   async redirects() {
     return [
       { source: "/events/image-prompting", destination: "/events/brand-o-ween", permanent: true },

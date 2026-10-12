@@ -16,8 +16,8 @@ export default {
       },
       boxShadow: { editorial: "var(--shadow-card)" },
       fontFamily: {
-        sans: ["var(--font-geist)", "ui-sans-serif", "system-ui"],
-        display: ["var(--font-geist)", "ui-sans-serif", "system-ui"]
+        sans: ["var(--font-roboto-slab)", "ui-sans-serif", "system-ui"],
+        display: ["var(--font-roboto-slab)", "ui-sans-serif", "system-ui"]
       }
     }
   },

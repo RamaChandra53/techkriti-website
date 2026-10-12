@@ -7,6 +7,7 @@ import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
 const halloween = localFont({ src: "./fonts/HALLOWEEN.ttf", variable: "--font-halloween", display: "swap", weight: "400" });
+const robotoSlab = localFont({ src: "./fonts/RobotoSlab-Variable.ttf", variable: "--font-roboto-slab", display: "swap", weight: "100 900" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -20,5 +21,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#0d0a12" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body className={`${geist.variable} ${halloween.variable} font-sans antialiased`}><a href="#main" className="fixed left-4 top-4 z-[100] -translate-y-24 bg-[#211521] px-5 py-3 font-bold text-white focus:translate-y-0">Skip to content</a><SiteHeader /><main id="main" className="w-full max-w-full overflow-x-clip">{children}</main></body></html>;
+  return <html lang="en"><body className={`${geist.variable} ${halloween.variable} ${robotoSlab.variable} font-sans antialiased`}><a href="#main" className="fixed left-4 top-4 z-[100] -translate-y-24 bg-[#211521] px-5 py-3 font-bold text-white focus:translate-y-0">Skip to content</a><SiteHeader /><main id="main" className="w-full max-w-full overflow-x-clip">{children}</main></body></html>;
 }

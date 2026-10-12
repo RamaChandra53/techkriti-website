@@ -7,17 +7,17 @@ import { Logo } from "./logo";
 import { Container } from "./container";
 
 const menuItems = [
-  { label: "Home", href: "/#home" },
   { label: "Events", href: "/#discover" },
-  { label: "Past", href: "/gallery" },
-  { label: "Sponsors", href: "/sponsors" },
+  { label: "Memories", href: "/#archive" },
+  { label: "Sponsors", href: "/#sponsors" },
 ] as const;
 
 function selectedItem(pathname: string, hash: string) {
-  if (pathname.startsWith("/events")) return 1;
-  if (pathname === "/" && hash === "#discover") return 1;
+  if (pathname.startsWith("/events")) return 0;
+  if (pathname === "/" && hash === "#discover") return 0;
+  if (pathname === "/" && hash === "#archive") return 1;
   const index = menuItems.findIndex((item) => item.href === pathname);
-  return index < 0 ? 0 : index;
+  return index < 0 ? -1 : index;
 }
 
 export function SiteHeader() {
@@ -41,7 +41,7 @@ export function SiteHeader() {
 
   useLayoutEffect(() => {
     const track = trackRef.current;
-    const link = linkRefs.current[active];
+    const link = active >= 0 ? linkRefs.current[active] : null;
     if (!track || !link) return;
     const measure = () => {
       const trackBounds = track.getBoundingClientRect();
@@ -71,7 +71,7 @@ export function SiteHeader() {
   }, [active]);
 
   useEffect(() => {
-    linkRefs.current[active]?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "nearest", inline: "nearest" });
+    if (active >= 0) linkRefs.current[active]?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "nearest", inline: "nearest" });
   }, [active]);
 
   const onPointerDown = (event: React.PointerEvent<HTMLElement>) => {
@@ -121,7 +121,7 @@ export function SiteHeader() {
   };
 
   return <header className="site-header-plum sticky top-0 z-50 text-[#fff4e9]">
-    <Container className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 py-2 xl:min-h-[104px] xl:flex-nowrap">
+    <Container className="flex min-w-0 items-center gap-2 py-2 xl:min-h-[104px] xl:gap-4">
       <Logo />
       <nav
         ref={trackRef}
@@ -129,9 +129,9 @@ export function SiteHeader() {
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerEnd}
-        onPointerCancel={() => { dragRef.current = null; setDragging(false); const link = linkRefs.current[active]; if (link && trackRef.current) setThumb({ left: link.offsetLeft, width: link.offsetWidth }); }}
+        onPointerCancel={() => { dragRef.current = null; setDragging(false); const link = active >= 0 ? linkRefs.current[active] : null; if (link && trackRef.current) setThumb({ left: link.offsetLeft, width: link.offsetWidth }); }}
         onDragStart={(event) => event.preventDefault()}
-        className="header-segments order-3 grid w-full grid-cols-4 items-center overflow-x-auto rounded-full bg-black p-1.5 xl:order-none xl:w-auto xl:overflow-visible"
+        className="header-segments min-w-0 flex-1 grid grid-cols-3 items-center overflow-x-auto rounded-full bg-black p-1.5"
       >
         <span ref={thumbRef} className={`header-segments-thumb ${dragging ? "header-segments-thumb-dragging" : ""}`} style={{ left: thumb.left, width: thumb.width }} aria-hidden="true" />
         {menuItems.map((item, index) => <Link
