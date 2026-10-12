@@ -128,7 +128,7 @@ export function SiteHeader() {
     </Container>
   </header>;
 
-  return <header className="sticky top-0 z-50 text-[#fff4e9]">
+  return <header className="site-header-light sticky top-0 z-50 text-[#fff4e9]">
     <Container className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 py-2 xl:min-h-[104px] xl:flex-nowrap">
       <Logo />
       <nav

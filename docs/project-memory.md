@@ -196,3 +196,7 @@ The organizer explicitly requests continuous realistic rain, intermittent lightn
 ## 12 October 2026 homepage copy update
 
 The organizer removed the hero countdown. Keep the small Explore events button above the former countdown position, linking to the on-page event section. The homepage FAQ heading is “Frightfully asked.” The FAQ entries remain until replacement questions are supplied.
+
+## 12 October 2026 header surface
+
+Use a light warm shade behind the logo and pill navigation on the standard site header. Keep the dark navigation pill and orange active segment legible against it.
