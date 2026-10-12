@@ -123,7 +123,7 @@ export function SiteHeader() {
     router.push(menuItems[nearest].href);
   };
 
-  return <header className="sticky top-0 z-50 bg-[#1b1420]/95 text-[#fff4e9] backdrop-blur-lg">
+  return <header className="sticky top-0 z-50 text-[#fff4e9]">
     <Container className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 py-2 xl:min-h-[104px] xl:flex-nowrap">
       <Logo />
       <nav

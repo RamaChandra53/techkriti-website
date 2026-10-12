@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 
 export function StormBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
@@ -17,7 +16,7 @@ export function StormBackground() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx || paused || reduced || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!canvas || !ctx || reduced || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let width = 0, height = 0, frame = 0, last = 0, time = 0;
     let nextStrike = 2.5, strikeAt = -10;
     let bolt: { x: number; y: number }[] = [];
@@ -140,10 +139,9 @@ export function StormBackground() {
     document.addEventListener("visibilitychange", visibility);
     frame = requestAnimationFrame(render);
     return () => { cancelAnimationFrame(frame); window.removeEventListener("resize", resize); document.removeEventListener("visibilitychange", visibility); ctx.clearRect(0, 0, width, height); };
-  }, [paused, reduced]);
+  }, [reduced]);
 
   return <>
     <canvas ref={canvasRef} className="storm-canvas" aria-hidden="true" />
-    {!reduced && <button className="storm-toggle" type="button" aria-pressed={paused} onClick={() => setPaused(!paused)}>{paused ? "Play atmosphere" : "Pause atmosphere"}</button>}
   </>;
 }
