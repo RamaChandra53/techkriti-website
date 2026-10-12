@@ -25,7 +25,7 @@ Add matching sessions to `schedule` when their times and rooms are confirmed. Sp
 
 Optional event artwork uses `image: { src, alt }`; place optimized files under `public/events/`. Cards and event details will display it automatically. Inline `rules` and `prizes` are optional.
 
-The revelation section uses the supplied February 2026 previous-edition film at `public/branding/revelation.mp4`, with native controls, inline playback, and `preload="metadata"`. It does not autoplay. Add an approved October film to `siteConfig.bannerVideoUrl` when one is supplied, and update the section if it should show both films. Add the actual Instagram URL to `siteConfig.social.instagram`; the footer and contact page can then expose it.
+The revelation section uses the supplied February 2025 previous-edition film at `public/branding/revelation.mp4`, with native controls, inline playback, and `preload="metadata"`. It does not autoplay. Add an approved October film to `siteConfig.bannerVideoUrl` when one is supplied, and update the section if it should show both films. Add the actual Instagram URL to `siteConfig.social.instagram`; the footer and contact page can then expose it.
 
 ## Verification
 

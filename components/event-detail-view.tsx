@@ -25,7 +25,7 @@ export function EventDetailView({ event }: { event: Event }) {
         <EventShareButton title={event.title} />
       </div>
 
-      {event.image && <figure className="event-poster-frame"><Image src={event.image.src} alt={event.image.alt} width={event.image.width ?? 1200} height={event.image.height ?? 1200} priority sizes="(max-width: 720px) calc(100vw - 3rem), 760px" /></figure>}
+      {event.image && <figure className={`event-poster-frame ${event.image.height && event.image.width && event.image.height > event.image.width ? "event-poster-portrait" : "event-poster-landscape"}`}><Image src={event.image.src} alt={event.image.alt} fill priority sizes="(max-width: 720px) calc(100vw - 3rem), 760px" className="event-poster-image" /></figure>}
 
       <section className="event-detail-panel event-info-panel" aria-labelledby="event-title">
         <h1 id="event-title">{event.title}</h1>

@@ -17,7 +17,7 @@ flowchart TD
     Events --> Detail
     Detail -->|registrationUrl supplied| Form[Official Google Form in new tab]
     Detail -->|URL absent| NoForm[Registration coming soon]
-    Discovery --> Photos[Last time at Techkriti: February 2026 photos]
+    Discovery --> Photos[Last time at Techkriti: February 2025 photos]
     Photos --> Gallery[Editorial photo archive]
     Photos --> CTA[Final Explore Events / Register CTA]
     CTA --> Events
@@ -79,7 +79,7 @@ Unknown event slugs return 404. Shared query URLs remain supported for organizer
 2. Put optimized event artwork in `public/events/` and supply `image.src` / `image.alt` if available. No UI rewrite is needed.
 3. Add real `registrationUrl` values from Google Forms; absent URLs keep registration hidden.
 4. Add related schedule items after times and rooms are confirmed.
-5. Update contact/social/sponsor data when approved. The current film is from February 2026 in `siteConfig.previousBannerVideoUrl`; add an approved October film to `siteConfig.bannerVideoUrl` when supplied.
+5. Update contact/social/sponsor data when approved. The current film is from February 2025 in `siteConfig.previousBannerVideoUrl`; add an approved October film to `siteConfig.bannerVideoUrl` when supplied.
 6. Run content validation, lint, type checking, build, and browser tests. Review a Vercel preview before production.
 
 The existing content validator detects known placeholder tokens and invalid Google Form hosts in production. It does not certify real-world accuracy or require non-empty event/schedule arrays.

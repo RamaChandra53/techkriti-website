@@ -72,16 +72,46 @@ a, button, input, select, summary { -webkit-tap-highlight-color: transparent; }
 .past-guests-kicker { color: var(--ember); font-size: .65rem; font-weight: 800; letter-spacing: .32em; text-align: left; text-transform: uppercase; }
 .past-guests-title { margin-top: 1rem; color: #f4e9d9; font-family: var(--font-halloween), Georgia, serif; font-size: clamp(3rem, 8vw, 6.2rem); font-weight: 400; letter-spacing: .015em; line-height: .94; text-align: left; text-wrap: balance; }
 .past-guests-title span { color: var(--ember); }
-.past-guests-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: clamp(1.25rem, 8vw, 5rem); max-width: 50rem; margin: clamp(3rem, 9vw, 6rem) auto 0; }
-.past-guest-card { text-align: left; }
-.past-guest-card:nth-child(2) { margin-top: clamp(2rem, 8vw, 5rem); }
-.past-guest-portrait { display: flex; height: clamp(19rem, 42vw, 28rem); align-items: center; justify-content: center; flex-direction: column; gap: .5rem; border: 1px dashed #725d5b; border-bottom: 0; border-radius: 10rem 10rem 0 0; background: #211416aa; color: #b7a19a; font-size: .78rem; font-weight: 600; }
-.past-guest-placeholder-icon { font-size: 1.6rem; line-height: 1; opacity: .8; }
-.past-guest-card h3 { margin-top: 1.7rem; color: #ef2638; font-size: clamp(1.35rem, 3vw, 2.1rem); font-weight: 900; letter-spacing: -.04em; text-transform: uppercase; }
-.past-guest-card p { margin-top: .9rem; color: #f0c9a4; font-size: .65rem; letter-spacing: .28em; text-transform: uppercase; }
-.past-guest-card a { display: block; color: inherit; text-decoration: none; }
-.past-guest-card a:hover h3, .past-guest-card a:focus-visible h3 { color: #ff6670; }
-@media (max-width: 520px) { .past-guests-grid { gap: 1rem; } .past-guest-portrait { height: 18rem; } .past-guest-card h3 { font-size: 1.05rem; } }
+/* Weathered headstones frame the supplied Instagram preview portraits. */
+.past-guests-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: clamp(2rem, 7vw, 6rem); max-width: 58rem; margin: clamp(3rem, 6vw, 5rem) auto 0; padding-inline: .75rem; }
+.past-guest-card { position: relative; min-width: 0; margin-bottom: 6rem; text-align: center; isolation: isolate; }
+.past-guest-card:nth-child(2) { margin-top: clamp(2rem, 5vw, 4rem); }
+.guest-headstone { position: relative; display: block; padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 2.4vw, 2rem) 2rem; overflow: hidden; border: 3px solid #787570; border-bottom: 0; border-radius: 48% 48% 3px 3px / 24% 24% 3px 3px; background: radial-gradient(ellipse at 12% 82%, #41462f80, transparent 35%), repeating-linear-gradient(112deg, #ffffff04 0 1px, transparent 1px 5px), linear-gradient(115deg, #686763, #343633 38%, #4d4d49 70%, #292c29); box-shadow: inset 5px 2px 2px #bcb8a65c, inset -9px 0 8px #1118139c, 12px 10px 0 #20251fee, 0 22px 35px #000a; color: #e3d8c5; text-decoration: none; transition: filter .2s ease; }
+.guest-headstone::before { content: ''; position: absolute; inset: 11px; border: 1px solid #b6b0a24d; border-radius: inherit; pointer-events: none; box-shadow: 0 0 0 2px #1519154d; }
+.guest-stone-ornament { position: relative; display: block; margin: .15rem auto 1rem; color: #c4bb9e; font-family: Georgia, serif; font-size: 2.65rem; font-weight: 700; line-height: 1; text-shadow: 2px 3px 2px #131813, -1px -1px 0 #efe7cc80; }
+.past-guest-portrait { position: relative; width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border: 4px solid #242723; border-radius: 44% 44% 3px 3px / 27% 27% 3px 3px; background: #161916; box-shadow: 0 1px 0 #aaa48c, 0 0 0 1px #8b897a, inset 0 0 16px #000; }
+.guest-portrait-image { object-fit: cover; object-position: center 20%; }
+.guest-reel-cue { position: absolute; inset: auto .5rem .6rem; display: flex; align-items: center; justify-content: center; gap: .4rem; width: fit-content; margin-inline: auto; padding: .5rem .65rem; border: 1px solid #ded5c866; border-radius: 3px; background: #100d12e8; color: #fff5e8; font-family: var(--font-geist), sans-serif; font-size: clamp(.65rem, 1vw, .78rem); font-weight: 650; }
+.guest-reel-cue svg { width: .85rem; height: .85rem; flex: none; }
+.past-guest-card h3 { position: relative; margin-top: 1.5rem; color: #f34e48; font-family: var(--font-roboto-slab), Georgia, serif; font-size: clamp(1.25rem, 2.5vw, 2rem); font-weight: 900; line-height: 1.2; letter-spacing: .015em; text-transform: uppercase; text-shadow: 1px 2px 1px #170807, -1px -1px 0 #ff97892b; }
+.guest-epitaph-dates { position: relative; margin-top: .8rem; color: #e6dfcf; font-family: Georgia, serif; font-size: clamp(.8rem, 1.3vw, 1rem); letter-spacing: .06em; text-shadow: 1px 1px #151914; }
+.guest-epitaph-dates span { padding-inline: .15rem; }
+ .guest-cobweb { position: absolute; z-index: 3; top: 1.5rem; right: .2rem; width: 38%; height: auto; color: #c7c3b393; pointer-events: none; filter: drop-shadow(1px 2px 1px #000); }
+.guest-stone-cracks { position: absolute; inset: 0; width: 100%; height: 100%; stroke: #131812; stroke-width: 2; filter: drop-shadow(1px 1px 0 #a2a08c70); pointer-events: none; }
+.guest-headstone::after { content: ''; position: absolute; inset: auto 0 0; height: 7rem; pointer-events: none; background: radial-gradient(ellipse at 0 100%, #495229aa, transparent 55%), radial-gradient(ellipse at 95% 100%, #333d2099, transparent 45%); }
+.guest-stone-base { position: relative; width: calc(100% + 1.5rem); height: 1.4rem; margin-left: -.75rem; border: 1px solid #858273; background: linear-gradient(#737369 0 20%, #363b32 22% 76%, #22291e 78%); box-shadow: 8px 6px 0 #151b14, 0 17px 23px #000c; }
+.guest-earth-lip { position: absolute; z-index: 2; bottom: -.85rem; left: -10%; width: 120%; height: 1.75rem; border-radius: 55% 48% 25% 30%; background: radial-gradient(ellipse at 12% 35%, #796145, transparent 30%), radial-gradient(ellipse at 78% 25%, #4a5636, transparent 28%), linear-gradient(#4d3828, #271f19 70%, #16180f); box-shadow: 0 -2px 4px #110c08a6, 0 7px 13px #0009; pointer-events: none; }
+.guest-ground-decor { position: absolute; z-index: 4; bottom: -100px; left: -60px; width: clamp(170px, 18vw, 240px); height: auto; pointer-events: none; filter: drop-shadow(0 10px 9px #000b); mask-image: radial-gradient(ellipse 68% 65% at 50% 53%, #000 55%, transparent 95%); }
+.past-guest-card:nth-child(2) .guest-ground-decor { left: auto; right: -55px; transform: scaleX(-1); }
+@media (max-width: 600px) { .guest-ground-decor { left: -9px; bottom: -47px; width: clamp(88px, 28vw, 112px); } .past-guest-card:nth-child(2) .guest-ground-decor { right: -9px; } }
+.guest-headstone:hover { filter: brightness(1.1); }
+.guest-headstone:focus-visible { outline-offset: 8px; }
+@media (max-width: 600px) {
+  .past-guests-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(.35rem, 2vw, .75rem); max-width: none; margin-top: 2rem; padding-inline: 0; }
+  .past-guest-card { margin-bottom: 2.5rem; }
+  .past-guest-card:nth-child(2) { margin-top: 1rem; }
+  .guest-headstone { padding: 1.35rem .4rem .8rem; border-width: 2px; }
+  .guest-headstone::before { inset: 5px; }
+  .guest-stone-ornament { margin: 0 auto .45rem; font-size: 1.4rem; }
+  .guest-cobweb { top: .6rem; width: 43%; }
+  .past-guest-portrait { border-width: 2px; }
+  .guest-reel-cue { inset: auto .2rem .3rem; gap: .15rem; padding: .27rem .2rem; font-size: .5rem; white-space: nowrap; }
+  .guest-reel-cue svg { width: .6rem; height: .6rem; }
+  .past-guest-card h3 { margin-top: .75rem; font-size: clamp(.72rem, 3.1vw, 1rem); line-height: 1.05; letter-spacing: -.03em; overflow-wrap: anywhere; }
+  .guest-epitaph-dates { margin-top: .5rem; font-size: clamp(.53rem, 2vw, .67rem); letter-spacing: 0; white-space: nowrap; }
+  .guest-stone-base { width: calc(100% + .4rem); height: .7rem; margin-left: -.2rem; }
+  .guest-earth-lip { left: -4%; width: 108%; height: .85rem; bottom: -.45rem; }
+}
 .revelation-video { filter: brightness(1.08) contrast(1.08) saturate(1.25); }
 .event-rail { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #956779 #1b1420; }
 .event-slide { flex: 0 0 min(88%, 40rem); min-width: 0; scroll-snap-align: start; }
@@ -142,8 +172,9 @@ body:has(.event-registration-bar) footer { padding-bottom: calc(7rem + env(safe-
 .event-detail-container { width: min(100%, 48rem); padding-top: 1.25rem; padding-bottom: 3rem; }
 .event-detail-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
 .event-detail-actions .event-back, .event-detail-actions .event-share { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .65rem; border: 0; background: transparent; color: #f8f2ea; font-size: .95rem; font-weight: 600; }
-.event-poster-frame { width: 100%; margin: 0 0 2rem; overflow: hidden; border: 1px solid #493943; border-radius: 1.25rem; background: #17151a; box-shadow: none; }
-.event-poster-frame img { display: block; width: 100%; height: auto; }
+.event-poster-frame { position: relative; width: 100%; margin: 0 0 2rem; overflow: hidden; border: 1px solid #493943; border-radius: 1.25rem; background: #17151a; box-shadow: none; }
+.event-poster-frame.event-poster-portrait { aspect-ratio: 1684 / 2000; }
+.event-poster-frame.event-poster-landscape { aspect-ratio: 2382 / 1415; }
 .event-detail-panel { margin-bottom: 2rem; padding: clamp(1.5rem, 6vw, 2.25rem); border: 1px solid #39313a; border-radius: 1rem; background: #1b191f; box-shadow: none; }
 .event-info-panel { padding-top: 2.25rem; padding-bottom: 2.25rem; }
 .event-info-panel h1 { max-width: 17ch; font-size: clamp(2rem, 7vw, 2.65rem); font-weight: 800; line-height: 1.12; letter-spacing: -.045em; }
@@ -211,12 +242,15 @@ body:has(.event-registration-bar) footer { padding-bottom: calc(7rem + env(safe-
 @keyframes site-menu-enter { from { opacity: 0; transform: translateY(-8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
 .event-carousel { max-width: 1100px; margin-inline: auto; }
 .event-fan-stage { position: relative; overflow: hidden; }
-.event-fan-stage-portrait { height: clamp(400px, calc(67.9vw + 48px), 670px); }
+.event-fan-stage-portrait { height: clamp(400px, calc(57vw + 48px), 610px); }
 .event-fan-stage-landscape { height: clamp(260px, calc(33.9vw + 48px), 360px); }
 .event-poster { position: absolute; top: 50%; left: 50%; display: block; width: clamp(190px, 31vw, 320px); aspect-ratio: 1; padding: 0; border: 0; border-radius: 14px; background: #1c1420; box-shadow: 0 20px 42px #000b; text-align: left; cursor: pointer; transition: transform .65s cubic-bezier(.2,.7,.2,1), opacity .5s ease, box-shadow .2s ease; }
 .event-poster-active { width: clamp(250px, 48vw, 440px); background: transparent; box-shadow: none; }
 .event-poster-active.event-poster-portrait { aspect-ratio: 1684 / 2382; }
 .event-poster-active.event-poster-landscape { aspect-ratio: 2382 / 1684; }
+.event-poster.event-poster-portrait { aspect-ratio: 1684 / 2000; }
+.event-poster.event-poster-landscape { aspect-ratio: 2382 / 1415; }
+.event-poster-image { object-fit: cover; object-position: center 40%; }
 .event-poster:hover { box-shadow: 0 20px 48px #000d, 0 0 0 2px #ffad72; }
 .event-poster:focus-visible { outline-offset: 5px; }
 .event-poster-artwork, .event-poster-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; overflow: hidden; border-radius: inherit; }

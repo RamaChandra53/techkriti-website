@@ -16,8 +16,8 @@ export default function HomeImmersive() {
     <StormBackground />
     <section id="home" aria-labelledby="festival-title" className="relative isolate scroll-mt-[120px] overflow-hidden xl:scroll-mt-[104px]">
       <Container className="relative flex flex-col pb-3 pt-5 sm:pb-5 sm:pt-8">
-        <h1 id="festival-title" className="mt-3 max-w-[480px] sm:mt-4 lg:max-w-[min(480px,54svh)]">
-          <Image src="/branding/techkriti-splatter-white.png" alt="Techkriti" width={2048} height={1536} priority className="h-auto w-full" />
+        <h1 id="festival-title" className="mt-3 w-full sm:mt-4">
+          <Image src="/branding/techkriti-splatter-white.png" alt="Techkriti" width={1642} height={958} priority sizes="(max-width: 1400px) 100vw, 1304px" className="h-auto w-full" />
         </h1>
         <p className="mt-3 max-w-3xl self-start text-left text-[clamp(1.25rem,3vw,1.8rem)] font-normal italic leading-snug tracking-[-.025em] text-[#fff4e9] sm:mt-5">Two nights. Eleven events.<br />Enter if you dare.</p>
         <Link href="#discover" className="header-register mt-4 inline-flex min-h-10 items-center self-center justify-center rounded-full px-5 py-2 text-xs font-bold uppercase tracking-[.12em]">Explore events</Link>
@@ -40,7 +40,7 @@ export default function HomeImmersive() {
     <section id="archive" aria-labelledby="archive-title" className="festival-section scroll-mt-24">
       <Container>
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4 sm:mb-12">
-          <div><p className="eyebrow">February 2026 · The previous edition</p><h2 id="archive-title" className="display-heading mt-4 text-[clamp(2.8rem,6vw,6rem)]">Last edition’s<br /><span className="text-[var(--ember)]">ghosts.</span></h2></div>
+          <div><p className="eyebrow">February 2025 · The previous edition</p><h2 id="archive-title" className="display-heading mt-4 text-[clamp(2.8rem,6vw,6rem)]">Last edition’s<br /><span className="text-[var(--ember)]">ghosts.</span></h2></div>
         </div>
         <ArchiveStory />
       </Container>

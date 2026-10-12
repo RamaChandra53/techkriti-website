@@ -14,7 +14,7 @@ function PumpkinArrow({ direction }: { direction: "left" | "right" }) {
 
 function EventPoster({ event }: { event: Event }) {
   return <span className="event-poster-artwork">
-    {event.image ? <Image src={event.image.src} alt={event.image.alt} fill sizes="(max-width: 640px) 200px, 320px" className="bg-[#0b080d] object-contain" /> : <span className="event-poster-placeholder">
+    {event.image ? <Image src={event.image.src} alt={event.image.alt} fill sizes="(max-width: 640px) 250px, 440px" className="event-poster-image" /> : <span className="event-poster-placeholder">
       <span className="event-poster-halo" aria-hidden="true" />
       <strong>{event.title}</strong>
       <span className="event-poster-pending">Official poster coming soon</span>
@@ -24,14 +24,15 @@ function EventPoster({ event }: { event: Event }) {
 }
 
 export function EventCarousel({ events }: { events: Event[] }) {
+  const orderedEvents = [...events].sort((first, second) => Number((first.image?.height ?? 0) <= (first.image?.width ?? 0)) - Number((second.image?.height ?? 0) <= (second.image?.width ?? 0)));
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [stepSize, setStepSize] = useState(150);
   const stageRef = useRef<HTMLDivElement>(null);
   const touchStart = useRef<number | null>(null);
   const regionId = useId();
-  const count = events.length;
-  const active = events[activeIndex];
+  const count = orderedEvents.length;
+  const active = orderedEvents[activeIndex];
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -63,14 +64,14 @@ export function EventCarousel({ events }: { events: Event[] }) {
       touchStart.current = null;
     }}>
       <div ref={stageRef} className={`event-fan-stage ${active.image && (active.image.height ?? 1) > (active.image.width ?? 1) ? "event-fan-stage-portrait" : "event-fan-stage-landscape"}`}>
-        {events.map((item, index) => {
+        {orderedEvents.map((item, index) => {
           const offset = (index - activeIndex + count) % count;
           const signed = offset > count / 2 ? offset - count : offset;
           const visible = Math.abs(signed) <= 2;
           const distance = Math.abs(signed);
           const scale = distance === 0 ? 1 : distance === 1 ? .76 : .56;
           const tilt = signed * (distance === 2 ? -8 : -11);
-          return <Link key={item.slug} href={`/events/${item.slug}`} tabIndex={visible ? 0 : -1} aria-hidden={!visible} aria-label={`View ${item.title} event page, ${item.division}`} className={`event-poster ${distance === 0 ? `event-poster-active ${item.image && (item.image.height ?? 1) > (item.image.width ?? 1) ? "event-poster-portrait" : "event-poster-landscape"}` : ""}`} style={{ transform: `translate(-50%, -50%) translateX(${signed * stepSize}px) rotate(${tilt}deg) scale(${scale})`, opacity: visible ? 1 : 0, zIndex: 5 - distance, pointerEvents: visible ? "auto" : "none" }}>
+          return <Link key={item.slug} href={`/events/${item.slug}`} tabIndex={visible ? 0 : -1} aria-hidden={!visible} aria-label={`View ${item.title} event page, ${item.division}`} className={`event-poster ${item.image && (item.image.height ?? 1) > (item.image.width ?? 1) ? "event-poster-portrait" : "event-poster-landscape"} ${distance === 0 ? "event-poster-active" : ""}`} style={{ transform: `translate(-50%, -50%) translateX(${signed * stepSize}px) rotate(${tilt}deg) scale(${scale})`, opacity: visible ? 1 : 0, zIndex: 5 - distance, pointerEvents: visible ? "auto" : "none" }}>
             <EventPoster event={item} />
           </Link>;
         })}

@@ -33,8 +33,8 @@ If confirmed event data is not available yet, state that plainly. An honest empt
 | Creative theme | Halloween, across the whole upcoming edition |
 | Event tracks | Technical and non-technical |
 | Registration | Each confirmed event will link directly to its official Google Form; the site will not store registrations |
-| Previous edition | February 2026, with a Telugu-movie-themed identity; its photos and past event references are archive material only |
-| Current content status | October event names are poster-confirmed; exact timings, MGIT rooms, rules, forms, sponsors, contact details, Instagram URL, and October banner reveal video are not yet confirmed in `lib/content.ts`. The supplied reveal film is from February 2026. |
+| Previous edition | February 2025, with a Telugu-movie-themed identity; its photos and past event references are archive material only |
+| Current content status | October event names are poster-confirmed; exact timings, MGIT rooms, rules, forms, sponsors, contact details, Instagram URL, and October banner reveal video are not yet confirmed in `lib/content.ts`. The supplied reveal film is from February 2025. |
 
 The previous posters and screenshots were supplied to explain the earlier festival, not to authorize reusing their event lists or movie theme for October. The photos under `D:\Techkriti\photos feb 2026` and the optimized `public/archive/` images document the February edition. Always caption or label them as previous-edition material. Never present those images as scenes from the upcoming Halloween edition.
 
@@ -71,7 +71,7 @@ Arrival (often mobile/social link)
 
 Search/filter state should live in shareable URL parameters so an organizer or friend can send a filtered view. Combined filters, empty results, and reset must make sense. The schedule should be day-based and link confirmed entries to their event details. With an unconfirmed lineup, explain what is pending and give visitors a clear place to check later, rather than pretending the search has results.
 
-The banner reveal deserves a distinct place in the story. The supplied `public/branding/revelation.mp4` is from the February 2026 previous edition and must be labeled as such. A new October reveal film is not yet confirmed. Use a lightweight native player with controls, captions/transcript if speech matters, and a meaningful poster when available.
+The banner reveal deserves a distinct place in the story. The supplied `public/branding/revelation.mp4` is from the February 2025 previous edition and must be labeled as such. A new October reveal film is not yet confirmed. Use a lightweight native player with controls, captions/transcript if speech matters, and a meaningful poster when available.
 
 The Instagram page should be linked once its official URL is supplied. Do not guess the handle. The public site can share announcements, but authoritative registration remains in the event's Google Form.
 
@@ -111,7 +111,7 @@ Visual novelty is not a reason to move a practical task lower in that order.
 - Official Instagram and other social URLs, contact email/phone, approved sponsors and brand assets.
 - Final domain, production approval, photo permissions, and whether any event has limited eligibility or capacity.
 
-Until these are answered, build the structure and honest states. Do not borrow specifics from February 2026 to fill October 2026 gaps.
+Until these are answered, build the structure and honest states. Do not borrow specifics from February 2025 to fill October 2026 gaps.
 
 ## Maintenance rule for this memory
 
@@ -135,7 +135,7 @@ The organizer confirmed that the February photo stack must use sticky stacking o
 
 ## 10 October 2026 gallery interaction update
 
-The organizer replaced the sticky scrolling gallery with the supplied draggable image-stack carousel for both phones and laptops. Keep all 19 real February 2026 photos in one cycling pile and show a short instruction explaining drag, swipe, and tap. The active photo has a counter and caption, with a separate full-photo link below the stack. No arrow overlay belongs on the photos.
+The organizer replaced the sticky scrolling gallery with the supplied draggable image-stack carousel for both phones and laptops. Keep all 19 real February 2025 photos in one cycling pile and show a short instruction explaining drag, swipe, and tap. The active photo has a counter and caption, with a separate full-photo link below the stack. No arrow overlay belongs on the photos.
 
 ## 10 October 2026 gallery sizing correction
 
@@ -155,7 +155,7 @@ Place the FAQ as the final section of the homepage rather than on a separate pag
 
 ## 10 October 2026 homepage copy and archive cue
 
-Rename the event heading to “Pick your poison.” Rename the February archive heading to “Last edition’s ghosts” while retaining the explicit February 2026 previous-edition label. Remove the visible per-photo caption and all swipe/drag/tap instruction cues from the stack.
+Rename the event heading to “Pick your poison.” Rename the February archive heading to “Last edition’s ghosts” while retaining the explicit February 2025 previous-edition label. Remove the visible per-photo caption and all swipe/drag/tap instruction cues from the stack.
 
 ## 10 October 2026 display typography
 
@@ -163,7 +163,7 @@ Use the organizer-supplied `HALLOWEEN.ttf` as the local display face for major h
 
 ## 10 October 2026 hamburger navigation
 
-Replace the standalone FAQ header link with a hamburger menu while keeping the Register action visible. The menu links to the banner revelation, event lineup, February 2026 previous-edition archive, homepage photo stack, and homepage FAQs. Keep the menu keyboard accessible, close it with Escape or an outside click, and do not invent unconfirmed promoter or sponsor content.
+Replace the standalone FAQ header link with a hamburger menu while keeping the Register action visible. The menu links to the banner revelation, event lineup, February 2025 previous-edition archive, homepage photo stack, and homepage FAQs. Keep the menu keyboard accessible, close it with Escape or an outside click, and do not invent unconfirmed promoter or sponsor content.
 
 ## 11 October 2026 carousel motion and frame refinement
 
@@ -208,3 +208,35 @@ Use the same segmented Home, Events, Past, and Sponsors header on event detail p
 ## 12 October 2026 transparent header
 
 The shared segmented header has a transparent outer surface so the page background shows through. Keep the black navigation pill and orange active segment.
+
+## 12 October 2026 laptop wordmark and event posters
+
+Give the laptop layout the same visual priority as the phone layout. Keep the original splatter Techkriti wordmark in the landing hero. Replace the plain lettering beside the square header mark with the splatter wordmark; this corrects the initial misinterpretation of the request. Show all portrait event posters before the landscape posters. The supplied poster images contain repeated white strips at the top and bottom; crop those strips in the display layer on carousel cards and event detail pages without narrowing the poster or altering the source files.
+
+## 12 October 2026 header logo correction
+
+The splatter wordmark beside the square header mark must show its complete artwork at a smaller size. Preserve the “AFTER DARK · 2026” caption directly below it.
+
+## 12 October 2026 full-width hero wordmark
+
+The landing hero splatter wordmark should span the available page width on laptops, with no 480px cap. Preserve the full artwork and its natural proportions. The header wordmark remains compact.
+
+## 12 October 2026 past guest headstones
+
+Use the supplied Adivi Sesh and Sai Dharam Tej portraits as clickable previews for their existing Instagram links. Frame each as a weathered stone headstone with a stepped base, red engraved name below the portrait, and an “Open the IG reel” cue. Show the organizer-requested Dec 1985–Feb 2025 and Oct 1986–Feb 2025 date ranges with a visible “Fictional Halloween epitaph” label; these are theatrical decorations, not factual death dates. Remove the Gethu Cinema mark from the supplied Sai Dharam Tej photo.
+
+## 12 October 2026 Halloween grave decorations
+
+The organizer removed the visible fictional-epitaph caption. The dates remain theatrical Halloween styling. Add ground-level pumpkins, lit partly melted candles, dead leaves, moss, cobwebs, hanging spiders, and stone cracks. Keep decorative layers non-interactive and clear of the portraits, names, dates, and Instagram cues.
+
+## 12 October 2026 grounded grave correction
+
+Replace the small star ornament at each stone's apex with a Christian cross. Give each headstone an irregular soil mound and a low front soil edge so the stones appear planted in the ground, with the pumpkins and candles resting alongside their bases.
+
+## 12 October 2026 phone grave layout
+
+Keep both guest graves side by side on phones, including narrow 320px screens. Scale the stone padding, names, dates, reel cues, and pumpkin arrangements to fit without horizontal overflow.
+
+## 12 October 2026 previous edition year correction
+
+The organizer confirmed that the photographed previous edition and supplied banner film are from February 2025. Use February 2025 in all public archive and video labels. The original source folder remains named `photos feb 2026`; that filesystem name does not set the event year. The upcoming Halloween edition remains 16–17 October 2026.
