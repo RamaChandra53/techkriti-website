@@ -19,7 +19,6 @@ function EventPoster({ event }: { event: Event }) {
       <strong>{event.title}</strong>
       <span className="event-poster-pending">Official poster coming soon</span>
     </span>}
-    <span className="event-poster-division">{event.division}</span>
     <span className="event-poster-open" aria-hidden="true"><span>View</span><ArrowUpRightIcon className="h-3 w-3" /></span>
   </span>;
 }
@@ -63,7 +62,7 @@ export function EventCarousel({ events }: { events: Event[] }) {
       if (Math.abs(delta) > 45) move(delta < 0 ? 1 : -1);
       touchStart.current = null;
     }}>
-      <div ref={stageRef} className="event-fan-stage">
+      <div ref={stageRef} className={`event-fan-stage ${active.image && (active.image.height ?? 1) > (active.image.width ?? 1) ? "event-fan-stage-portrait" : "event-fan-stage-landscape"}`}>
         {events.map((item, index) => {
           const offset = (index - activeIndex + count) % count;
           const signed = offset > count / 2 ? offset - count : offset;

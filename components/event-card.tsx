@@ -10,7 +10,7 @@ export function EventCard({ event, discovery = false }: { event: Event; discover
     </div>}
     <div data-track={event.division} className={`event-poster-art relative flex flex-col justify-between p-5 sm:p-7 ${event.image ? "min-h-36" : "min-h-56 sm:min-h-64"}`}>
       {!event.image && <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true"><span className="absolute -right-16 -top-24 h-80 w-80 rotate-[-25deg] rounded-[40%] border border-[#a889c6]/20" /><span className="absolute -right-8 -top-16 h-80 w-80 rotate-[-25deg] rounded-[40%] border border-[#ff7938]/15" /></div>}
-      <p className="relative text-[.65rem] font-bold uppercase tracking-[.13em] text-[#e9c4b5]">{event.division} / {event.category}</p>
+      <p className="relative text-[.65rem] font-bold uppercase tracking-[.13em] text-[#e9c4b5]">{event.category}</p>
       <h3 className="relative mt-8 break-words text-[clamp(2rem,4vw,3.4rem)] font-black leading-[1] tracking-[-.055em] text-[var(--text)]">{event.title}</h3>
     </div>
     <div className="flex flex-1 flex-col p-5 sm:p-7">

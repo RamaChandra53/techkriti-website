@@ -188,8 +188,10 @@ body:has(.event-registration-bar) footer { padding-bottom: calc(7rem + env(safe-
 .site-menu-panel { transform-origin: top right; animation: site-menu-enter 180ms var(--ease-standard) both; }
 @keyframes site-menu-enter { from { opacity: 0; transform: translateY(-8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
 .event-carousel { max-width: 1100px; margin-inline: auto; }
-.event-fan-stage { position: relative; height: clamp(320px, 48vw, 510px); overflow: hidden; }
-.event-poster { position: absolute; top: 49%; left: 50%; display: block; width: clamp(190px, 31vw, 320px); aspect-ratio: 1; padding: 0; border: 0; border-radius: 14px; background: #1c1420; box-shadow: 0 20px 42px #000b; text-align: left; cursor: pointer; transition: transform .65s cubic-bezier(.2,.7,.2,1), opacity .5s ease, box-shadow .2s ease; }
+.event-fan-stage { position: relative; overflow: hidden; }
+.event-fan-stage-portrait { height: clamp(400px, calc(67.9vw + 48px), 670px); }
+.event-fan-stage-landscape { height: clamp(260px, calc(33.9vw + 48px), 360px); }
+.event-poster { position: absolute; top: 50%; left: 50%; display: block; width: clamp(190px, 31vw, 320px); aspect-ratio: 1; padding: 0; border: 0; border-radius: 14px; background: #1c1420; box-shadow: 0 20px 42px #000b; text-align: left; cursor: pointer; transition: transform .65s cubic-bezier(.2,.7,.2,1), opacity .5s ease, box-shadow .2s ease; }
 .event-poster-active { width: clamp(250px, 48vw, 440px); background: transparent; box-shadow: none; }
 .event-poster-active.event-poster-portrait { aspect-ratio: 1684 / 2382; }
 .event-poster-active.event-poster-landscape { aspect-ratio: 2382 / 1684; }
@@ -199,7 +201,6 @@ body:has(.event-registration-bar) footer { padding-bottom: calc(7rem + env(safe-
 .event-poster-placeholder { justify-content: flex-end; gap: .75rem; padding: clamp(1rem, 2vw, 1.5rem); border: 1px solid #bd693f; background: radial-gradient(circle at 78% 18%, #df6b2f 0%, #8a321f 15%, transparent 38%), radial-gradient(circle at 12% 88%, #572039 0%, transparent 48%), linear-gradient(145deg, #3a151c 0%, #1b1019 48%, #09070d 100%); color: #fff3e8; box-shadow: inset 0 0 55px #ff6a2430; }
 .event-poster-halo { position: absolute; right: -27%; top: 8%; width: 92%; aspect-ratio: 1; border: 1px solid #ff9a624f; border-radius: 50%; box-shadow: 0 0 50px #ff793827, inset 0 0 32px #ff793821; }
 .event-poster-pending { position: relative; font-size: clamp(.5rem, .9vw, .65rem); font-weight: 800; letter-spacing: .15em; text-transform: uppercase; color: #ffb482; }
-.event-poster-division { position: absolute; z-index: 2; top: .6rem; left: .6rem; display: inline-flex; min-height: 1.45rem; max-width: calc(100% - 1.2rem); align-items: center; padding: .2rem .38rem; border: 1px solid #ffb482b8; border-radius: 999px; background: #160e17ed; color: #ffb482; font-size: .48rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
 .event-poster-open { position: absolute; z-index: 2; top: .6rem; right: .6rem; display: inline-flex; min-height: 1.45rem; align-items: center; gap: .2rem; padding: .2rem .38rem; border: 1px solid #ffb482b8; border-radius: 999px; background: #160e17ed; color: #fff4e9; font-size: .48rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; transition: background-color .2s ease, color .2s ease, transform .2s ease; }
 .event-poster:hover .event-poster-open, .event-poster:focus-visible .event-poster-open { background: #ffb482; color: #170d11; }
 .event-poster:hover .event-poster-open { transform: translateY(-1px); }
@@ -221,5 +222,5 @@ body:has(.event-registration-bar) footer { padding-bottom: calc(7rem + env(safe-
 .pumpkin-face svg { width: 48px; height: 48px; }
 .pumpkin-direction { filter: drop-shadow(0 1px 1px #170d11) drop-shadow(0 0 2px #170d11); }
 @media (max-width: 639px) { body::before { background-position: 72% center; } .archive-carousel-stage { margin-bottom: 1.8rem; } .archive-carousel-meta { flex-direction: column; align-items: center; padding-inline: .5rem; } }
-@media (max-width: 640px) { .event-fan-stage { height: 340px; } .event-poster-placeholder strong { font-size: 1.6rem; } }
+@media (max-width: 640px) { .event-poster-placeholder strong { font-size: 1.6rem; } }
 @media (prefers-reduced-motion: reduce) { .entrance-bat { display: none; } }
