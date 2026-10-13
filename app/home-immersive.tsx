@@ -26,13 +26,13 @@ export default function HomeImmersive() {
       </Container>
     </section>
 
-    <TransitionTape label="This year’s edition" />
+    <TransitionTape label="THIS YEAR’S EDITION" />
     <BannerReveal />
 
-    <TransitionTape label="February 2026 · Past guests" />
+    <TransitionTape label="FEB 2026 · PAST PROMOTERS" />
     <PastGuests />
 
-    <TransitionTape label="The reason you came" />
+    <TransitionTape label="THE REASON YOU CAME" />
     <section id="discover" aria-labelledby="discover-title" className="festival-section scroll-mt-24">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-5">

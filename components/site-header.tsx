@@ -21,6 +21,14 @@ function selectedItem(pathname: string, hash: string) {
   return index;
 }
 
+const sectionIds = ["home", "discover", "archive", "sponsors"] as const;
+type SectionId = typeof sectionIds[number];
+
+function sectionIndex(section: string) {
+  const index = sectionIds.indexOf(section as SectionId);
+  return index >= 0 ? index : -1;
+}
+
 export function SiteHeader() {
   const pathname = usePathname();
   const router = useRouter();
@@ -39,6 +47,33 @@ export function SiteHeader() {
     window.addEventListener("hashchange", sync);
     return () => window.removeEventListener("hashchange", sync);
   }, [pathname]);
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const sections = sectionIds.map((id) => document.getElementById(id)).filter((section): section is HTMLElement => Boolean(section));
+    if (!sections.length) return;
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
+      if (!visible) return;
+      const index = sectionIndex(visible.target.id);
+      if (index < 0) return;
+      setActive(index);
+      const nextHash = index === 0 ? "#home" : `#${visible.target.id}`;
+      if (window.location.hash !== nextHash) window.history.replaceState(null, "", `/${nextHash}`);
+    }, { rootMargin: "-18% 0px -58% 0px", threshold: [0, .2, .5, .8] });
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  useEffect(() => {
+    const onSectionChange = (event: Event) => {
+      const section = (event as CustomEvent<{ section?: string }>).detail?.section;
+      const index = section ? sectionIndex(section) : -1;
+      if (index >= 0) setActive(index);
+    };
+    window.addEventListener("homepage-section-change", onSectionChange);
+    return () => window.removeEventListener("homepage-section-change", onSectionChange);
+  }, []);
 
   useLayoutEffect(() => {
     const track = trackRef.current;
@@ -140,7 +175,18 @@ export function SiteHeader() {
           ref={(element) => { linkRefs.current[index] = element; }}
           href={item.href}
           aria-current={active === index ? "page" : undefined}
-          onClick={(event) => { if (suppressClick.current) { event.preventDefault(); suppressClick.current = false; return; } setActive(index); }}
+          onClick={(event) => {
+            if (suppressClick.current) { event.preventDefault(); suppressClick.current = false; return; }
+            setActive(index);
+            if (pathname !== "/") return;
+            const section = document.getElementById(item.href.split("#")[1]);
+            if (!section) return;
+            event.preventDefault();
+            const hash = item.href.split("#")[1];
+            window.history.pushState(null, "", `/#${hash}`);
+            window.dispatchEvent(new CustomEvent("homepage-section-change", { detail: { section: hash } }));
+            section.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+          }}
           className={`header-segment relative z-10 inline-flex min-h-10 w-full items-center justify-center rounded-full px-3 text-sm font-normal xl:min-h-12 2xl:px-4 2xl:text-base ${active === index ? "text-[#170d11]" : "text-[#fff4e9] hover:text-[#ffae7a]"}`}
         >{item.label}</Link>)}
       </nav>
