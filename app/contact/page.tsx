@@ -25,7 +25,7 @@ export default function ContactPage() {
       <FestivalContacts headingLevel="h2" className="mt-10" />
       <div className="mt-10 grid gap-8 border-t border-[#564254] pt-8 md:grid-cols-2">
         <section><h2 className="text-2xl font-black tracking-[-.04em]">Event-specific questions</h2><p className="muted-copy mt-3 max-w-lg">Contact the coordinator named on that event’s page or official registration form.</p></section>
-        <section><h2 className="text-2xl font-black tracking-[-.04em]">Official updates</h2><p className="muted-copy mt-3 max-w-lg">The official Instagram page will be linked here when its URL is supplied by the organizers.</p>{siteConfig.social.instagram && <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-link mt-5 inline-flex min-h-11 items-center gap-2 font-bold text-[#ffb386]">Instagram <ArrowUpRightIcon className="h-5 w-5" /><span className="sr-only">(opens in a new tab)</span></a>}</section>
+        <section><h2 className="text-2xl font-black tracking-[-.04em]">Official updates</h2><p className="muted-copy mt-3 max-w-lg">Follow Techkriti on Instagram for festival updates.</p><a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-link mt-5 inline-flex min-h-11 items-center gap-2 font-bold text-[#ffb386]">Instagram <ArrowUpRightIcon className="h-5 w-5" /><span className="sr-only">(opens in a new tab)</span></a></section>
       </div>
     </Container>
   </>;

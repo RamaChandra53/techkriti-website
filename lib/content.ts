@@ -17,7 +17,7 @@ export const siteConfig: SiteConfig = {
   url: publicSiteUrl,
   bannerVideoUrl: "/branding/revelation.mp4",
   bannerPosterUrl: "/branding/revelation-poster.png",
-  social: { instagram: "" }
+  social: { instagram: "https://www.instagram.com/techkriti26_csb/?hl=en" }
 };
 
 export const contactGroups: { title: string; people: { name: string; detail?: string; phone?: string }[] }[] = [

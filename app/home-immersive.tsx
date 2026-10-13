@@ -12,6 +12,7 @@ import { FestivalContacts } from "@/components/festival-contacts";
 import { TransitionTape } from "@/components/transition-tape";
 import { ExploreEventsLink } from "@/components/explore-events-link";
 import { AnimatedHeroLogo } from "@/components/animated-hero-logo";
+import { Socials } from "@/components/socials";
 
 export default function HomeImmersive() {
   return <>
@@ -75,6 +76,8 @@ export default function HomeImmersive() {
         </article>)}</div> : <div className="relative mt-8 overflow-hidden border border-[#684b63] bg-[#211827] p-8 sm:p-12"><div className="section-grid pointer-events-none absolute inset-0 opacity-15" aria-hidden="true" /><div className="relative"><p className="eyebrow">A place for confirmed supporters</p><p className="muted-copy mt-6 max-w-2xl">This space is reserved for confirmed 2026 partners. No previous-edition sponsors are being presented as current supporters.</p></div></div>}
       </Container>
     </section>
+
+    <Socials />
 
   </>;
 }
