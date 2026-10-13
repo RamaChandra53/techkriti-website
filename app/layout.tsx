@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import { siteConfig } from "@/lib/content";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
@@ -21,5 +22,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#0d0a12" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body className={`${geist.variable} ${halloween.variable} ${robotoSlab.variable} font-sans antialiased`}><a href="#main" className="fixed left-4 top-4 z-[100] -translate-y-24 bg-[#211521] px-5 py-3 font-bold text-white focus:translate-y-0">Skip to content</a><SiteHeader /><main id="main" className="w-full max-w-full overflow-x-clip">{children}</main></body></html>;
+  return <html lang="en"><body className={`${geist.variable} ${halloween.variable} ${robotoSlab.variable} font-sans antialiased`}><a href="#main" className="fixed left-4 top-4 z-[100] -translate-y-24 bg-[#211521] px-5 py-3 font-bold text-white focus:translate-y-0">Skip to content</a><SiteHeader /><main id="main" className="w-full max-w-full overflow-x-clip">{children}</main><Analytics /></body></html>;
 }
