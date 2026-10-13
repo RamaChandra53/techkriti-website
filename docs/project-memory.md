@@ -256,3 +256,7 @@ Set “crime” in the sponsors heading in the site's orange accent. Show the �
 ## 13 October 2026 organizer contact image
 
 The organizer supplied an image naming the faculty and student convenors. List them below “Whom to contact” on the homepage and on the contact page. Use the local Halloween display font for that heading and the regular readable font for roles, names, and phone numbers. The image lists Dr. D. Vijaya Lakshmi (Professor & HOD, IT); Mrs. B. Tulasi Das; Mrs. J. Padmavathi; T. Shashank (7013686848); P. Akshaya (9573890107); P. Aditya (8919268734); and M. Vyshnavi (7671863390). Do not keep the earlier “Awaiting confirmation” contact placeholder.
+
+## 13 October 2026 past guest epitaph clarification
+
+Remove the birth-to-February-2025 date ranges from Adivi Sesh and Sai Dharam Tej's decorative stones because they resemble real death dates. Keep the theatrical grave artwork and Instagram reel links, but state above the stones that the guests are alive and the haunting refers to Techkriti 2025 memories. On each stone, use “Haunted Techkriti · February 2025” and “Back in spirit for After Dark 2026.” This supersedes the earlier fictional-death-date treatment.

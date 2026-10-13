@@ -3,8 +3,8 @@ import { ArrowUpRightIcon, PlayIcon } from "@heroicons/react/24/solid";
 import { Container } from "./container";
 
 const guests = [
-  { name: "Adivi Sesh", image: "/guests/adivi-sesh.webp", birth: "Dec 1985", href: "https://www.instagram.com/p/DUnyVsCj7ot/?img_index=1" },
-  { name: "Sai Dharam Tej", image: "/guests/sai-dharam-tej.webp", birth: "Oct 1986", href: "https://www.instagram.com/p/DUktPvZkRVH/" },
+  { name: "Adivi Sesh", image: "/guests/adivi-sesh.webp", href: "https://www.instagram.com/p/DUnyVsCj7ot/?img_index=1" },
+  { name: "Sai Dharam Tej", image: "/guests/sai-dharam-tej.webp", href: "https://www.instagram.com/p/DUktPvZkRVH/" },
 ];
 
 function GraveWeb() {
@@ -26,6 +26,7 @@ export function PastGuests() {
     <Container>
       <p className="past-guests-kicker">Past guests · Techkriti ’25</p>
       <h2 id="past-guests-title" className="past-guests-title">They walked <span>among us.</span></h2>
+      <p className="past-guests-context">The guests are alive. Their 2025 Techkriti memories still haunt us.</p>
       <div className="past-guests-grid">
         {guests.map((guest) => <article key={guest.name} className="past-guest-card">
           <a className="guest-headstone" href={guest.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${guest.name} Instagram reel in a new tab`}>
@@ -37,7 +38,7 @@ export function PastGuests() {
               <span className="guest-reel-cue"><PlayIcon aria-hidden="true" />Open the IG reel<ArrowUpRightIcon aria-hidden="true" /></span>
             </div>
             <h3>{guest.name}</h3>
-            <p className="guest-epitaph-dates">{guest.birth} <span aria-hidden="true">—</span> Feb 2025</p>
+            <p className="guest-epitaph"><span>Haunted Techkriti · February 2025</span><span>Back in spirit for After Dark 2026</span></p>
           </a>
           <div className="guest-stone-base" aria-hidden="true" />
           <div className="guest-earth-lip" aria-hidden="true" />
