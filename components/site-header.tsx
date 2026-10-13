@@ -122,7 +122,7 @@ export function SiteHeader() {
   };
 
   return <header className="site-header-plum sticky top-0 z-50 text-[#fff4e9]">
-    <Container className="flex min-w-0 items-center gap-2 py-2 xl:min-h-[104px] xl:gap-4">
+    <Container className="flex min-w-0 items-center gap-2 py-1 xl:min-h-[88px] xl:gap-4">
       <Logo />
       <nav
         ref={trackRef}

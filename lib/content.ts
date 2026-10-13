@@ -22,7 +22,7 @@ export const siteConfig: SiteConfig = {
 
 export const contactGroups: { title: string; people: { name: string; detail?: string; phone?: string }[] }[] = [
   { title: "Faculty Convenor", people: [{ name: "Dr. D. Vijaya Lakshmi", detail: "Professor & HOD, IT" }] },
-  { title: "Faculty Co-Convenors", people: [{ name: "Mrs. B. Tulasi Das" }, { name: "Mrs. J. Padmavathi" }] },
+  { title: "Faculty Co-Convenors", people: [{ name: "Mr. B. Tulasi Das" }, { name: "Mrs. J. Padmavathi" }] },
   { title: "Student Convenors", people: [{ name: "T. Shashank", phone: "7013686848" }, { name: "P. Akshaya", phone: "9573890107" }] },
   { title: "Student Co-Convenors", people: [{ name: "P. Aditya", phone: "8919268734" }, { name: "M. Vyshnavi", phone: "7671863390" }] }
 ];
@@ -102,7 +102,7 @@ export const sponsors: Sponsor[] = [
 ];
 
 export const faqs: FAQ[] = [
-  { question: "When and where does the nightmare begin?", answer: "16–17 October 2026 at MGIT, Hyderabad. Two days. Eleven events. Endless chaos." },
+  { question: "When and where does the nightmare begin?", answer: "16–17 October 2026 at MGIT, Hyderabad. Two days. Nine events. Endless chaos." },
   { question: "Who can enter? Only ghosts?", answer: "Vampires, witches, and humans are welcome. Students from other colleges can join the haunting too." },
   { question: "How do I secure my place in the underworld?", answer: "Explore the events, choose your challenge, and fill out its registration form." },
   { question: "Can I participate in multiple events?", answer: "Yes. Take on as many challenges as you like, but check each event’s rules and schedule before registering." },

@@ -3,7 +3,7 @@ import { ArrowUpRightIcon, PlayIcon } from "@heroicons/react/24/solid";
 import { Container } from "./container";
 
 const guests = [
-  { name: "Adivi Sesh", image: "/guests/adivi-sesh.webp", href: "https://www.instagram.com/p/DUnyVsCj7ot/?img_index=1" },
+  { name: "Adivi Sesh", image: "/guests/adivi-sesh.webp", href: "https://www.instagram.com/p/DUmvBX6kUSO/" },
   { name: "Sai Dharam Tej", image: "/guests/sai-dharam-tej.webp", href: "https://www.instagram.com/p/DUktPvZkRVH/" },
 ];
 
@@ -24,8 +24,8 @@ function GraveWeb() {
 export function PastGuests() {
   return <section id="past-guests" aria-labelledby="past-guests-title" className="past-guests-section scroll-mt-24">
     <Container>
-      <h2 id="past-guests-title" className="past-guests-title">They helped spread <span>the word.</span></h2>
-      <p className="past-guests-context">The guests are alive. Their 2026 Techkriti memories still haunt us.</p>
+      <h2 id="past-guests-title" className="past-guests-title">Ghosts spread <span>the word.</span></h2>
+      <p className="past-guests-context">Ghosts are alive. Their 2026 Techkriti memories still haunt us.</p>
       <div className="past-guests-grid">
         {guests.map((guest) => <article key={guest.name} className="past-guest-card">
           <a className="guest-headstone" href={guest.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${guest.name} Instagram reel in a new tab`}>

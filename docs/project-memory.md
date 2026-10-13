@@ -278,3 +278,7 @@ Use one readable, upright type treatment for the hero date, supporting line, and
 ## 13 October 2026 video, FAQ, and archive year update
 
 The organizer supplied the current-edition video at `public/branding/revelation.mp4`. Label its section “This year’s edition,” use a clear still from the film as the poster, and present the full 16:9 frame without cropping. The film changes its own black bands between scenes; the page must not add extra letterboxing or a bezel. The FAQs use seven organizer-supplied questions without emojis. All public previous-edition and past-guest references now say February 2026.
+
+## 13 October 2026 event count and FAQ sizing correction
+
+The organizer confirmed that the October 2026 lineup has nine events. The homepage hero and first FAQ answer say nine events. The homepage FAQ question type and row spacing were reduced slightly.

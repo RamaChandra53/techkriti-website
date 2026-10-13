@@ -20,8 +20,8 @@ export default function HomeImmersive() {
         <h1 id="festival-title" className="mt-3 w-full sm:mt-4">
           <Image src="/branding/techkriti-splatter-white.png" alt="Techkriti" width={1642} height={958} priority sizes="(max-width: 1400px) 100vw, 1304px" className="h-auto w-full" />
         </h1>
-        <p className="hero-copy mt-3 self-start text-sm font-semibold leading-relaxed text-[#ffae7a] sm:mt-5">16–17 October 2026 · MGIT, Hyderabad</p>
-        <p className="hero-copy mt-3 max-w-3xl self-start text-left text-[clamp(1.25rem,3vw,1.8rem)] font-semibold leading-snug text-[#fff4e9] sm:mt-5">Two days. Eleven events.<br />Enter if you dare.</p>
+        <p className="hero-copy mt-3 self-start text-sm font-semibold leading-relaxed text-[#ff7938] sm:mt-5">16–17 October 2026 · MGIT, Hyderabad</p>
+        <p className="hero-copy mt-3 max-w-3xl self-start text-left text-[clamp(1.25rem,3vw,1.8rem)] font-semibold leading-snug text-[#fff4e9] sm:mt-5">Two days. Nine events.<br />Enter if you dare.</p>
         <Link href="#discover" className="header-register hero-copy mt-4 inline-flex min-h-10 items-center self-center justify-center rounded-full px-5 py-2 text-sm font-bold">Explore events</Link>
       </Container>
     </section>
@@ -66,7 +66,6 @@ export default function HomeImmersive() {
 
     <section id="sponsors" aria-labelledby="sponsors-title" className="festival-section scroll-mt-24">
       <Container>
-        <p className="eyebrow">Partners & supporters</p>
         <h2 id="sponsors-title" className="display-heading mt-3 text-[clamp(2.8rem,6vw,5.5rem)]">Partners in <span className="text-[var(--ember)]">crime</span></h2>
         {sponsors.length ? <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">{sponsors.map((sponsor) => <article key={sponsor.name} className="flex flex-col items-center text-center">
           {sponsor.logo && <div className="sponsor-logo-frame relative h-36 w-full"><Image src={sponsor.logo.src} alt={sponsor.logo.alt} fill sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 40vw, 27vw" className="object-contain p-4" /></div>}
