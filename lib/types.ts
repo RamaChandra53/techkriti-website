@@ -37,6 +37,7 @@ export interface Event {
   rules?: string[];
   prizes?: string;
   registrationUrl?: string;
+  registrationLabel?: string;
   fees: { label: string; amount: number }[];
   highlights: string[];
   coordinators: { name: string; phone: string }[];
@@ -56,6 +57,6 @@ export interface ScheduleItem {
   eventSlug?: string;
 }
 
-export interface Sponsor { name: string; tier: "Title" | "Powered by" | "Partner"; url?: string }
+export interface Sponsor { name: string; tier: "Title" | "Powered by" | "Partner"; logo?: { src: string; alt: string; width: number; height: number }; url?: string }
 export interface FAQ { question: string; answer: string }
 export interface Announcement { id: string; date: string; title: string; body: string }

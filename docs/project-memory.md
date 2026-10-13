@@ -34,7 +34,7 @@ If confirmed event data is not available yet, state that plainly. An honest empt
 | Event tracks | Technical and non-technical |
 | Registration | Each confirmed event will link directly to its official Google Form; the site will not store registrations |
 | Previous edition | February 2025, with a Telugu-movie-themed identity; its photos and past event references are archive material only |
-| Current content status | October event names are poster-confirmed, and faculty/student convenor contacts were supplied in an organizer image on 13 October. Exact timings, some event rules, forms, sponsors, Instagram URL, and October banner reveal video are not yet confirmed in `lib/content.ts`. The supplied reveal film is from February 2025. |
+| Current content status | October event names are poster-confirmed. The organizer supplied faculty/student convenor contacts, nine event registration links, and three sponsor logos on 13 October. Exact timings, some event rules, Instagram URL, and October banner reveal video are not yet confirmed in `lib/content.ts`. The supplied reveal film is from February 2025. |
 
 The previous posters and screenshots were supplied to explain the earlier festival, not to authorize reusing their event lists or movie theme for October. The photos under `D:\Techkriti\photos feb 2026` and the optimized `public/archive/` images document the February edition. Always caption or label them as previous-edition material. Never present those images as scenes from the upcoming Halloween edition.
 
@@ -106,7 +106,7 @@ Visual novelty is not a reason to move a practical task lower in that order.
 
 - Confirmed October 2026 event names and which track/category/day each belongs to.
 - Per-event descriptions, rules, eligibility, team sizes, exact times and MGIT room numbers.
-- One official Google Form URL per event, and when each registration opens/closes.
+- Registration opening and closing times for the nine supplied Google Forms.
 - Official banner reveal video for this edition, exact name of the reveal, poster, and any transcript/captions.
 - Official Instagram and other social URLs, contact email, approved sponsors and brand assets. Faculty and student convenor names and student phone numbers were supplied on 13 October.
 - Final domain, production approval, photo permissions, and whether any event has limited eligibility or capacity.
@@ -260,3 +260,9 @@ The organizer supplied an image naming the faculty and student convenors. List t
 ## 13 October 2026 past guest epitaph clarification
 
 Remove the birth-to-February-2025 date ranges from Adivi Sesh and Sai Dharam Tej's decorative stones because they resemble real death dates. Keep the theatrical grave artwork and Instagram reel links, but state above the stones that the guests are alive and the haunting refers to Techkriti 2025 memories. On each stone, use “Haunted Techkriti · February 2025” and “Back in spirit for After Dark 2026.” This supersedes the earlier fictional-death-date treatment.
+
+## 13 October 2026 forms, sponsors, and header mark
+
+The organizer supplied nine `forms.gle` URLs, one for each poster-confirmed event. The Esports link is specifically for the CODM tournament and must be labeled that way. The organizer also supplied the current Techkriti square mark for the top-left header and three sponsor logos: Global Degrees, Vionet, and Jai Enterprises. Present each sponsor with two neutral text lines: its name and “Supporting Techkriti 2026.” Keep the logo artwork intact and avoid a white box around the header mark.
+
+The organizer then removed “Back in spirit for After Dark 2026” from both guest stones. Each stone shows only “Haunted Techkriti · February 2025” below the name at all viewport sizes.

@@ -38,7 +38,7 @@ export function PastGuests() {
               <span className="guest-reel-cue"><PlayIcon aria-hidden="true" />Open the IG reel<ArrowUpRightIcon aria-hidden="true" /></span>
             </div>
             <h3>{guest.name}</h3>
-            <p className="guest-epitaph"><span>Haunted Techkriti · February 2025</span><span>Back in spirit for After Dark 2026</span></p>
+            <p className="guest-epitaph">Haunted Techkriti · February 2025</p>
           </a>
           <div className="guest-stone-base" aria-hidden="true" />
           <div className="guest-earth-lip" aria-hidden="true" />
