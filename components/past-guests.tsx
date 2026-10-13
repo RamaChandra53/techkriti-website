@@ -24,14 +24,13 @@ function GraveWeb() {
 export function PastGuests() {
   return <section id="past-guests" aria-labelledby="past-guests-title" className="past-guests-section scroll-mt-24">
     <Container>
-      <h2 id="past-guests-title" className="past-guests-title">Ghosts spread <span>the word.</span></h2>
+      <h2 id="past-guests-title" className="past-guests-title">Ghosts who <span className="whitespace-nowrap">spread the word.</span></h2>
       <p className="past-guests-context">Ghosts are alive. Their 2026 Techkriti memories still haunt us.</p>
       <div className="past-guests-grid">
         {guests.map((guest) => <article key={guest.name} className="past-guest-card">
           <a className="guest-headstone" href={guest.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${guest.name} Instagram reel in a new tab`}>
             <GraveWeb />
             <svg className="guest-stone-cracks" viewBox="0 0 400 700" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="m108 3 15 35-18 20 12 29-27 32m15-61-24-9M395 390l-19 28 8 26-22 31 10 30m12-61 15 8M3 570l24 18-10 23 20 23-8 43m-2-89 27 1" /></svg>
-            <span className="guest-stone-ornament" aria-hidden="true">✝</span>
             <div className="past-guest-portrait">
               <Image src={guest.image} alt={`${guest.name} portrait — open the Instagram reel`} fill sizes="(max-width: 600px) 70vw, 320px" className="guest-portrait-image" />
               <span className="guest-reel-cue"><PlayIcon aria-hidden="true" />Open the IG reel<ArrowUpRightIcon aria-hidden="true" /></span>

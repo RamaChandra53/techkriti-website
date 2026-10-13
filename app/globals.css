@@ -75,11 +75,11 @@ a, button, input, select, summary { -webkit-tap-highlight-color: transparent; }
 .festival-hero-veil { background: linear-gradient(90deg, #0c0914df 0%, #0c0914c7 36%, #0c09147a 68%, #0c091426 100%); }
 .archive-image img { transition: transform var(--motion-standard) var(--ease-standard); }
 .revelation-frame { background: radial-gradient(ellipse at 50% 110%, #893e294d, transparent 65%), linear-gradient(135deg, #21131e, #100c15 60%, #231522); }
-.revelation-video-frame { width: min(100%, 1100px); margin-inline: auto; overflow: hidden; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.revelation-video-frame { width: min(100%, 1100px); margin-inline: auto; overflow: hidden; border: 1px solid #a889c6; border-radius: 8px; background: transparent; box-shadow: none; }
 .revelation-inline-video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; background: transparent; }
 .past-guests-section { background: transparent; }
 .past-guests-kicker { color: var(--ember); font-size: .65rem; font-weight: 800; letter-spacing: .32em; text-align: left; text-transform: uppercase; }
-.past-guests-title { margin-top: 1rem; color: #f4e9d9; font-family: var(--font-halloween), Georgia, serif; font-size: clamp(3rem, 8vw, 6.2rem); font-weight: 400; letter-spacing: .015em; line-height: .94; text-align: left; text-wrap: balance; }
+.past-guests-title { margin-top: 1rem; color: #f4e9d9; font-family: var(--font-halloween), Georgia, serif; font-size: clamp(2.2rem, 5.5vw, 4.8rem); font-weight: 400; letter-spacing: .015em; line-height: .94; text-align: left; text-wrap: balance; }
 .past-guests-title span { color: var(--ember); }
 .past-guests-context { max-width: 42rem; margin-top: 1rem; color: #f4e9d9; font-size: clamp(.9rem, 1.7vw, 1.1rem); line-height: 1.5; }
 /* Weathered headstones frame the supplied Instagram preview portraits. */
@@ -111,7 +111,6 @@ a, button, input, select, summary { -webkit-tap-highlight-color: transparent; }
   .past-guest-card:nth-child(2) { margin-top: 1rem; }
   .guest-headstone { padding: 1.35rem .4rem .8rem; border-width: 2px; }
   .guest-headstone::before { inset: 5px; }
-  .guest-stone-ornament { margin: 0 auto .45rem; font-size: 1.4rem; }
   .guest-cobweb { top: .6rem; width: 43%; }
   .past-guest-portrait { border-width: 2px; }
   .guest-reel-cue { inset: auto .2rem .3rem; gap: .15rem; padding: .27rem .2rem; font-size: .5rem; white-space: nowrap; }
@@ -132,9 +131,9 @@ body:has(.event-registration-bar) footer { padding-bottom: calc(7rem + env(safe-
 .archive-image:hover img { transform: scale(1.025); }
 .archive-carousel { width: 100%; padding: .5rem 0 0; text-align: center; }
 .archive-carousel-stage { position: relative; display: grid; width: min(86vw, 540px); aspect-ratio: 3 / 2; place-items: center; margin: 0 auto 2.25rem; perspective: 1200px; isolation: isolate; }
-.archive-carousel-card { position: absolute; inset: 0; display: block; width: 100%; height: 100%; padding: 4px; border: 1px solid #c96c3f; border-radius: 10px; background: linear-gradient(145deg, #351723, #a14b2d 48%, #2a1522); box-shadow: 0 16px 38px #000a, 0 0 14px #ff793820; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; }
+.archive-carousel-card { position: absolute; inset: 0; display: block; width: 100%; height: 100%; padding: 2px; border: 1px solid #c96c3f; border-radius: 10px; background: linear-gradient(145deg, #351723, #a14b2d 48%, #2a1522); box-shadow: 0 16px 38px #000a, 0 0 14px #ff793820; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; }
 .archive-carousel-card:active { cursor: grabbing; }
-.archive-carousel-card::after { content: ""; position: absolute; inset: 7px; z-index: 2; pointer-events: none; border: 1px solid #ffe0b747; border-radius: 6px; }
+.archive-carousel-card::after { content: ""; position: absolute; inset: 4px; z-index: 2; pointer-events: none; border: 1px solid #ffe0b747; border-radius: 6px; }
 .archive-carousel-card[aria-hidden="true"] { pointer-events: none; }
 .archive-carousel-photo { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; border-radius: 6px; background: #1b1220; }
 .archive-ornament-ghost { position: absolute; right: .7rem; bottom: -.65rem; z-index: 4; width: 1.7rem; height: 1.7rem; color: #fff8ef; pointer-events: none; }

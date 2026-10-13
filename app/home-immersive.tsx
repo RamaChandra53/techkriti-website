@@ -42,7 +42,7 @@ export default function HomeImmersive() {
       </Container>
     </section>
 
-    <TransitionTape label="February 2026 · Previous edition" />
+    <TransitionTape label="FEB 2026 · PREVIOUS EDITION" />
     <section id="archive" aria-labelledby="archive-title" className="festival-section scroll-mt-24">
       <Container>
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4 sm:mb-12">
@@ -52,11 +52,11 @@ export default function HomeImmersive() {
       </Container>
     </section>
 
-    <TransitionTape label="Before you arrive" />
+    <TransitionTape label="BEFORE YOU ARRIVE" />
     <section id="faq" aria-labelledby="faq-title" className="festival-section scroll-mt-24 bg-[#0d0911]/72">
       <Container className="max-w-5xl">
         <div className="mb-6 sm:mb-8">
-          <h2 id="faq-title" className="display-heading mt-1 text-[clamp(2.8rem,6vw,5.5rem)]">Frightfully <span className="text-[var(--ember)]">asked.</span></h2>
+          <h2 id="faq-title" className="display-heading mt-1 text-[clamp(2.3rem,5vw,4.5rem)]">Frightfully<br /><span className="text-[var(--ember)]">asked.</span></h2>
         </div>
         <FAQList items={faqs} />
         <FestivalContacts className="mt-8" />

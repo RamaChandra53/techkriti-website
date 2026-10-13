@@ -40,6 +40,7 @@ export function SiteHeader() {
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const dragRef = useRef<{ pointerId: number; startX: number; left: number; width: number; moved: boolean } | null>(null);
   const suppressClick = useRef(false);
+  const navigationTargetRef = useRef<string | null>(null);
 
   useEffect(() => {
     const sync = () => setActive(selectedItem(pathname, window.location.hash));
@@ -53,12 +54,20 @@ export function SiteHeader() {
     const sections = sectionIds.map((id) => document.getElementById(id)).filter((section): section is HTMLElement => Boolean(section));
     if (!sections.length) return;
     const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
+      const targetId = navigationTargetRef.current;
+      const targetEntry = targetId ? entries.find((entry) => entry.target.id === targetId && entry.isIntersecting) : undefined;
+      if (targetId && !targetEntry) return;
+      if (targetEntry) navigationTargetRef.current = null;
+      const trackingLine = window.innerHeight * .18;
+      const visible = sections
+        .map((section) => ({ section, bounds: section.getBoundingClientRect() }))
+        .filter(({ bounds }) => bounds.top <= trackingLine && bounds.bottom > trackingLine)
+        .sort((first, second) => second.bounds.top - first.bounds.top)[0]?.section;
       if (!visible) return;
-      const index = sectionIndex(visible.target.id);
+      const index = sectionIndex(visible.id);
       if (index < 0) return;
       setActive(index);
-      const nextHash = index === 0 ? "#home" : `#${visible.target.id}`;
+      const nextHash = index === 0 ? "#home" : `#${visible.id}`;
       if (window.location.hash !== nextHash) window.history.replaceState(null, "", `/${nextHash}`);
     }, { rootMargin: "-18% 0px -58% 0px", threshold: [0, .2, .5, .8] });
     sections.forEach((section) => observer.observe(section));
@@ -183,9 +192,13 @@ export function SiteHeader() {
             if (!section) return;
             event.preventDefault();
             const hash = item.href.split("#")[1];
+            navigationTargetRef.current = hash;
             window.history.pushState(null, "", `/#${hash}`);
             window.dispatchEvent(new CustomEvent("homepage-section-change", { detail: { section: hash } }));
             section.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+            const trackingLine = window.innerHeight * .18;
+            const bounds = section.getBoundingClientRect();
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || (bounds.top <= trackingLine && bounds.bottom > trackingLine)) navigationTargetRef.current = null;
           }}
           className={`header-segment relative z-10 inline-flex min-h-10 w-full items-center justify-center rounded-full px-3 text-sm font-normal xl:min-h-12 2xl:px-4 2xl:text-base ${active === index ? "text-[#170d11]" : "text-[#fff4e9] hover:text-[#ffae7a]"}`}
         >{item.label}</Link>)}
