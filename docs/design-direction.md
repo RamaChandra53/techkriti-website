@@ -9,9 +9,9 @@ A cinematic Halloween × technology student festival at MGIT, 16–17 October 20
 ## Homepage order
 
 1. **Hero:** Techkriti. After dark. Dates, MGIT, and both tracks, with direct Explore events and The revelation links.
-2. **Revelation:** the supplied February 2025 previous-edition banner film, labeled clearly and presented in a prominent native player with controls.
+2. **Revelation:** the supplied current-edition film, labeled “This year’s edition” and presented in a native player with controls.
 3. **Event discovery:** a short heading, clear Technical / Non-technical selectors, then confirmed-event posters or an honest pending state.
-4. **Last time at Techkriti:** bright February 2025 photography in a large–small–large editorial sequence.
+4. **Last time at Techkriti:** bright February 2026 photography in a large–small–large editorial sequence.
 5. **Final CTA:** a short invitation and Explore Events / Register jump, followed by a compact footer.
 
 The sticky header and hero expose an Explore Events / Register jump to the on-page carousel. The hero's secondary Revelation link jumps to the video section. The revelation's narrative placement must not become a barrier. Remove homepage About, expectation cards, FAQ blocks, and explanatory paragraphs. Supporting routes remain available.
@@ -47,9 +47,9 @@ Truthful content is a constant requirement. For design tradeoffs, follow the lat
 
 ## Photography and revelation
 
-`components/archive-story.tsx` supplies reusable photo figures. The homepage uses four selected photos; the archive groups all 19 into people, campus, and handmade details. Every archive experience is labeled February 2025. Large photo links open in a new tab with an accessible label.
+`components/archive-story.tsx` supplies reusable photo figures. The homepage uses four selected photos; the archive groups all 19 into people, campus, and handmade details. Every archive experience is labeled February 2026. Large photo links open in a new tab with an accessible label.
 
-The supplied February 2025 film is stored at `public/branding/revelation.mp4` and rendered with native controls, inline mobile playback, and `preload="metadata"`. Do not autoplay or imply it depicts the upcoming October edition.
+The current-edition film is stored at `public/branding/revelation.mp4` and rendered at its native 16:9 aspect ratio, with native controls, inline mobile playback, a frame extracted from the film as its poster, and `preload="metadata"`. Its changing black bands are part of the video and must not be cropped.
 
 ## Verification and launch
 

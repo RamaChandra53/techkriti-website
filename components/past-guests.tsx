@@ -25,7 +25,7 @@ export function PastGuests() {
   return <section id="past-guests" aria-labelledby="past-guests-title" className="past-guests-section scroll-mt-24">
     <Container>
       <h2 id="past-guests-title" className="past-guests-title">They helped spread <span>the word.</span></h2>
-      <p className="past-guests-context">The guests are alive. Their 2025 Techkriti memories still haunt us.</p>
+      <p className="past-guests-context">The guests are alive. Their 2026 Techkriti memories still haunt us.</p>
       <div className="past-guests-grid">
         {guests.map((guest) => <article key={guest.name} className="past-guest-card">
           <a className="guest-headstone" href={guest.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${guest.name} Instagram reel in a new tab`}>
@@ -37,7 +37,7 @@ export function PastGuests() {
               <span className="guest-reel-cue"><PlayIcon aria-hidden="true" />Open the IG reel<ArrowUpRightIcon aria-hidden="true" /></span>
             </div>
             <h3>{guest.name}</h3>
-            <p className="guest-epitaph">Haunted Techkriti · February 2025</p>
+            <p className="guest-epitaph">Haunted Techkriti · February 2026</p>
           </a>
           <div className="guest-stone-base" aria-hidden="true" />
           <div className="guest-earth-lip" aria-hidden="true" />

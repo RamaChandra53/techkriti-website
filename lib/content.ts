@@ -15,9 +15,8 @@ export const siteConfig: SiteConfig = {
   email: "",
   phone: "",
   url: publicSiteUrl,
-  bannerVideoUrl: "",
-  previousBannerVideoUrl: "/branding/revelation.mp4",
-  previousBannerPosterUrl: "",
+  bannerVideoUrl: "/branding/revelation.mp4",
+  bannerPosterUrl: "/branding/revelation-poster.png",
   social: { instagram: "" }
 };
 
@@ -60,7 +59,7 @@ export const events: Event[] = [
   {
     slug: "esports", title: "Esports", eyebrow: "Non-technical event", division: "Non-Technical", category: "Competition", accent: "sky",
     summary: "Valorant, BGMI, and CODM tournaments with team and solo categories.", description: "Poster-confirmed event highlights.",
-    venue: "COD2 Lab", eligibility: "To be announced", teamSize: "Team and solo categories", fees: [{ label: "Valorant squad", amount: 499 }, { label: "BGMI squad", amount: 250 }, { label: "CODM", amount: 199 }], registrationUrl: "https://forms.gle/AGHRFEMtZRUkX46b7", registrationLabel: "Register for CODM",
+    venue: "COD2 Lab", eligibility: "To be announced", teamSize: "Team and solo categories", fees: [{ label: "Valorant squad", amount: 499 }, { label: "BGMI squad", amount: 250 }, { label: "CODM", amount: 199 }], registrationUrl: "https://forms.gle/AGHRFEMtZRUkX46b7",
     highlights: ["Valorant tournament", "BGMI tournament", "CODM tournament", "Rules briefed on site", "Exciting prizes"], coordinators: [{ name: "Swayam", phone: "+91 8317536981" }, { name: "Pranav", phone: "+91 8309513259" }],
     image: { src: "/events/esports.webp", alt: "Official Esports event poster", width: 2382, height: 1684 },
   },
@@ -103,12 +102,13 @@ export const sponsors: Sponsor[] = [
 ];
 
 export const faqs: FAQ[] = [
-  { question: "When and where is Techkriti?", answer: "Techkriti is scheduled for 16–17 October 2026 at Mahatma Gandhi Institute of Technology (MGIT), Hyderabad." },
-  { question: "What events are happening?", answer: "The confirmed lineup includes four technical events and five non-technical events. Open an event card for its latest published information." },
-  { question: "How do I register for an event?", answer: "Open an event poster, then use the registration button on its event page to open the supplied Google Form. The Esports form is specifically for the CODM tournament." },
-  { question: "Can I participate in more than one event?", answer: "Participation limits and schedule conflicts have not yet been confirmed. Check the final timings and the rules on each event page before registering for multiple events." },
-  { question: "Who can enter, and are there team or fee requirements?", answer: "Eligibility, team sizes, and entry fees may differ by event. Check each event page and its registration form for the latest requirements." },
-  { question: "When and where will each event take place?", answer: "The festival dates and MGIT campus are confirmed. Individual times and exact rooms are still pending and will appear with each event once approved." }
+  { question: "When and where does the nightmare begin?", answer: "16–17 October 2026 at MGIT, Hyderabad. Two days. Eleven events. Endless chaos." },
+  { question: "Who can enter? Only ghosts?", answer: "Vampires, witches, and humans are welcome. Students from other colleges can join the haunting too." },
+  { question: "How do I secure my place in the underworld?", answer: "Explore the events, choose your challenge, and fill out its registration form." },
+  { question: "Can I participate in multiple events?", answer: "Yes. Take on as many challenges as you like, but check each event’s rules and schedule before registering." },
+  { question: "Can students from other colleges join the madness?", answer: "Absolutely. Bring your college ID and get ready to join in." },
+  { question: "Are there prizes, or do I just get eternal glory?", answer: "Bragging rights are yours. Check individual event details for confirmed prizes and certificates." },
+  { question: "What should I bring?", answer: "Your college ID and your bravest soul. Garlic is optional." }
 ];
 
 export const announcements: Announcement[] = [];

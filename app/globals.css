@@ -37,6 +37,7 @@ button, input, select { font: inherit; }
 a, button, input, select, summary { -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 4px; }
 .font-haunt { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-style: italic; letter-spacing: -.055em; }
+.hero-copy { font-family: var(--font-roboto-slab), Georgia, serif; font-style: normal; letter-spacing: normal; text-transform: none; }
 .eyebrow { color: #ffae7a; font-size: .7rem; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; }
 .eyebrow-dark { color: #ffae7a; }
 .display-heading { font-family: var(--font-halloween), Georgia, serif; font-weight: 400; letter-spacing: .015em; line-height: .94; text-wrap: balance; }
@@ -57,7 +58,7 @@ a, button, input, select, summary { -webkit-tap-highlight-color: transparent; }
 .transition-tape::before, .transition-tape::after { position: absolute; right: 0; left: 0; height: .42rem; content: ""; background: repeating-linear-gradient(135deg, #ff7938 0 .7rem, #0d0a12 .7rem 1.4rem); }
 .transition-tape::before { top: 0; }
 .transition-tape::after { bottom: 0; }
-.transition-tape-label { position: relative; z-index: 1; display: flex; width: 70%; min-height: 1.15rem; align-items: center; justify-content: center; padding: 0 .6rem; background: #ff7938; color: #0d0a12; font-family: var(--font-geist), sans-serif; font-size: clamp(.6rem, 1.6vw, .8rem); font-weight: 700; letter-spacing: .1em; line-height: 1.1; text-align: center; text-transform: uppercase; text-wrap: balance; }
+.transition-tape-label { position: relative; z-index: 1; display: flex; width: 70%; min-height: 1.15rem; align-items: center; justify-content: center; padding: 0 .6rem; background: #ff7938; color: #0d0a12; font-family: var(--font-roboto-slab), Georgia, serif; font-size: clamp(.7rem, 1.6vw, .9rem); font-weight: 700; letter-spacing: .02em; line-height: 1.1; text-align: center; text-wrap: balance; }
 .night-grain { background-image: radial-gradient(#ffb88a14 .7px, transparent .7px); background-size: 8px 8px; }
 .button-flame, .cta-primary { border-radius: var(--radius-control); background: var(--ember); color: #170d11; transition: background-color var(--motion-standard) var(--ease-standard), box-shadow var(--motion-standard) var(--ease-standard), transform var(--motion-fast) var(--ease-standard); }
 .button-flame:hover, .cta-primary:hover { background: var(--ember-hover); box-shadow: var(--glow-ember-soft); transform: translateY(-2px); }
@@ -74,8 +75,8 @@ a, button, input, select, summary { -webkit-tap-highlight-color: transparent; }
 .festival-hero-veil { background: linear-gradient(90deg, #0c0914df 0%, #0c0914c7 36%, #0c09147a 68%, #0c091426 100%); }
 .archive-image img { transition: transform var(--motion-standard) var(--ease-standard); }
 .revelation-frame { background: radial-gradient(ellipse at 50% 110%, #893e294d, transparent 65%), linear-gradient(135deg, #21131e, #100c15 60%, #231522); }
-.revelation-video-frame { width: min(100%, 860px); margin-inline: auto; overflow: hidden; border: 0; border-radius: 0; background: #110c16; box-shadow: none; }
-.revelation-inline-video { display: block; width: 100%; height: auto; max-height: min(70svh, 600px); object-fit: contain; background: #110c16; }
+.revelation-video-frame { width: min(100%, 1100px); margin-inline: auto; overflow: hidden; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.revelation-inline-video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; background: transparent; }
 .past-guests-section { background: transparent; }
 .past-guests-kicker { color: var(--ember); font-size: .65rem; font-weight: 800; letter-spacing: .32em; text-align: left; text-transform: uppercase; }
 .past-guests-title { margin-top: 1rem; color: #f4e9d9; font-family: var(--font-halloween), Georgia, serif; font-size: clamp(3rem, 8vw, 6.2rem); font-weight: 400; letter-spacing: .015em; line-height: .94; text-align: left; text-wrap: balance; }

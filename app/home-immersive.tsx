@@ -20,16 +20,16 @@ export default function HomeImmersive() {
         <h1 id="festival-title" className="mt-3 w-full sm:mt-4">
           <Image src="/branding/techkriti-splatter-white.png" alt="Techkriti" width={1642} height={958} priority sizes="(max-width: 1400px) 100vw, 1304px" className="h-auto w-full" />
         </h1>
-        <p className="eyebrow mt-3 self-start sm:mt-5">16–17 OCTOBER 2026 · MGIT, HYDERABAD</p>
-        <p className="mt-3 max-w-3xl self-start text-left text-[clamp(1.25rem,3vw,1.8rem)] font-normal italic leading-snug tracking-[-.025em] text-[#fff4e9] sm:mt-5">Two nights. Eleven events.<br />Enter if you dare.</p>
-        <Link href="#discover" className="header-register mt-4 inline-flex min-h-10 items-center self-center justify-center rounded-full px-5 py-2 text-xs font-bold uppercase tracking-[.12em]">Explore events</Link>
+        <p className="hero-copy mt-3 self-start text-sm font-semibold leading-relaxed text-[#ffae7a] sm:mt-5">16–17 October 2026 · MGIT, Hyderabad</p>
+        <p className="hero-copy mt-3 max-w-3xl self-start text-left text-[clamp(1.25rem,3vw,1.8rem)] font-semibold leading-snug text-[#fff4e9] sm:mt-5">Two days. Eleven events.<br />Enter if you dare.</p>
+        <Link href="#discover" className="header-register hero-copy mt-4 inline-flex min-h-10 items-center self-center justify-center rounded-full px-5 py-2 text-sm font-bold">Explore events</Link>
       </Container>
     </section>
 
-    <TransitionTape label="February 2025 · Previous edition" />
+    <TransitionTape label="This year’s edition" />
     <BannerReveal />
 
-    <TransitionTape label="February 2025 · Past guests" />
+    <TransitionTape label="February 2026 · Past guests" />
     <PastGuests />
 
     <TransitionTape label="The reason you came" />
@@ -42,7 +42,7 @@ export default function HomeImmersive() {
       </Container>
     </section>
 
-    <TransitionTape label="February 2025 · Previous edition" />
+    <TransitionTape label="February 2026 · Previous edition" />
     <section id="archive" aria-labelledby="archive-title" className="festival-section scroll-mt-24">
       <Container>
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4 sm:mb-12">
@@ -59,6 +59,7 @@ export default function HomeImmersive() {
           <h2 id="faq-title" className="display-heading mt-1 text-[clamp(2.8rem,6vw,5.5rem)]">Frightfully <span className="text-[var(--ember)]">asked.</span></h2>
         </div>
         <FAQList items={faqs} />
+        <p className="mt-8 text-center text-lg font-semibold text-[#fff4e9]">Still haunted by questions? Reach out to the organizers below.</p>
         <FestivalContacts className="mt-8" />
       </Container>
     </section>

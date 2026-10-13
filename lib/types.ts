@@ -15,8 +15,7 @@ export interface SiteConfig {
   phone?: string;
   url: string;
   bannerVideoUrl?: string;
-  previousBannerVideoUrl?: string;
-  previousBannerPosterUrl?: string;
+  bannerPosterUrl?: string;
   social: { instagram?: string; linkedin?: string; youtube?: string };
 }
 
@@ -37,7 +36,6 @@ export interface Event {
   rules?: string[];
   prizes?: string;
   registrationUrl?: string;
-  registrationLabel?: string;
   fees: { label: string; amount: number }[];
   highlights: string[];
   coordinators: { name: string; phone: string }[];

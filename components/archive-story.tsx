@@ -67,7 +67,7 @@ export function ArchiveStory() {
     return () => window.clearInterval(timer);
   }, [advance, interacted]);
 
-  return <div className="archive-carousel" aria-label="February 2025 Techkriti photo archive">
+  return <div className="archive-carousel" aria-label="February 2026 Techkriti photo archive">
     <div className="archive-carousel-stage">
       <AnimatePresence initial={false}>
         {visible.map((photoIndex, depth) => <StackCard key={archivePhotos[photoIndex].src} photo={archivePhotos[photoIndex]} depth={depth} number={photoIndex + 1} advance={advance} onInteract={stopAutoTurn} />)}

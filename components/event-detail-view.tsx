@@ -8,7 +8,7 @@ import { StormBackground } from "./storm-background";
 
 function RegistrationAction({ event }: { event: Event }) {
   if (!event.registrationUrl) return <span aria-disabled="true" className="event-register-disabled">Registration soon</span>;
-  return <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className="event-register-action"><TicketIcon className="h-5 w-5" aria-hidden="true" /> {event.registrationLabel ?? "Register"} <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" /><span className="sr-only"> for {event.title}, opens in a new tab</span></a>;
+  return <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className="event-register-action"><TicketIcon className="h-5 w-5" aria-hidden="true" /> Register <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" /><span className="sr-only"> for {event.title}, opens in a new tab</span></a>;
 }
 
 function Fact({ icon, label, children }: { icon: React.ReactNode; label: string; children: React.ReactNode }) {
