@@ -240,3 +240,7 @@ Keep both guest graves side by side on phones, including narrow 320px screens. S
 ## 12 October 2026 previous edition year correction
 
 The organizer confirmed that the photographed previous edition and supplied banner film are from February 2025. Use February 2025 in all public archive and video labels. The original source folder remains named `photos feb 2026`; that filesystem name does not set the event year. The upcoming Halloween edition remains 16–17 October 2026.
+
+## 13 October 2026 poster navigation
+
+Opening an event poster and returning to the homepage must restore that poster as the active carousel item, whether the visitor uses browser Back or the event page's “Back to events” link. The next and previous controls continue browsing from the restored poster.
