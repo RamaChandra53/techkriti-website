@@ -140,7 +140,7 @@ export function SiteHeader() {
           href={item.href}
           aria-current={active === index ? "page" : undefined}
           onClick={(event) => { if (suppressClick.current) { event.preventDefault(); suppressClick.current = false; return; } setActive(index); }}
-          className={`header-segment relative z-10 inline-flex min-h-10 w-full items-center justify-center rounded-full px-3 text-sm font-bold xl:min-h-12 2xl:px-4 2xl:text-base ${active === index ? "text-[#170d11]" : "text-[#fff4e9] hover:text-[#ffae7a]"}`}
+          className={`header-segment relative z-10 inline-flex min-h-10 w-full items-center justify-center rounded-full px-3 text-sm font-normal xl:min-h-12 2xl:px-4 2xl:text-base ${active === index ? "text-[#170d11]" : "text-[#fff4e9] hover:text-[#ffae7a]"}`}
         >{item.label}</Link>)}
       </nav>
     </Container>

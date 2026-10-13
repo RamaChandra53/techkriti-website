@@ -24,8 +24,7 @@ function GraveWeb() {
 export function PastGuests() {
   return <section id="past-guests" aria-labelledby="past-guests-title" className="past-guests-section scroll-mt-24">
     <Container>
-      <p className="past-guests-kicker">Past guests · Techkriti ’25</p>
-      <h2 id="past-guests-title" className="past-guests-title">They walked <span>among us.</span></h2>
+      <h2 id="past-guests-title" className="past-guests-title">They helped spread <span>the word.</span></h2>
       <p className="past-guests-context">The guests are alive. Their 2025 Techkriti memories still haunt us.</p>
       <div className="past-guests-grid">
         {guests.map((guest) => <article key={guest.name} className="past-guest-card">
