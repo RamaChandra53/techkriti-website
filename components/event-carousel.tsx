@@ -73,7 +73,7 @@ export function EventCarousel({ events }: { events: Event[] }) {
       if (Math.abs(delta) > 45) move(delta < 0 ? 1 : -1);
       touchStart.current = null;
     }}>
-      <div ref={stageRef} className={`event-fan-stage ${active.image && (active.image.height ?? 1) > (active.image.width ?? 1) ? "event-fan-stage-portrait" : "event-fan-stage-landscape"}`}>
+      <div ref={stageRef} className="event-fan-stage">
         {orderedEvents.map((item, index) => {
           const offset = (index - currentIndex + count) % count;
           const signed = offset > count / 2 ? offset - count : offset;

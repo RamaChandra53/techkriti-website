@@ -21,6 +21,13 @@ export const siteConfig: SiteConfig = {
   social: { instagram: "" }
 };
 
+export const contactGroups: { title: string; people: { name: string; detail?: string; phone?: string }[] }[] = [
+  { title: "Faculty Convenor", people: [{ name: "Dr. D. Vijaya Lakshmi", detail: "Professor & HOD, IT" }] },
+  { title: "Faculty Co-Convenors", people: [{ name: "Mrs. B. Tulasi Das" }, { name: "Mrs. J. Padmavathi" }] },
+  { title: "Student Convenors", people: [{ name: "T. Shashank", phone: "7013686848" }, { name: "P. Akshaya", phone: "9573890107" }] },
+  { title: "Student Co-Convenors", people: [{ name: "P. Aditya", phone: "8919268734" }, { name: "M. Vyshnavi", phone: "7671863390" }] }
+];
+
 export const events: Event[] = [
   {
     slug: "brand-o-ween", title: "Brand-O-Ween", eyebrow: "Technical event", division: "Technical", category: "Competition", accent: "coral",

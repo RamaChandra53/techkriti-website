@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { UserGroupIcon } from "@heroicons/react/24/outline";
 import { BannerReveal } from "@/components/banner-reveal";
 import { Container } from "@/components/container";
 import { EventCarousel } from "@/components/event-carousel";
@@ -10,6 +9,7 @@ import { events, faqs, sponsors } from "@/lib/content";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import { StormBackground } from "@/components/storm-background";
 import { PastGuests } from "@/components/past-guests";
+import { FestivalContacts } from "@/components/festival-contacts";
 
 export default function HomeImmersive() {
   return <>
@@ -53,23 +53,14 @@ export default function HomeImmersive() {
           <h2 id="faq-title" className="display-heading mt-1 text-[clamp(2.8rem,6vw,5.5rem)]">Frightfully <span className="text-[var(--ember)]">asked.</span></h2>
         </div>
         <FAQList items={faqs} />
-        <div className="mt-8 grid gap-4 border border-[#704832] bg-[#160e17]/90 p-5 sm:grid-cols-[auto_1fr] sm:items-start sm:p-6">
-          <UserGroupIcon className="h-8 w-8 text-[#ff8a4c]" aria-hidden="true" />
-          <div>
-            <h3 className="text-lg font-black tracking-[-.03em] text-[#fff4e9]">Whom to contact</h3>
-            <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
-              <div><dt className="font-bold text-[#ffb482]">Name</dt><dd className="mt-1 text-[#fff4e9]">Techkriti organizing team</dd></div>
-              <div><dt className="font-bold text-[#ffb482]">Phone number</dt><dd className="mt-1 text-[var(--muted)]">Awaiting confirmation</dd></div>
-            </dl>
-          </div>
-        </div>
+        <FestivalContacts className="mt-8" />
       </Container>
     </section>
 
     <section id="sponsors" aria-labelledby="sponsors-title" className="festival-section scroll-mt-24">
       <Container>
         <p className="eyebrow">Partners & supporters</p>
-        <h2 id="sponsors-title" className="display-heading mt-3 text-[clamp(2.8rem,6vw,5.5rem)]">{sponsors.length ? "The people backing Techkriti." : "Partners announced soon."}</h2>
+        <h2 id="sponsors-title" className="display-heading mt-3 text-[clamp(2.8rem,6vw,5.5rem)]">Partners in <span className="text-[var(--ember)]">crime</span></h2>
         {sponsors.length ? <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{sponsors.map((sponsor) => <article key={sponsor.name} className="festival-panel flex min-h-52 flex-col justify-between p-7"><p className="eyebrow">{sponsor.tier}</p><h3 className="text-2xl font-black">{sponsor.name}</h3>{sponsor.url && <a href={sponsor.url} target="_blank" rel="noopener noreferrer" className="text-link inline-flex min-h-11 items-center gap-2 self-start font-bold text-[#ffb386]">Visit partner <ArrowUpRightIcon className="h-5 w-5" aria-hidden="true" /></a>}</article>)}</div> : <div className="relative mt-8 overflow-hidden border border-[#684b63] bg-[#211827] p-8 sm:p-12"><div className="section-grid pointer-events-none absolute inset-0 opacity-15" aria-hidden="true" /><div className="relative"><p className="eyebrow">A place for confirmed supporters</p><p className="muted-copy mt-6 max-w-2xl">This space is reserved for confirmed 2026 partners. No previous-edition sponsors are being presented as current supporters.</p></div></div>}
       </Container>
     </section>

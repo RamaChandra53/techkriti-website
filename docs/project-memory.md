@@ -34,7 +34,7 @@ If confirmed event data is not available yet, state that plainly. An honest empt
 | Event tracks | Technical and non-technical |
 | Registration | Each confirmed event will link directly to its official Google Form; the site will not store registrations |
 | Previous edition | February 2025, with a Telugu-movie-themed identity; its photos and past event references are archive material only |
-| Current content status | October event names are poster-confirmed; exact timings, MGIT rooms, rules, forms, sponsors, contact details, Instagram URL, and October banner reveal video are not yet confirmed in `lib/content.ts`. The supplied reveal film is from February 2025. |
+| Current content status | October event names are poster-confirmed, and faculty/student convenor contacts were supplied in an organizer image on 13 October. Exact timings, some event rules, forms, sponsors, Instagram URL, and October banner reveal video are not yet confirmed in `lib/content.ts`. The supplied reveal film is from February 2025. |
 
 The previous posters and screenshots were supplied to explain the earlier festival, not to authorize reusing their event lists or movie theme for October. The photos under `D:\Techkriti\photos feb 2026` and the optimized `public/archive/` images document the February edition. Always caption or label them as previous-edition material. Never present those images as scenes from the upcoming Halloween edition.
 
@@ -108,7 +108,7 @@ Visual novelty is not a reason to move a practical task lower in that order.
 - Per-event descriptions, rules, eligibility, team sizes, exact times and MGIT room numbers.
 - One official Google Form URL per event, and when each registration opens/closes.
 - Official banner reveal video for this edition, exact name of the reveal, poster, and any transcript/captions.
-- Official Instagram and other social URLs, contact email/phone, approved sponsors and brand assets.
+- Official Instagram and other social URLs, contact email, approved sponsors and brand assets. Faculty and student convenor names and student phone numbers were supplied on 13 October.
 - Final domain, production approval, photo permissions, and whether any event has limited eligibility or capacity.
 
 Until these are answered, build the structure and honest states. Do not borrow specifics from February 2025 to fill October 2026 gaps.
@@ -244,3 +244,15 @@ The organizer confirmed that the photographed previous edition and supplied bann
 ## 13 October 2026 poster navigation
 
 Opening an event poster and returning to the homepage must restore that poster as the active carousel item, whether the visitor uses browser Back or the event page's “Back to events” link. The next and previous controls continue browsing from the restored poster.
+
+## 13 October 2026 stable poster section
+
+Use “Partners in crime” as the sponsors section heading. Keep the event fan stage at one height for portrait and landscape posters on phones and laptops, with every active poster centered inside it. The following February gallery heading must stay at the same page position as visitors browse the nine posters.
+
+## 13 October 2026 sponsors and contact styling
+
+Set “crime” in the sponsors heading in the site's orange accent. Show the “Whom to contact” details directly on the FAQ section background, without their own bordered card or opaque fill.
+
+## 13 October 2026 organizer contact image
+
+The organizer supplied an image naming the faculty and student convenors. List them below “Whom to contact” on the homepage and on the contact page. Use the local Halloween display font for that heading and the regular readable font for roles, names, and phone numbers. The image lists Dr. D. Vijaya Lakshmi (Professor & HOD, IT); Mrs. B. Tulasi Das; Mrs. J. Padmavathi; T. Shashank (7013686848); P. Akshaya (9573890107); P. Aditya (8919268734); and M. Vyshnavi (7671863390). Do not keep the earlier “Awaiting confirmation” contact placeholder.
