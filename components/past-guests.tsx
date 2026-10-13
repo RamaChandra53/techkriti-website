@@ -24,9 +24,7 @@ function GraveWeb() {
 export function PastGuests() {
   return <section id="past-guests" aria-labelledby="past-guests-title" className="past-guests-section scroll-mt-24">
     <Container>
-      <p className="past-guests-kicker">Past guests · Techkriti ’25</p>
-      <h2 id="past-guests-title" className="past-guests-title">They walked <span>among us.</span></h2>
-      <p className="past-guests-context">The guests are alive. Their 2025 Techkriti memories still haunt us.</p>
+      <h2 id="past-guests-title" className="past-guests-title">They helped spread <span>the word.</span></h2>
       <div className="past-guests-grid">
         {guests.map((guest) => <article key={guest.name} className="past-guest-card">
           <a className="guest-headstone" href={guest.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${guest.name} Instagram reel in a new tab`}>
@@ -38,7 +36,7 @@ export function PastGuests() {
               <span className="guest-reel-cue"><PlayIcon aria-hidden="true" />Open the IG reel<ArrowUpRightIcon aria-hidden="true" /></span>
             </div>
             <h3>{guest.name}</h3>
-            <p className="guest-epitaph"><span>Haunted Techkriti · February 2025</span><span>Back in spirit for After Dark 2026</span></p>
+            <p className="guest-epitaph"><span>Event promotion · February 2026</span><span>Promoting Techkriti After Dark 2026</span></p>
           </a>
           <div className="guest-stone-base" aria-hidden="true" />
           <div className="guest-earth-lip" aria-hidden="true" />
