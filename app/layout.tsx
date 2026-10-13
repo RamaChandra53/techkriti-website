@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: { default: `${siteConfig.name} — ${siteConfig.tagline}`, template: `%s | ${siteConfig.name}` },
   description: siteConfig.description,
   alternates: { canonical: "/" },
-  openGraph: { title: siteConfig.name, description: siteConfig.description, url: "/", siteName: siteConfig.name, locale: "en_IN", type: "website", images: [{ url: "/opengraph-image", width: 1200, height: 630 }] },
+  openGraph: { title: siteConfig.name, description: siteConfig.description, url: "/", siteName: siteConfig.name, locale: "en_IN", type: "website", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Techkriti — After Dark logo" }] },
   twitter: { card: "summary_large_image", title: siteConfig.name, description: siteConfig.description, images: ["/opengraph-image"] }
 };
 
