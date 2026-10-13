@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { BannerReveal } from "@/components/banner-reveal";
 import { Container } from "@/components/container";
 import { EventCarousel } from "@/components/event-carousel";
@@ -11,6 +10,7 @@ import { StormBackground } from "@/components/storm-background";
 import { PastGuests } from "@/components/past-guests";
 import { FestivalContacts } from "@/components/festival-contacts";
 import { TransitionTape } from "@/components/transition-tape";
+import { ExploreEventsLink } from "@/components/explore-events-link";
 
 export default function HomeImmersive() {
   return <>
@@ -22,7 +22,7 @@ export default function HomeImmersive() {
         </h1>
         <p className="hero-copy mt-3 self-start text-sm font-semibold leading-relaxed text-[#ff7938] sm:mt-5">16–17 October 2026 · MGIT, Hyderabad</p>
         <p className="hero-copy mt-3 max-w-3xl self-start text-left text-[clamp(1.25rem,3vw,1.8rem)] font-semibold leading-snug text-[#fff4e9] sm:mt-5">Two days. Nine events.<br />Enter if you dare.</p>
-        <Link href="#discover" className="header-register hero-copy mt-4 inline-flex min-h-10 items-center self-center justify-center rounded-full px-5 py-2 text-sm font-bold">Explore events</Link>
+        <ExploreEventsLink />
       </Container>
     </section>
 
@@ -59,18 +59,17 @@ export default function HomeImmersive() {
           <h2 id="faq-title" className="display-heading mt-1 text-[clamp(2.8rem,6vw,5.5rem)]">Frightfully <span className="text-[var(--ember)]">asked.</span></h2>
         </div>
         <FAQList items={faqs} />
-        <p className="mt-8 text-center text-lg font-semibold text-[#fff4e9]">Still haunted by questions? Reach out to the organizers below.</p>
         <FestivalContacts className="mt-8" />
       </Container>
     </section>
 
     <section id="sponsors" aria-labelledby="sponsors-title" className="festival-section scroll-mt-24">
       <Container>
-        <h2 id="sponsors-title" className="display-heading mt-3 text-[clamp(2.8rem,6vw,5.5rem)]">Partners in <span className="text-[var(--ember)]">crime</span></h2>
-        {sponsors.length ? <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">{sponsors.map((sponsor) => <article key={sponsor.name} className="flex flex-col items-center text-center">
-          {sponsor.logo && <div className="sponsor-logo-frame relative h-36 w-full"><Image src={sponsor.logo.src} alt={sponsor.logo.alt} fill sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 40vw, 27vw" className="object-contain p-4" /></div>}
-          <h3 className="mt-5 text-xl font-black text-[#fff4e9]">{sponsor.name}</h3>
-          <p className="mt-1 text-sm text-[#ffb482]">Supporting Techkriti 2026</p>
+        <TransitionTape label="PARTNERS & SUPPORTERS" />
+        <h2 id="sponsors-title" className="display-heading mt-8 text-[clamp(2.8rem,6vw,5.5rem)]">Partners in <span className="text-[var(--ember)]">crime</span></h2>
+        {sponsors.length ? <div className="mt-8 grid grid-cols-3 gap-3 sm:gap-5">{sponsors.map((sponsor) => <article key={sponsor.name} className="flex min-w-0 flex-col items-center text-center">
+          {sponsor.logo && <div className="sponsor-logo-frame relative h-20 w-full sm:h-24"><Image src={sponsor.logo.src} alt={sponsor.logo.alt} fill sizes="(max-width: 640px) 30vw, 27vw" className="object-contain p-2 sm:p-3" /></div>}
+          <h3 className="mt-2 text-sm font-black text-[#fff4e9] sm:text-base">{sponsor.name}</h3>
           {sponsor.url && <a href={sponsor.url} target="_blank" rel="noopener noreferrer" className="text-link mt-4 inline-flex min-h-11 items-center gap-2 font-bold text-[#ffb386]">Visit partner <ArrowUpRightIcon className="h-5 w-5" aria-hidden="true" /></a>}
         </article>)}</div> : <div className="relative mt-8 overflow-hidden border border-[#684b63] bg-[#211827] p-8 sm:p-12"><div className="section-grid pointer-events-none absolute inset-0 opacity-15" aria-hidden="true" /><div className="relative"><p className="eyebrow">A place for confirmed supporters</p><p className="muted-copy mt-6 max-w-2xl">This space is reserved for confirmed 2026 partners. No previous-edition sponsors are being presented as current supporters.</p></div></div>}
       </Container>
