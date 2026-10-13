@@ -9,7 +9,7 @@ export function FestivalContacts({ headingLevel: Heading = "h3", className = "" 
     </div>
     <div className="mt-7 grid grid-cols-2 gap-x-4 gap-y-7 sm:gap-x-10">
       {contactGroups.map((group, index) => <div key={group.title} className="col-span-2 text-center">
-        <h4 className="whitespace-nowrap text-[clamp(.88rem,3vw,1.15rem)] font-bold tracking-[-.02em] text-[#ff7938]">{group.title}</h4>
+        <h4 className="whitespace-nowrap text-[clamp(.98rem,3.3vw,1.3rem)] font-bold tracking-[-.02em] text-[#ff7938]">{group.title}</h4>
         <ul className={`mt-2 text-sm text-[#fff4e9] sm:text-base ${index === 0 ? "space-y-2" : "grid grid-cols-2 gap-x-4 gap-y-2 sm:gap-x-10"}`}>
           {group.people.map((person) => <li key={person.name}>
             <span className="font-medium">{person.name}</span>

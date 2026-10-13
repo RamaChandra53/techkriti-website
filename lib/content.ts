@@ -105,10 +105,9 @@ export const faqs: FAQ[] = [
   { question: "When and where this nightmare begin?", answer: "16–17 October 2026 at MGIT, Hyderabad. Two days. Nine events. Endless chaos." },
   { question: "Who can enter? Only ghosts?", answer: "Vampires, witches, and humans are welcome. Students from other colleges can join the haunting too." },
   { question: "How do I secure my place in the underworld?", answer: "Explore the events, choose your challenge, and fill out its registration form." },
-  { question: "Can I participate in multiple events?", answer: "Yes. Take on as many challenges as you like, but check each event’s rules and schedule before registering." },
-  { question: "Can students from other colleges join the madness?", answer: "Absolutely. Bring your college ID and get ready to join in." },
-  { question: "Are there any prizes?", answer: "Bragging rights are yours. Check individual event details for confirmed prizes and certificates." },
-  { question: "What should I bring?", answer: "Your college ID and your bravest soul. Garlic is optional." }
+  { question: "Can I participate in multiple events?", answer: "Yes, take on as many challenges as you like. Check the event timings so your choices do not clash." },
+  { question: "Are there any prizes?", answer: "Check each event’s details for prize information." },
+  { question: "What should I bring?", answer: "Your college ID, your soul, and a little courage. Garlic is optional." }
 ];
 
 export const announcements: Announcement[] = [];

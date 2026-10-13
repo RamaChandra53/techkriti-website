@@ -20,8 +20,8 @@ export default function HomeImmersive() {
         <h1 id="festival-title" className="mt-3 w-full sm:mt-4">
           <Image src="/branding/techkriti-splatter-white.png" alt="Techkriti" width={1642} height={958} priority sizes="(max-width: 1400px) 100vw, 1304px" className="h-auto w-full" />
         </h1>
-        <p className="hero-copy mt-3 self-start text-sm font-semibold leading-relaxed text-[#ff7938] sm:mt-5">16–17 October 2026 · MGIT, Hyderabad</p>
-        <p className="hero-copy mt-3 max-w-3xl self-start text-left text-[clamp(1.25rem,3vw,1.8rem)] font-semibold leading-snug text-[#fff4e9] sm:mt-5">Two days. Nine events.<br />Enter if you dare.</p>
+        <p className="hero-copy mt-6 self-center text-center text-[clamp(1rem,2.3vw,1.35rem)] font-normal leading-relaxed text-[#fff4e9] sm:mt-8">16–17 October 2026 · MGIT, Hyderabad</p>
+        <p className="hero-copy mt-1 max-w-3xl self-center text-center text-[clamp(1rem,2.3vw,1.35rem)] font-normal leading-snug text-[#fff4e9] sm:mt-2">Two days. Nine events.<br />Enter if you dare.</p>
         <ExploreEventsLink />
       </Container>
     </section>

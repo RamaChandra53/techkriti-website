@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRightIcon, PlayIcon } from "@heroicons/react/24/solid";
+import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 import { Container } from "./container";
 
 const guests = [
@@ -33,7 +33,7 @@ export function PastGuests() {
             <svg className="guest-stone-cracks" viewBox="0 0 400 700" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="m108 3 15 35-18 20 12 29-27 32m15-61-24-9M395 390l-19 28 8 26-22 31 10 30m12-61 15 8M3 570l24 18-10 23 20 23-8 43m-2-89 27 1" /></svg>
             <div className="past-guest-portrait">
               <Image src={guest.image} alt={`${guest.name} portrait — open the Instagram reel`} fill sizes="(max-width: 600px) 70vw, 320px" className="guest-portrait-image" />
-              <span className="guest-reel-cue"><PlayIcon aria-hidden="true" />Open the IG reel<ArrowUpRightIcon aria-hidden="true" /></span>
+              <span className="guest-reel-cue"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r=".75" /></svg>Watch the reel<ArrowUpRightIcon aria-hidden="true" /></span>
             </div>
             <h3>{guest.name}</h3>
             <p className="guest-epitaph">Haunted Techkriti · February 2026</p>
