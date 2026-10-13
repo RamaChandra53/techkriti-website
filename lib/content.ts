@@ -39,7 +39,7 @@ export const events: Event[] = [
   {
     slug: "treasure-hunt-exe", title: "Treasure Hunt.exe", eyebrow: "Technical event", division: "Technical", category: "Competition", accent: "acid",
     summary: "A clue-solving treasure hunt through D-Block.", description: "Poster-confirmed event highlights.",
-    venue: "D-Block Entrance", eligibility: "To be announced", teamSize: "Single, duo, or squad", fees: [{ label: "Single", amount: 49 }, { label: "Duo", amount: 79 }, { label: "Squad", amount: 99 }], registrationUrl: "https://forms.gle/to1xNPqfm96Wy7hg9",
+    venue: "D-Block Entrance", eligibility: "To be announced", teamSize: "Single, duo, or squad", fees: [{ label: "Single", amount: 49 }, { label: "Duo", amount: 79 }, { label: "Squad", amount: 99 }], registrationUrl: "https://forms.gle/o8E4RUkXh2N4EsE38",
     highlights: ["Crack the clues", "Unlock the prizes", "Single, duo, and squad entry options"], coordinators: [{ name: "T. Shashank", phone: "+91 70136 86848" }],
     image: { src: "/events/treasure-hunt-exe.webp", alt: "Official Treasure Hunt.exe event poster", width: 1684, height: 2382 }, featured: true,
   },

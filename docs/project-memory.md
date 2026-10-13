@@ -266,3 +266,9 @@ Remove the birth-to-February-2025 date ranges from Adivi Sesh and Sai Dharam Tej
 The organizer supplied nine `forms.gle` URLs, one for each poster-confirmed event. The Esports link is specifically for the CODM tournament and must be labeled that way. The organizer also supplied the current Techkriti square mark for the top-left header and three sponsor logos: Global Degrees, Vionet, and Jai Enterprises. Present each sponsor with two neutral text lines: its name and “Supporting Techkriti 2026.” Keep the logo artwork intact and avoid a white box around the header mark.
 
 The organizer then removed “Back in spirit for After Dark 2026” from both guest stones. Each stone shows only “Haunted Techkriti · February 2025” below the name at all viewport sizes.
+
+## 13 October 2026 atmospheric event and sponsor presentation
+
+Event detail pages should use the same castle wallpaper and rain, bat, and ghost effects as the homepage. Keep the poster, event facts, description, fees, venue, and registration readable directly over that background without opaque cards or boxed panels. Sponsor entries on the homepage also sit directly on the atmospheric background; frame the supplied logo images with Halloween styled borders, while retaining the two neutral text lines beneath each image.
+
+The organizer replaced the Treasure Hunt.exe registration destination with `https://forms.gle/o8E4RUkXh2N4EsE38`. In the shared header, show only the larger square Techkriti mark with “AFTER DARK · 2026” beneath it; remove the adjacent Techkriti wordmark. The navigation has four items in order: Home, Events, Memories, Sponsors.

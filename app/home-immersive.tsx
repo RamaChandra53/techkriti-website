@@ -67,11 +67,11 @@ export default function HomeImmersive() {
       <Container>
         <p className="eyebrow">Partners & supporters</p>
         <h2 id="sponsors-title" className="display-heading mt-3 text-[clamp(2.8rem,6vw,5.5rem)]">Partners in <span className="text-[var(--ember)]">crime</span></h2>
-        {sponsors.length ? <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{sponsors.map((sponsor) => <article key={sponsor.name} className="festival-panel flex min-h-64 flex-col p-5 sm:p-6">
-          {sponsor.logo && <div className="relative h-32 w-full rounded-sm bg-white"><Image src={sponsor.logo.src} alt={sponsor.logo.alt} fill sizes="(max-width: 640px) calc(100vw - 5rem), (max-width: 1024px) 40vw, 27vw" className="object-contain p-4" /></div>}
+        {sponsors.length ? <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">{sponsors.map((sponsor) => <article key={sponsor.name} className="flex flex-col items-center text-center">
+          {sponsor.logo && <div className="sponsor-logo-frame relative h-36 w-full"><Image src={sponsor.logo.src} alt={sponsor.logo.alt} fill sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 40vw, 27vw" className="object-contain p-4" /></div>}
           <h3 className="mt-5 text-xl font-black text-[#fff4e9]">{sponsor.name}</h3>
           <p className="mt-1 text-sm text-[#ffb482]">Supporting Techkriti 2026</p>
-          {sponsor.url && <a href={sponsor.url} target="_blank" rel="noopener noreferrer" className="text-link mt-4 inline-flex min-h-11 items-center gap-2 self-start font-bold text-[#ffb386]">Visit partner <ArrowUpRightIcon className="h-5 w-5" aria-hidden="true" /></a>}
+          {sponsor.url && <a href={sponsor.url} target="_blank" rel="noopener noreferrer" className="text-link mt-4 inline-flex min-h-11 items-center gap-2 font-bold text-[#ffb386]">Visit partner <ArrowUpRightIcon className="h-5 w-5" aria-hidden="true" /></a>}
         </article>)}</div> : <div className="relative mt-8 overflow-hidden border border-[#684b63] bg-[#211827] p-8 sm:p-12"><div className="section-grid pointer-events-none absolute inset-0 opacity-15" aria-hidden="true" /><div className="relative"><p className="eyebrow">A place for confirmed supporters</p><p className="muted-copy mt-6 max-w-2xl">This space is reserved for confirmed 2026 partners. No previous-edition sponsors are being presented as current supporters.</p></div></div>}
       </Container>
     </section>

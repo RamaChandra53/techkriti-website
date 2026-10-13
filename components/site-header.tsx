@@ -7,17 +7,18 @@ import { Logo } from "./logo";
 import { Container } from "./container";
 
 const menuItems = [
+  { label: "Home", href: "/#home" },
   { label: "Events", href: "/#discover" },
   { label: "Memories", href: "/#archive" },
   { label: "Sponsors", href: "/#sponsors" },
 ] as const;
 
 function selectedItem(pathname: string, hash: string) {
-  if (pathname.startsWith("/events")) return 0;
-  if (pathname === "/" && hash === "#discover") return 0;
-  if (pathname === "/" && hash === "#archive") return 1;
-  const index = menuItems.findIndex((item) => item.href === pathname);
-  return index < 0 ? -1 : index;
+  if (pathname.startsWith("/events")) return 1;
+  if (pathname !== "/") return -1;
+  if (!hash || hash === "#home") return 0;
+  const index = menuItems.findIndex((item) => item.href === `/${hash}`);
+  return index;
 }
 
 export function SiteHeader() {
@@ -131,7 +132,7 @@ export function SiteHeader() {
         onPointerUp={onPointerEnd}
         onPointerCancel={() => { dragRef.current = null; setDragging(false); const link = active >= 0 ? linkRefs.current[active] : null; if (link && trackRef.current) setThumb({ left: link.offsetLeft, width: link.offsetWidth }); }}
         onDragStart={(event) => event.preventDefault()}
-        className="header-segments min-w-0 flex-1 grid grid-cols-3 items-center overflow-x-auto rounded-full bg-black p-1.5"
+        className="header-segments min-w-0 flex-1 grid grid-cols-4 items-center overflow-x-auto rounded-full bg-black p-1.5"
       >
         <span ref={thumbRef} className={`header-segments-thumb ${dragging ? "header-segments-thumb-dragging" : ""}`} style={{ left: thumb.left, width: thumb.width }} aria-hidden="true" />
         {menuItems.map((item, index) => <Link

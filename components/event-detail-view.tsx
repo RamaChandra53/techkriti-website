@@ -4,6 +4,7 @@ import { ArrowLeftIcon, ArrowUpRightIcon, CalendarDaysIcon, ClockIcon, MapPinIco
 import type { Event } from "@/lib/types";
 import { Container } from "./container";
 import { EventShareButton } from "./event-share-button";
+import { StormBackground } from "./storm-background";
 
 function RegistrationAction({ event }: { event: Event }) {
   if (!event.registrationUrl) return <span aria-disabled="true" className="event-register-disabled">Registration soon</span>;
@@ -19,6 +20,7 @@ export function EventDetailView({ event }: { event: Event }) {
   const date = event.day === 1 ? "16 Oct 2026" : event.day === 2 ? "17 Oct 2026" : "16–17 Oct 2026";
 
   return <div className="event-detail-page">
+    <StormBackground />
     <Container className="event-detail-container">
       <div className="event-detail-actions">
         <Link href="/#discover" className="event-back"><ArrowLeftIcon className="h-5 w-5" aria-hidden="true" />Back to events</Link>
