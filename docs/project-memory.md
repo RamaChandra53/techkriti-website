@@ -282,3 +282,7 @@ The organizer supplied the current-edition video at `public/branding/revelation.
 ## 13 October 2026 event count and FAQ sizing correction
 
 The organizer confirmed that the October 2026 lineup has nine events. The homepage hero and first FAQ answer say nine events. The homepage FAQ question type and row spacing were reduced slightly.
+
+## 14 October 2026 Socials portraits
+
+Hide the two contributor portraits in the Socials section until after the October event. Keep their image files in `public/team/` for later use, and retain the contributor names and roles on the page.

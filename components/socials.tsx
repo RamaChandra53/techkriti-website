@@ -1,31 +1,11 @@
-import Image from "next/image";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import { Container } from "./container";
 import { siteConfig } from "@/lib/content";
 
 const people = [
-  { id: "numair", name: "Numair Khan", portrait: "/team/numair-khan.png" },
-  { id: "rama", name: "Rama Chandra", portrait: "/team/rama-chandra.png" },
+  { name: "Numair Khan" },
+  { name: "Rama Chandra" },
 ] as const;
-
-function GoldDiamond({ id }: { id: string }) {
-  return <svg className="socials-diamond" viewBox="0 0 48 48" aria-hidden="true">
-    <defs>
-      <linearGradient id={`socials-diamond-gold-${id}`} x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0" stopColor="#fff1b3" />
-        <stop offset=".28" stopColor="#d79938" />
-        <stop offset=".56" stopColor="#ffe6a0" />
-        <stop offset="1" stopColor="#9b5520" />
-      </linearGradient>
-    </defs>
-    <path d="M24 2 46 24 24 46 2 24Z" fill={`url(#socials-diamond-gold-${id})`} stroke="#4b260e" strokeWidth="1.5" />
-    <path d="M24 7 41 24 24 41 7 24Z" fill="#7a3e1e" stroke="#fff1ae" strokeWidth="1" />
-    <path d="M24 7 41 24 24 24Z" fill="#ffe9a6" />
-    <path d="M24 7 24 24 7 24Z" fill="#c78a32" />
-    <path d="M7 24 24 24 24 41Z" fill="#a85d24" />
-    <path d="M24 24 41 24 24 41Z" fill="#db9e45" />
-  </svg>;
-}
 
 export function Socials() {
   return <section id="socials" aria-labelledby="socials-title" className="festival-section socials-section scroll-mt-24">
@@ -44,12 +24,6 @@ export function Socials() {
 
       <div className="socials-people">
         {people.map((person) => <div key={person.name} className="socials-person">
-          <span className="socials-portrait-wrap">
-            <span className="socials-portrait">
-              <Image src={person.portrait} alt={`Portrait of ${person.name}`} fill sizes="(max-width: 640px) 132px, 176px" className="socials-portrait-image" />
-            </span>
-            <GoldDiamond id={person.id} />
-          </span>
           <span className="socials-name">{person.name}</span>
           <span className="socials-title">Second year · CSB</span>
         </div>)}
