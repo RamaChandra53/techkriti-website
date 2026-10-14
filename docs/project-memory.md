@@ -34,7 +34,7 @@ If confirmed event data is not available yet, state that plainly. An honest empt
 | Event tracks | Technical and non-technical |
 | Registration | Each confirmed event will link directly to its official Google Form; the site will not store registrations |
 | Previous edition | February 2026, with a Telugu-movie-themed identity; its photos and past event references are archive material only |
-| Current content status | October event names are poster-confirmed. The organizer supplied faculty/student convenor contacts, nine event registration links, three sponsor logos, and the current-edition reveal film. Exact timings, some event rules, and the Instagram URL are not yet confirmed in `lib/content.ts`. |
+| Current content status | October event names are poster-confirmed. The organizer supplied faculty/student convenor contacts, nine event registration links, five sponsor logos, and the current-edition reveal film. Exact timings, some event rules, and the Instagram URL are not yet confirmed in `lib/content.ts`. |
 
 The previous posters and screenshots were supplied to explain the earlier festival, not to authorize reusing their event lists or movie theme for October. The photos under `D:\Techkriti\photos feb 2026` and the optimized `public/archive/` images document the February edition. Always caption or label them as previous-edition material. Never present those images as scenes from the upcoming Halloween edition.
 
@@ -286,3 +286,7 @@ The organizer confirmed that the October 2026 lineup has nine events. The homepa
 ## 14 October 2026 Socials portraits
 
 Hide the two contributor portraits in the Socials section until after the October event. Keep their image files in `public/team/` for later use, and retain the contributor names and roles on the page.
+
+## 14 October 2026 additional sponsors
+
+The organizer supplied logos for Spring Soft Solutions & Consultants and Bharathiya. Show both with their names in the homepage Sponsors section alongside the three existing partners.

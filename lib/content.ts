@@ -98,7 +98,9 @@ export const schedule: ScheduleItem[] = [];
 export const sponsors: Sponsor[] = [
   { name: "Global Degrees", tier: "Partner", logo: { src: "/sponsors/global-degrees.png", alt: "Global Degrees Education & More logo", width: 216, height: 126 } },
   { name: "Vionet", tier: "Partner", logo: { src: "/sponsors/vionet.png", alt: "Vionet logo", width: 329, height: 64 } },
-  { name: "Jai Enterprises", tier: "Partner", logo: { src: "/sponsors/jai-enterprises.png", alt: "Jai Enterprises logo", width: 138, height: 140 } }
+  { name: "Jai Enterprises", tier: "Partner", logo: { src: "/sponsors/jai-enterprises.png", alt: "Jai Enterprises logo", width: 138, height: 140 } },
+  { name: "Spring Soft Solutions & Consultants", tier: "Partner", logo: { src: "/sponsors/spring-soft-solutions-and-consultants.jpeg", alt: "Spring Soft Solutions & Consultants logo", width: 792, height: 455 } },
+  { name: "Bharathiya", tier: "Partner", logo: { src: "/sponsors/bharathiya.jpeg", alt: "Bharathiya logo in Telugu and English", width: 1600, height: 534 } }
 ];
 
 export const faqs: FAQ[] = [

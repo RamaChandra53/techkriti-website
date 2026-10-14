@@ -69,8 +69,8 @@ export default function HomeImmersive() {
       <Container>
         <TransitionTape label="PARTNERS & SUPPORTERS" />
         <h2 id="sponsors-title" className="display-heading mt-8 text-[clamp(2.8rem,6vw,5.5rem)]">Partners in <span className="text-[var(--ember)]">crime</span></h2>
-        {sponsors.length ? <div className="mt-8 grid grid-cols-3 gap-3 sm:gap-5">{sponsors.map((sponsor) => <article key={sponsor.name} className="flex min-w-0 flex-col items-center text-center">
-          {sponsor.logo && <div className="sponsor-logo-frame relative h-20 w-full sm:h-24"><Image src={sponsor.logo.src} alt={sponsor.logo.alt} fill sizes="(max-width: 640px) 30vw, 27vw" className="object-contain p-2 sm:p-3" /></div>}
+        {sponsors.length ? <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">{sponsors.map((sponsor, index) => <article key={sponsor.name} className={`flex min-w-0 flex-col items-center text-center ${index === sponsors.length - 1 ? "col-span-2 sm:col-span-1" : ""}`}>
+          {sponsor.logo && <div className="sponsor-logo-frame relative h-24 w-full sm:h-28"><Image src={sponsor.logo.src} alt={sponsor.logo.alt} fill sizes={index === sponsors.length - 1 ? "(max-width: 640px) 90vw, 27vw" : "(max-width: 640px) 45vw, 27vw"} className="object-contain p-2 sm:p-3" /></div>}
           <h3 className="mt-2 text-sm font-black text-[#fff4e9] sm:text-base">{sponsor.name}</h3>
           {sponsor.url && <a href={sponsor.url} target="_blank" rel="noopener noreferrer" className="text-link mt-4 inline-flex min-h-11 items-center gap-2 font-bold text-[#ffb386]">Visit partner <ArrowUpRightIcon className="h-5 w-5" aria-hidden="true" /></a>}
         </article>)}</div> : <div className="relative mt-8 overflow-hidden border border-[#684b63] bg-[#211827] p-8 sm:p-12"><div className="section-grid pointer-events-none absolute inset-0 opacity-15" aria-hidden="true" /><div className="relative"><p className="eyebrow">A place for confirmed supporters</p><p className="muted-copy mt-6 max-w-2xl">This space is reserved for confirmed 2026 partners. No previous-edition sponsors are being presented as current supporters.</p></div></div>}
