@@ -4,8 +4,8 @@ import { Container } from "./container";
 import { siteConfig } from "@/lib/content";
 
 const people = [
-  { id: "numair", name: "Numair Khan", linkedin: "https://www.linkedin.com/in/numair-khan-13899b382/", portrait: "/team/numair-khan.png" },
-  { id: "rama", name: "Rama Chandra", linkedin: "https://www.linkedin.com/in/ramachandravidapu/", portrait: "/team/rama-chandra.png" },
+  { id: "numair", name: "Numair Khan", portrait: "/team/numair-khan.png" },
+  { id: "rama", name: "Rama Chandra", portrait: "/team/rama-chandra.png" },
 ] as const;
 
 function GoldDiamond({ id }: { id: string }) {
@@ -43,7 +43,7 @@ export function Socials() {
       </div>
 
       <div className="socials-people">
-        {people.map((person) => <a key={person.name} className="socials-person" href={person.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${person.name} on LinkedIn (opens in a new tab)`}>
+        {people.map((person) => <div key={person.name} className="socials-person">
           <span className="socials-portrait-wrap">
             <span className="socials-portrait">
               <Image src={person.portrait} alt={`Portrait of ${person.name}`} fill sizes="(max-width: 640px) 132px, 176px" className="socials-portrait-image" />
@@ -52,8 +52,7 @@ export function Socials() {
           </span>
           <span className="socials-name">{person.name}</span>
           <span className="socials-title">Second year · CSB</span>
-          <span className="socials-link">LinkedIn <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" /></span>
-        </a>)}
+        </div>)}
       </div>
     </Container>
   </section>;

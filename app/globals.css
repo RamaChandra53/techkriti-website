@@ -78,12 +78,9 @@ a, button, input, select, summary { -webkit-tap-highlight-color: transparent; }
 .socials-portrait-image { object-fit: cover; object-position: center; }
 .socials-person:first-child .socials-portrait-image { transform: scale(1.27); }
 .socials-person:nth-child(2) .socials-portrait-image { transform: scale(1.12); }
-.socials-person:hover .socials-portrait, .socials-person:focus-visible .socials-portrait { box-shadow: 0 0 0 5px #110b13, 0 0 0 6px #ffad78, 0 16px 32px #000b, 0 0 24px #ff793855; transform: translateY(-3px); }
 .socials-diamond { position: absolute; z-index: 1; right: 0; bottom: 0; left: 0; width: 2.5rem; height: 2.5rem; margin: auto; filter: drop-shadow(0 5px 4px #000b); }
 .socials-name { margin-top: 1.1rem; font-family: var(--font-roboto-slab), Georgia, serif; font-size: clamp(1rem, 2.5vw, 1.4rem); font-weight: 800; line-height: 1.25; }
 .socials-title { margin-top: .4rem; color: #e9c8b7; font-size: clamp(.75rem, 1.8vw, .9rem); letter-spacing: .06em; text-transform: uppercase; }
-.socials-link { display: inline-flex; align-items: center; gap: .25rem; margin-top: .75rem; color: #ffad7c; font-size: .85rem; font-weight: 700; text-underline-offset: 4px; }
-.socials-person:hover .socials-link { text-decoration: underline; }
 .festival-section { padding-block: var(--section-space-mobile); }
 .festival-section#discover, .festival-section#archive { padding-bottom: 0; }
 #revelation, #past-guests, #discover, #archive, #faq { padding-top: var(--home-transition-gap); }
