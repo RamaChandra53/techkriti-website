@@ -31,7 +31,7 @@ export const events: Event[] = [
   {
     slug: "brand-o-ween", title: "Brand-O-Ween", eyebrow: "Technical event", division: "Technical", category: "Competition", accent: "coral",
     summary: "A Halloween branding challenge built around ideas, identities, and loyal audiences.", description: "Poster-confirmed event highlights.",
-    venue: "D 208", eligibility: "To be announced", teamSize: "Individual", fees: [{ label: "Single", amount: 49 }], registrationUrl: "https://forms.gle/fjsTTqf2bLV7NEGD9",
+    venue: "D-208", eligibility: "To be announced", teamSize: "Individual", fees: [{ label: "Single", amount: 49 }], registrationUrl: "https://forms.gle/fjsTTqf2bLV7NEGD9",
     highlights: ["Halloween branding challenge", "Ideas, identities, and a loyal audience", "Exciting prizes"], coordinators: [{ name: "Adarsh", phone: "+91 83286 91910" }],
     image: { src: "/events/brand-o-ween.webp", alt: "Official Brand-O-Ween event poster", width: 1684, height: 2382 }, featured: true,
   },
@@ -45,21 +45,21 @@ export const events: Event[] = [
   {
     slug: "corpse-to-corporation", title: "Corpse to Corporation", eyebrow: "Technical event", division: "Technical", category: "Competition", accent: "electric",
     summary: "A business revival challenge about bringing a dead business back to life.", description: "Poster-confirmed event highlights.",
-    venue: "D 209", eligibility: "To be announced", teamSize: "Team size to be announced", fees: [{ label: "Team", amount: 99 }], registrationUrl: "https://forms.gle/vUKs46KuLsgwhgH89",
+    venue: "D-209", eligibility: "To be announced", teamSize: "Team size to be announced", fees: [{ label: "Team", amount: 99 }], registrationUrl: "https://forms.gle/vUKs46KuLsgwhgH89",
     highlights: ["The business revival challenge", "Build a strategy to revive a dead business", "Win rewards"], coordinators: [{ name: "Adarsh", phone: "+91 83286 91910" }],
     image: { src: "/events/corpse-to-corporation.webp", alt: "Official Corpse to Corporation event poster", width: 2382, height: 1684 }, featured: true,
   },
   {
     slug: "poster-presentation", title: "Poster Presentation", eyebrow: "Technical event", division: "Technical", category: "Showcase", accent: "coral",
     summary: "A showcase of ideas beyond the ordinary.", description: "Poster-confirmed event highlights.",
-    venue: "D 208", eligibility: "To be announced", teamSize: "Single or duo", fees: [{ label: "Single", amount: 49 }, { label: "Duo", amount: 99 }], registrationUrl: "https://forms.gle/XgZzAu5UxpUWtHA99",
+    venue: "D-208", eligibility: "To be announced", teamSize: "Single or duo", fees: [{ label: "Single", amount: 49 }, { label: "Duo", amount: 99 }], registrationUrl: "https://forms.gle/XgZzAu5UxpUWtHA99",
     highlights: ["Create and captivate", "Showcase ideas beyond the ordinary", "Exciting prizes"], coordinators: [{ name: "M Vyshnavi", phone: "+91 76718 63390" }],
     image: { src: "/events/poster-presentation.webp", alt: "Official Poster Presentation event poster", width: 1684, height: 2382 },
   },
   {
     slug: "esports", title: "Esports", eyebrow: "Non-technical event", division: "Non-Technical", category: "Competition", accent: "sky",
     summary: "Valorant, BGMI, and CODM tournaments with team and solo categories.", description: "Poster-confirmed event highlights.",
-    venue: "COD2 Lab", eligibility: "To be announced", teamSize: "Team and solo categories", fees: [{ label: "Valorant squad", amount: 499 }, { label: "BGMI squad", amount: 250 }, { label: "CODM", amount: 199 }], registrationUrl: "https://forms.gle/AGHRFEMtZRUkX46b7",
+    venue: "C-OO2 Lab", eligibility: "To be announced", teamSize: "Team and solo categories", fees: [{ label: "Valorant squad", amount: 499 }, { label: "BGMI squad", amount: 250 }, { label: "CODM", amount: 199 }], registrationUrl: "https://forms.gle/AGHRFEMtZRUkX46b7",
     highlights: ["Valorant tournament", "BGMI tournament", "CODM tournament", "Rules briefed on site", "Exciting prizes"], coordinators: [{ name: "Swayam", phone: "+91 8317536981" }, { name: "Pranav", phone: "+91 8309513259" }],
     image: { src: "/events/esports.webp", alt: "Official Esports event poster", width: 2382, height: 1684 },
   },
@@ -80,7 +80,7 @@ export const events: Event[] = [
   {
     slug: "ipl-auction", title: "IPL Auction", eyebrow: "Non-technical event", division: "Non-Technical", category: "Competition", accent: "electric",
     summary: "A live auction simulation focused on team building and bidding strategy.", description: "Poster-confirmed event highlights.",
-    venue: "E 501", eligibility: "To be announced", teamSize: "Team size to be announced", fees: [{ label: "Team", amount: 199 }], registrationUrl: "https://forms.gle/Sd5MZdJXpwZfTRcK9",
+    venue: "E-501", eligibility: "To be announced", teamSize: "Team size to be announced", fees: [{ label: "Team", amount: 199 }], registrationUrl: "https://forms.gle/Sd5MZdJXpwZfTRcK9",
     highlights: ["Live auction simulation", "Team building and strategy", "Analysis and bidding strategies", "Rules briefed on site", "Exciting prizes"], coordinators: [{ name: "Sujith", phone: "+91 9121427854" }],
     image: { src: "/events/ipl-auction.webp", alt: "Official IPL Auction event poster", width: 2382, height: 1684 },
   },
